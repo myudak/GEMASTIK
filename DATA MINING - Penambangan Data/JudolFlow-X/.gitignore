@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+reports/rendered_docx*/
+reports/*.log
+data/raw/live_*.csv
+data/raw/*.html

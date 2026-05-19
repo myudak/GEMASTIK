@@ -1,0 +1,4 @@
+data/raw/*.html
+reports/rendered_docx/
+src/__pycache__/
+dashboard/__pycache__/

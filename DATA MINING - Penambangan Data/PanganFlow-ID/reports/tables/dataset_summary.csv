@@ -1,0 +1,2 @@
+rows,province_count,commodity_count,date_min,date_max,latest_snapshot_rows,latest_snapshot_month,price_source_primary,unmatched_province_count,mean_price_latest,mean_deficit_score_latest,mean_surplus_score_latest
+1904,38,1,2021-01-01,2025-06-01,38,2025-06,Bapanas monthly consumer price,0,14627.605263157895,0.07618701747152701,0.33787298958674156

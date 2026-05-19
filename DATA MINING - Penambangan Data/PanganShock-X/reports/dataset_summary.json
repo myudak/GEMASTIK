@@ -1,0 +1,10 @@
+{
+  "raw_rows": 29622,
+  "processed_rows": 21665,
+  "start_date": "2021-01",
+  "end_date": "2025-06",
+  "provinces": 38,
+  "commodities": 12,
+  "missing_price_raw_pct": 2.028897441091081,
+  "missing_price_processed_pct": 0.0
+}

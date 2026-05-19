@@ -1,0 +1,8 @@
+metric,value
+content_samples,620
+clusters,296
+platforms,6
+periods,16
+weak_positive_share,0.5468
+processed_identifiers_masked,yes
+raw_source,generated_demo_anonymized_content_samples.csv

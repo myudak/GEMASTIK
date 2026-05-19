@@ -1,0 +1,2 @@
+raw_rows,processed_rows,start_date,end_date,provinces,commodities,missing_price_raw_pct,missing_price_processed_pct
+29622,21665,2021-01,2025-06,38,12,2.028897441091081,0.0

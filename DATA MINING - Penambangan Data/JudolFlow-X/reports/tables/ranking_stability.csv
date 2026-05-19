@@ -1,0 +1,4 @@
+metric,value
+bootstrap_top20_overlap_mean,0.6375
+bootstrap_top20_overlap_p10,0.545
+bootstrap_top20_overlap_p90,0.755

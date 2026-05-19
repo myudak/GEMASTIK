@@ -1,0 +1,11 @@
+feature,importance,family
+coverage_gap,0.7663293272162598,Coverage
+nutrition_need,0.14860940044926707,Nutrition
+food_vulnerability,0.05088699099591563,Food system
+socioeconomic_stress,0.034174281338557475,Socioeconomic
+price_stress,0.0,Food system
+sppg_density_per_100k_beneficiaries,0.0,Coverage
+condition_rate_per_1000,0.0,Nutrition
+allergy_intolerance_rate_per_1000,0.0,Nutrition
+beneficiaries_per_satpen,0.0,Coverage
+support_reach,0.0,Coverage

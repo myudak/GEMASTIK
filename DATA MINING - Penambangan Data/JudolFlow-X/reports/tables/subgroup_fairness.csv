@@ -1,0 +1,7 @@
+subgroup,corpus_share,top30_content_share,share_ratio
+comment,0.180645,0.191429,1.059694
+short_video,0.153226,0.157143,1.025564
+public_report,0.166129,0.168571,1.014702
+forum,0.162903,0.16,0.982178
+image_ocr,0.167742,0.162857,0.970879
+bio_text,0.169355,0.16,0.944762

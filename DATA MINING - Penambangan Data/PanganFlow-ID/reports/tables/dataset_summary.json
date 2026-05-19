@@ -1,0 +1,14 @@
+{
+  "rows": 1904,
+  "province_count": 38,
+  "commodity_count": 1,
+  "date_min": "2021-01-01",
+  "date_max": "2025-06-01",
+  "latest_snapshot_rows": 38,
+  "latest_snapshot_month": "2025-06",
+  "price_source_primary": "Bapanas monthly consumer price",
+  "unmatched_province_count": 0,
+  "mean_price_latest": 14627.605263157895,
+  "mean_deficit_score_latest": 0.07618701747152701,
+  "mean_surplus_score_latest": 0.33787298958674156
+}

@@ -1,0 +1,1445 @@
+origin_province,destination_province,distance_km
+Aceh,Aceh,0.0
+Aceh,Sumatera Utara,430.5373113243793
+Aceh,Sumatera Barat,913.4437713171644
+Aceh,Riau,881.5242788108964
+Aceh,Jambi,1217.1585998720718
+Aceh,Sumatera Selatan,1414.5609590117397
+Aceh,Bengkulu,1294.2050354404566
+Aceh,Lampung,1648.154864947902
+Aceh,Kepulauan Bangka Belitung,1471.5073673719517
+Aceh,Kepulauan Riau,1136.5955427066358
+Aceh,DKI Jakarta,1829.7113913805838
+Aceh,Jawa Barat,1944.0930600006898
+Aceh,Jawa Tengah,2179.8549322888175
+Aceh,DI Yogyakarta,2233.910085462968
+Aceh,Jawa Timur,2401.1679215273234
+Aceh,Banten,1768.904273512886
+Aceh,Bali,2713.067640785018
+Aceh,Nusa Tenggara Barat,2790.501399212341
+Aceh,Nusa Tenggara Timur,3588.2613949898387
+Aceh,Kalimantan Barat,1675.2093986016866
+Aceh,Kalimantan Tengah,2238.7223693608116
+Aceh,Kalimantan Selatan,2356.503482767692
+Aceh,Kalimantan Timur,2515.487481036446
+Aceh,Kalimantan Utara,2481.1918131454713
+Aceh,Sulawesi Utara,3306.743116005328
+Aceh,Sulawesi Tengah,2818.8669731353766
+Aceh,Sulawesi Selatan,2929.4735012375236
+Aceh,Sulawesi Tenggara,3200.5063860979826
+Aceh,Gorontalo,3129.1009538595736
+Aceh,Sulawesi Barat,2773.115324132574
+Aceh,Maluku,3791.5549915493357
+Aceh,Maluku Utara,3597.4191167191807
+Aceh,Papua Barat,4360.315727551267
+Aceh,Papua Barat Daya,4053.038125742124
+Aceh,Papua,5117.301139917416
+Aceh,Papua Selatan,5236.345758117923
+Aceh,Papua Tengah,4571.073577319831
+Aceh,Papua Pegunungan,4962.6228104354295
+Sumatera Utara,Aceh,430.5373113243793
+Sumatera Utara,Sumatera Utara,0.0
+Sumatera Utara,Sumatera Barat,538.2457431613324
+Sumatera Utara,Riau,461.19820326573296
+Sumatera Utara,Jambi,797.3501649174151
+Sumatera Utara,Sumatera Selatan,996.6856066857908
+Sumatera Utara,Bengkulu,913.4396465386553
+Sumatera Utara,Lampung,1244.0900744608246
+Sumatera Utara,Kepulauan Bangka Belitung,1043.2015794148379
+Sumatera Utara,Kepulauan Riau,707.4607830030961
+Sumatera Utara,DKI Jakarta,1418.5698254500098
+Sumatera Utara,Jawa Barat,1532.240754804323
+Sumatera Utara,Jawa Tengah,1756.3289550292204
+Sumatera Utara,DI Yogyakarta,1813.4802544082556
+Sumatera Utara,Jawa Timur,1973.374155239528
+Sumatera Utara,Banten,1362.185724972607
+Sumatera Utara,Bali,2284.601528501571
+Sumatera Utara,Nusa Tenggara Barat,2361.100607771499
+Sumatera Utara,Nusa Tenggara Timur,3157.8229348891564
+Sumatera Utara,Kalimantan Barat,1251.7825627684565
+Sumatera Utara,Kalimantan Tengah,1813.4309113270767
+Sumatera Utara,Kalimantan Selatan,1928.7926402039777
+Sumatera Utara,Kalimantan Timur,2103.444097028446
+Sumatera Utara,Kalimantan Utara,2100.189011331972
+Sumatera Utara,Sulawesi Utara,2916.4596267860356
+Sumatera Utara,Sulawesi Tengah,2408.387657467975
+Sumatera Utara,Sulawesi Selatan,2502.370799778986
+Sumatera Utara,Sulawesi Tenggara,2779.7917003863236
+Sumatera Utara,Gorontalo,2731.0729920019207
+Sumatera Utara,Sulawesi Barat,2352.8338154881258
+Sumatera Utara,Maluku,3377.8431426647994
+Sumatera Utara,Maluku Utara,3204.8635538669605
+Sumatera Utara,Papua Barat,3964.042178765129
+Sumatera Utara,Papua Barat Daya,3654.566143526664
+Sumatera Utara,Papua,4718.027591222607
+Sumatera Utara,Papua Selatan,4818.027862146179
+Sumatera Utara,Papua Tengah,4165.093232227296
+Sumatera Utara,Papua Pegunungan,4556.447711514983
+Sumatera Barat,Aceh,913.4437713171644
+Sumatera Barat,Sumatera Utara,538.2457431613324
+Sumatera Barat,Sumatera Barat,0.0
+Sumatera Barat,Riau,203.2622785081723
+Sumatera Barat,Jambi,369.75912530318465
+Sumatera Barat,Sumatera Selatan,540.0073369766078
+Sumatera Barat,Bengkulu,381.37720009666043
+Sumatera Barat,Lampung,740.6650751626647
+Sumatera Barat,Kepulauan Bangka Belitung,653.5466321807913
+Sumatera Barat,Kepulauan Riau,501.0612491733173
+Sumatera Barat,DKI Jakarta,928.4794625933077
+Sumatera Barat,Jawa Barat,1042.7053958089828
+Sumatera Barat,Jawa Tengah,1302.9478856584356
+Sumatera Barat,DI Yogyakarta,1346.4052076178884
+Sumatera Barat,Jawa Timur,1542.7841082024347
+Sumatera Barat,Banten,862.8747424170222
+Sumatera Barat,Bali,1855.6964012555961
+Sumatera Barat,Nusa Tenggara Barat,1941.3298495825886
+Sumatera Barat,Nusa Tenggara Timur,2768.4325031921685
+Sumatera Barat,Kalimantan Barat,1004.9303967777556
+Sumatera Barat,Kalimantan Tengah,1514.8014535696343
+Sumatera Barat,Kalimantan Selatan,1603.994394117494
+Sumatera Barat,Kalimantan Timur,1868.5894094212074
+Sumatera Barat,Kalimantan Utara,1973.8303394951538
+Sumatera Barat,Sulawesi Utara,2736.1963071562827
+Sumatera Barat,Sulawesi Tengah,2170.246398289762
+Sumatera Barat,Sulawesi Selatan,2168.962175355126
+Sumatera Barat,Sulawesi Tenggara,2484.572696092563
+Sumatera Barat,Gorontalo,2530.5785446735663
+Sumatera Barat,Sulawesi Barat,2069.3923665268667
+Sumatera Barat,Maluku,3106.741992711025
+Sumatera Barat,Maluku Utara,3011.7011660791227
+Sumatera Barat,Papua Barat,3747.9124004461605
+Sumatera Barat,Papua Barat Daya,3435.490300356018
+Sumatera Barat,Papua,4484.701908602806
+Sumatera Barat,Papua Selatan,4512.876891078103
+Sumatera Barat,Papua Tengah,3914.5397963212185
+Sumatera Barat,Papua Pegunungan,4301.5289307118555
+Riau,Aceh,881.5242788108964
+Riau,Sumatera Utara,461.19820326573296
+Riau,Sumatera Barat,203.2622785081723
+Riau,Riau,0.0
+Riau,Jambi,336.51923594488335
+Riau,Sumatera Selatan,535.5574930524133
+Riau,Bengkulu,487.62936590495053
+Riau,Lampung,786.8459534082994
+Riau,Kepulauan Bangka Belitung,595.4590978228385
+Riau,Kepulauan Riau,336.65923260026415
+Riau,DKI Jakarta,957.9083235042846
+Riau,Jawa Barat,1071.3459932918554
+Riau,Jawa Tengah,1298.3532635097608
+Riau,DI Yogyakarta,1353.4736410895405
+Riau,Jawa Timur,1521.657794693877
+Riau,Banten,903.1410022469759
+Riau,Bali,1834.3800119259165
+Riau,Nusa Tenggara Barat,1914.0681686240944
+Riau,Nusa Tenggara Timur,2724.524866871535
+Riau,Kalimantan Barat,879.293988315496
+Riau,Kalimantan Tengah,1418.9261353810334
+Riau,Kalimantan Selatan,1521.2173438187208
+Riau,Kalimantan Timur,1749.3464453126273
+Riau,Kalimantan Utara,1820.3267122501634
+Riau,Sulawesi Utara,2602.6151379156504
+Riau,Sulawesi Tengah,2054.1389515945725
+Riau,Sulawesi Selatan,2093.6490661618727
+Riau,Sulawesi Tenggara,2392.968213562184
+Riau,Gorontalo,2402.8225656744257
+Riau,Sulawesi Barat,1970.8215971528468
+Riau,Maluku,3007.0570786687504
+Riau,Maluku Utara,2883.260903332376
+Riau,Papua Barat,3629.1609638418036
+Riau,Papua Barat Daya,3317.0628363647993
+Riau,Papua,4373.386261695157
+Riau,Papua Selatan,4430.08996004985
+Riau,Papua Tengah,3808.643793511981
+Riau,Papua Pegunungan,4197.965913010419
+Jambi,Aceh,1217.1585998720718
+Jambi,Sumatera Utara,797.3501649174151
+Jambi,Sumatera Barat,369.75912530318465
+Jambi,Riau,336.51923594488335
+Jambi,Jambi,0.0
+Jambi,Sumatera Selatan,199.6779105377532
+Jambi,Bengkulu,285.9746263482087
+Jambi,Lampung,465.02501888400997
+Jambi,Kepulauan Bangka Belitung,283.7911661622967
+Jambi,Kepulauan Riau,296.4207265702988
+Jambi,DKI Jakarta,625.1002897873807
+Jambi,Jawa Barat,737.5010565420804
+Jambi,Jawa Tengah,963.1368281865089
+Jambi,DI Yogyakarta,1017.05871344715
+Jambi,Jawa Timur,1191.2990347814584
+Jambi,Banten,575.2015878322165
+Jambi,Bali,1504.627497208833
+Jambi,Nusa Tenggara Barat,1586.8009917912236
+Jambi,Nusa Tenggara Timur,2406.591049414973
+Jambi,Kalimantan Barat,661.1400433585566
+Jambi,Kalimantan Tengah,1147.7165553517184
+Jambi,Kalimantan Selatan,1234.4731253774223
+Jambi,Kalimantan Timur,1510.3509713906265
+Jambi,Kalimantan Utara,1647.3493465292622
+Jambi,Sulawesi Utara,2385.0983322809243
+Jambi,Sulawesi Tengah,1809.3045292956228
+Jambi,Sulawesi Selatan,1799.3256992898384
+Jambi,Sulawesi Tenggara,2115.5181507593434
+Jambi,Gorontalo,2175.6935137716137
+Jambi,Sulawesi Barat,1701.9997541754258
+Jambi,Maluku,2738.805864942621
+Jambi,Maluku Utara,2656.2805889380375
+Jambi,Papua Barat,3386.0827706356354
+Jambi,Papua Barat Daya,3073.7738420115916
+Jambi,Papua,4119.406572537377
+Jambi,Papua Selatan,4143.132939852997
+Jambi,Papua Tengah,3547.7841912930453
+Jambi,Papua Pegunungan,3934.0328152320703
+Sumatera Selatan,Aceh,1414.5609590117397
+Sumatera Selatan,Sumatera Utara,996.6856066857908
+Sumatera Selatan,Sumatera Barat,540.0073369766078
+Sumatera Selatan,Riau,535.5574930524133
+Sumatera Selatan,Jambi,199.6779105377532
+Sumatera Selatan,Sumatera Selatan,0.0
+Sumatera Selatan,Bengkulu,291.7478877410268
+Sumatera Selatan,Lampung,279.32402775056653
+Sumatera Selatan,Kepulauan Bangka Belitung,177.8573042360283
+Sumatera Selatan,Kepulauan Riau,436.13552375358523
+Sumatera Selatan,DKI Jakarta,426.4327219987256
+Sumatera Selatan,Jawa Barat,538.1788146722596
+Sumatera Selatan,Jawa Tengah,768.6120859536717
+Sumatera Selatan,DI Yogyakarta,819.461715783391
+Sumatera Selatan,Jawa Timur,1003.5214866861738
+Sumatera Selatan,Banten,380.6104598463252
+Sumatera Selatan,Bali,1316.7478474704974
+Sumatera Selatan,Nusa Tenggara Barat,1401.5756714136885
+Sumatera Selatan,Nusa Tenggara Timur,2228.963662624589
+Sumatera Selatan,Kalimantan Barat,606.7832716948653
+Sumatera Selatan,Kalimantan Tengah,1021.1767531013759
+Sumatera Selatan,Kalimantan Selatan,1092.0004985909459
+Sumatera Selatan,Kalimantan Timur,1404.5159175500387
+Sumatera Selatan,Kalimantan Utara,1588.6933619360461
+Sumatera Selatan,Sulawesi Utara,2286.461395328162
+Sumatera Selatan,Sulawesi Tengah,1695.0945812995917
+Sumatera Selatan,Sulawesi Selatan,1644.6277885355742
+Sumatera Selatan,Sulawesi Tenggara,1973.1304428668898
+Sumatera Selatan,Gorontalo,2071.6015004753303
+Sumatera Selatan,Sulawesi Barat,1569.6281858419834
+Sumatera Selatan,Maluku,2600.8674148254545
+Sumatera Selatan,Maluku Utara,2549.191949022215
+Sumatera Selatan,Papua Barat,3264.545596666539
+Sumatera Selatan,Papua Barat Daya,2953.1069373801047
+Sumatera Selatan,Papua,3988.3555281327617
+Sumatera Selatan,Papua Selatan,3988.055668502829
+Sumatera Selatan,Papua Tengah,3412.997994856254
+Sumatera Selatan,Papua Pegunungan,3796.203515245448
+Bengkulu,Aceh,1294.2050354404566
+Bengkulu,Sumatera Utara,913.4396465386553
+Bengkulu,Sumatera Barat,381.37720009666043
+Bengkulu,Riau,487.62936590495053
+Bengkulu,Jambi,285.9746263482087
+Bengkulu,Sumatera Selatan,291.7478877410268
+Bengkulu,Bengkulu,0.0
+Bengkulu,Lampung,380.71956061234147
+Bengkulu,Kepulauan Bangka Belitung,466.1000514830482
+Bengkulu,Kepulauan Riau,578.5209762775829
+Bengkulu,DKI Jakarta,574.7025159918587
+Bengkulu,Jawa Barat,685.7939532576324
+Bengkulu,Jawa Tengah,970.3602347908251
+Bengkulu,DI Yogyakarta,1001.1991869912799
+Bengkulu,Jawa Timur,1222.566985169056
+Bengkulu,Banten,502.217645163032
+Bengkulu,Bali,1530.28674161769
+Bengkulu,Nusa Tenggara Barat,1621.2723705601195
+Bengkulu,Nusa Tenggara Timur,2459.4244152931965
+Bengkulu,Kalimantan Barat,891.924844496693
+Bengkulu,Kalimantan Tengah,1306.7178091818894
+Bengkulu,Kalimantan Selatan,1369.4140377056647
+Bengkulu,Kalimantan Timur,1694.4981458355144
+Bengkulu,Kalimantan Utara,1878.024876868844
+Bengkulu,Sulawesi Utara,2576.881018686517
+Bengkulu,Sulawesi Tengah,1982.671440748431
+Bengkulu,Sulawesi Selatan,1909.2184386563054
+Bengkulu,Sulawesi Tenggara,2246.5399861625465
+Bengkulu,Gorontalo,2361.1948121806877
+Bengkulu,Sulawesi Barat,1850.3610005605517
+Bengkulu,Maluku,2875.915584050322
+Bengkulu,Maluku Utara,2837.7613038616378
+Bengkulu,Papua Barat,3547.7006039440625
+Bengkulu,Papua Barat Daya,3236.8896883756033
+Bengkulu,Papua,4266.140327166831
+Bengkulu,Papua Selatan,4246.588709632525
+Bengkulu,Papua Tengah,3689.0132295999965
+Bengkulu,Papua Pegunungan,4069.838550533555
+Lampung,Aceh,1648.154864947902
+Lampung,Sumatera Utara,1244.0900744608246
+Lampung,Sumatera Barat,740.6650751626647
+Lampung,Riau,786.8459534082994
+Lampung,Jambi,465.02501888400997
+Lampung,Sumatera Selatan,279.32402775056653
+Lampung,Bengkulu,380.71956061234147
+Lampung,Lampung,0.0
+Lampung,Kepulauan Bangka Belitung,380.7467225080417
+Lampung,Kepulauan Riau,714.1411801492061
+Lampung,DKI Jakarta,194.13638604094467
+Lampung,Jawa Barat,305.4002872805238
+Lampung,Jawa Tengah,594.4605186447329
+Lampung,DI Yogyakarta,620.9251304757023
+Lampung,Jawa Timur,850.4798051957287
+Lampung,Banten,122.58821310538998
+Lampung,Bali,1154.077452408229
+Lampung,Nusa Tenggara Barat,1246.8127368492896
+Lampung,Nusa Tenggara Timur,2086.9674077055683
+Lampung,Kalimantan Barat,754.157489628171
+Lampung,Kalimantan Tengah,1024.9585145704134
+Lampung,Kalimantan Selatan,1060.0339899844682
+Lampung,Kalimantan Timur,1429.0474981641255
+Lampung,Kalimantan Utara,1679.6347883785056
+Lampung,Sulawesi Utara,2305.618808413384
+Lampung,Sulawesi Tengah,1697.6527379074882
+Lampung,Sulawesi Selatan,1568.107382248301
+Lampung,Sulawesi Tenggara,1917.2829552177514
+Lampung,Gorontalo,2084.6868319038044
+Lampung,Sulawesi Barat,1541.581186294511
+Lampung,Maluku,2546.594150217718
+Lampung,Maluku Utara,2551.3976865055233
+Lampung,Papua Barat,3235.9815960582623
+Lampung,Papua Barat Daya,2928.2231927626785
+Lampung,Papua,3938.739624153852
+Lampung,Papua Selatan,3890.7146244177943
+Lampung,Papua Tengah,3359.1160091414263
+Lampung,Papua Pegunungan,3734.5910191410408
+Kepulauan Bangka Belitung,Aceh,1471.5073673719517
+Kepulauan Bangka Belitung,Sumatera Utara,1043.2015794148379
+Kepulauan Bangka Belitung,Sumatera Barat,653.5466321807913
+Kepulauan Bangka Belitung,Riau,595.4590978228385
+Kepulauan Bangka Belitung,Jambi,283.7911661622967
+Kepulauan Bangka Belitung,Sumatera Selatan,177.8573042360283
+Kepulauan Bangka Belitung,Bengkulu,466.1000514830482
+Kepulauan Bangka Belitung,Lampung,380.7467225080417
+Kepulauan Bangka Belitung,Kepulauan Bangka Belitung,0.0
+Kepulauan Bangka Belitung,Kepulauan Riau,386.1065399282885
+Kepulauan Bangka Belitung,DKI Jakarta,461.03501238091593
+Kepulauan Bangka Belitung,Jawa Barat,556.8979415622296
+Kepulauan Bangka Belitung,Jawa Tengah,721.1996070641461
+Kepulauan Bangka Belitung,DI Yogyakarta,787.4098076567238
+Kepulauan Bangka Belitung,Jawa Timur,930.1850774829993
+Kepulauan Bangka Belitung,Banten,443.6899270163405
+Kepulauan Bangka Belitung,Bali,1241.592158609802
+Kepulauan Bangka Belitung,Nusa Tenggara Barat,1319.5231875907593
+Kepulauan Bangka Belitung,Nusa Tenggara Timur,2130.154079151458
+Kepulauan Bangka Belitung,Kalimantan Barat,428.9321318689134
+Kepulauan Bangka Belitung,Kalimantan Tengah,867.8541619296486
+Kepulauan Bangka Belitung,Kalimantan Selatan,951.0973974078117
+Kepulauan Bangka Belitung,Kalimantan Timur,1240.5381470641187
+Kepulauan Bangka Belitung,Kalimantan Utara,1412.0918286756148
+Kepulauan Bangka Belitung,Sulawesi Utara,2120.43076003689
+Kepulauan Bangka Belitung,Sulawesi Tengah,1535.5782826314517
+Kepulauan Bangka Belitung,Sulawesi Selatan,1515.6117417768726
+Kepulauan Bangka Belitung,Sulawesi Tenggara,1832.606149765856
+Kepulauan Bangka Belitung,Gorontalo,1907.6447929464603
+Kepulauan Bangka Belitung,Sulawesi Barat,1421.125290014161
+Kepulauan Bangka Belitung,Maluku,2456.989313998867
+Kepulauan Bangka Belitung,Maluku Utara,2386.88280166528
+Kepulauan Bangka Belitung,Papua Barat,3109.962686670821
+Kepulauan Bangka Belitung,Papua Barat Daya,2797.920345734859
+Kepulauan Bangka Belitung,Papua,3839.865042314134
+Kepulauan Bangka Belitung,Papua Selatan,3859.3428292286126
+Kepulauan Bangka Belitung,Papua Tengah,3266.985512544386
+Kepulauan Bangka Belitung,Papua Pegunungan,3652.4860888630706
+Kepulauan Riau,Aceh,1136.5955427066358
+Kepulauan Riau,Sumatera Utara,707.4607830030961
+Kepulauan Riau,Sumatera Barat,501.0612491733173
+Kepulauan Riau,Riau,336.65923260026415
+Kepulauan Riau,Jambi,296.4207265702988
+Kepulauan Riau,Sumatera Selatan,436.13552375358523
+Kepulauan Riau,Bengkulu,578.5209762775829
+Kepulauan Riau,Lampung,714.1411801492061
+Kepulauan Riau,Kepulauan Bangka Belitung,386.1065399282885
+Kepulauan Riau,Kepulauan Riau,0.0
+Kepulauan Riau,DKI Jakarta,836.3837037557071
+Kepulauan Riau,Jawa Barat,938.6037569580257
+Kepulauan Riau,Jawa Tengah,1101.0658652219615
+Kepulauan Riau,DI Yogyakarta,1170.9323826020623
+Kepulauan Riau,Jawa Timur,1293.4556548803714
+Kepulauan Riau,Banten,805.2386245420602
+Kepulauan Riau,Bali,1598.953718094372
+Kepulauan Riau,Nusa Tenggara Barat,1669.8279302530088
+Kepulauan Riau,Nusa Tenggara Timur,2453.1904730637666
+Kepulauan Riau,Kalimantan Barat,553.6757917607273
+Kepulauan Riau,Kalimantan Tengah,1108.8542379331452
+Kepulauan Riau,Kalimantan Selatan,1221.6522314459723
+Kepulauan Riau,Kalimantan Timur,1420.9300368764987
+Kepulauan Riau,Kalimantan Utara,1483.9852428160395
+Kepulauan Riau,Sulawesi Utara,2267.5823003126197
+Kepulauan Riau,Sulawesi Tengah,1726.4557557205137
+Kepulauan Riau,Sulawesi Selatan,1795.4698895015704
+Kepulauan Riau,Sulawesi Tenggara,2079.777517551076
+Kepulauan Riau,Gorontalo,2069.595722489153
+Kepulauan Riau,Sulawesi Barat,1654.3602206063306
+Kepulauan Riau,Maluku,2686.7205898350203
+Kepulauan Riau,Maluku Utara,2549.4523683022344
+Kepulauan Riau,Papua Barat,3298.292360624031
+Kepulauan Riau,Papua Barat Daya,2986.541988750019
+Kepulauan Riau,Papua,4045.275377418785
+Kepulauan Riau,Papua Selatan,4118.9813476162435
+Kepulauan Riau,Papua Tengah,3483.653561547166
+Kepulauan Riau,Papua Pegunungan,3873.8913905483723
+DKI Jakarta,Aceh,1829.7113913805838
+DKI Jakarta,Sumatera Utara,1418.5698254500098
+DKI Jakarta,Sumatera Barat,928.4794625933077
+DKI Jakarta,Riau,957.9083235042846
+DKI Jakarta,Jambi,625.1002897873807
+DKI Jakarta,Sumatera Selatan,426.4327219987256
+DKI Jakarta,Bengkulu,574.7025159918587
+DKI Jakarta,Lampung,194.13638604094467
+DKI Jakarta,Kepulauan Bangka Belitung,461.03501238091593
+DKI Jakarta,Kepulauan Riau,836.3837037557071
+DKI Jakarta,DKI Jakarta,0.0
+DKI Jakarta,Jawa Barat,114.48509510963166
+DKI Jakarta,Jawa Tengah,403.75668040038954
+DKI Jakarta,DI Yogyakarta,426.8109518797668
+DKI Jakarta,Jawa Timur,661.6998067221496
+DKI Jakarta,Banten,78.03068879419047
+DKI Jakarta,Bali,961.8585253447344
+DKI Jakarta,Nusa Tenggara Barat,1055.535123321851
+DKI Jakarta,Nusa Tenggara Timur,1896.1710736165912
+DKI Jakarta,Kalimantan Barat,741.6945128786473
+DKI Jakarta,Kalimantan Tengah,901.2597136205408
+DKI Jakarta,Kalimantan Selatan,915.808883520258
+DKI Jakarta,Kalimantan Timur,1307.3861770659041
+DKI Jakarta,Kalimantan Utara,1594.5442886247693
+DKI Jakarta,Sulawesi Utara,2172.0820940059025
+DKI Jakarta,Sulawesi Tengah,1560.455585858631
+DKI Jakarta,Sulawesi Selatan,1396.8977064259916
+DKI Jakarta,Sulawesi Tenggara,1751.7448274916103
+DKI Jakarta,Gorontalo,1949.4776502416335
+DKI Jakarta,Sulawesi Barat,1391.057578028216
+DKI Jakarta,Maluku,2379.0551371749193
+DKI Jakarta,Maluku Utara,2408.084266236678
+DKI Jakarta,Papua Barat,3076.692950333467
+DKI Jakarta,Papua Barat Daya,2771.2652214675472
+DKI Jakarta,Papua,3770.108310419437
+DKI Jakarta,Papua Selatan,3707.4614038790946
+DKI Jakarta,Papua Tengah,3189.8408941619805
+DKI Jakarta,Papua Pegunungan,3562.0609950025337
+Jawa Barat,Aceh,1944.0930600006898
+Jawa Barat,Sumatera Utara,1532.240754804323
+Jawa Barat,Sumatera Barat,1042.7053958089828
+Jawa Barat,Riau,1071.3459932918554
+Jawa Barat,Jambi,737.5010565420804
+Jawa Barat,Sumatera Selatan,538.1788146722596
+Jawa Barat,Bengkulu,685.7939532576324
+Jawa Barat,Lampung,305.4002872805238
+Jawa Barat,Kepulauan Bangka Belitung,556.8979415622296
+Jawa Barat,Kepulauan Riau,938.6037569580257
+Jawa Barat,DKI Jakarta,114.48509510963166
+Jawa Barat,Jawa Barat,0.0
+Jawa Barat,Jawa Tengah,310.28890077410597
+Jawa Barat,DI Yogyakarta,320.05366766673444
+Jawa Barat,Jawa Timur,568.4387876442737
+Jawa Barat,Banten,183.66432738256137
+Jawa Barat,Bali,860.3952250702888
+Jawa Barat,Nusa Tenggara Barat,955.7981802047404
+Jawa Barat,Nusa Tenggara Timur,1796.175380259868
+Jawa Barat,Kalimantan Barat,789.8005283154514
+Jawa Barat,Kalimantan Tengah,872.944363983927
+Jawa Barat,Kalimantan Selatan,869.9151280700816
+Jawa Barat,Kalimantan Timur,1275.706803694243
+Jawa Barat,Kalimantan Utara,1586.9561494360728
+Jawa Barat,Sulawesi Utara,2126.9676068001277
+Jawa Barat,Sulawesi Tengah,1514.81894788644
+Jawa Barat,Sulawesi Selatan,1321.5439149674746
+Jawa Barat,Sulawesi Tenggara,1680.7490650656107
+Jawa Barat,Gorontalo,1903.755715647278
+Jawa Barat,Sulawesi Barat,1335.1761636619447
+Jawa Barat,Maluku,2304.8756289381367
+Jawa Barat,Maluku Utara,2354.6690295988765
+Jawa Barat,Papua Barat,3009.003040111269
+Jawa Barat,Papua Barat Daya,2705.9423292801553
+Jawa Barat,Papua,3693.59651231803
+Jawa Barat,Papua Selatan,3616.439592795628
+Jawa Barat,Papua Tengah,3113.1492614516856
+Jawa Barat,Papua Pegunungan,3482.054208879957
+Jawa Tengah,Aceh,2179.8549322888175
+Jawa Tengah,Sumatera Utara,1756.3289550292204
+Jawa Tengah,Sumatera Barat,1302.9478856584356
+Jawa Tengah,Riau,1298.3532635097608
+Jawa Tengah,Jambi,963.1368281865089
+Jawa Tengah,Sumatera Selatan,768.6120859536717
+Jawa Tengah,Bengkulu,970.3602347908251
+Jawa Tengah,Lampung,594.4605186447329
+Jawa Tengah,Kepulauan Bangka Belitung,721.1996070641461
+Jawa Tengah,Kepulauan Riau,1101.0658652219615
+Jawa Tengah,DKI Jakarta,403.75668040038954
+Jawa Tengah,Jawa Barat,310.28890077410597
+Jawa Tengah,Jawa Tengah,0.0
+Jawa Tengah,DI Yogyakarta,90.23648426580303
+Jawa Tengah,Jawa Timur,258.70628213997713
+Jawa Tengah,Banten,481.5102958554509
+Jawa Tengah,Bali,560.0422827647411
+Jawa Tengah,Nusa Tenggara Barat,652.3581473615885
+Jawa Tengah,Nusa Tenggara Timur,1492.7130551030564
+Jawa Tengah,Kalimantan Barat,784.2316605715928
+Jawa Tengah,Kalimantan Tengah,657.9544609575205
+Jawa Tengah,Kalimantan Selatan,616.2177040518213
+Jawa Tengah,Kalimantan Timur,1038.1741419716768
+Jawa Tengah,Kalimantan Utara,1394.6299137038354
+Jawa Tengah,Sulawesi Utara,1856.1335358217716
+Jawa Tengah,Sulawesi Tengah,1247.5754701075514
+Jawa Tengah,Sulawesi Selatan,1016.9867594481344
+Jawa Tengah,Sulawesi Tenggara,1378.9571056161722
+Jawa Tengah,Gorontalo,1633.2075130414541
+Jawa Tengah,Sulawesi Barat,1053.5511664180506
+Jawa Tengah,Maluku,1999.6373699006083
+Jawa Tengah,Maluku Utara,2070.965610871862
+Jawa Tengah,Papua Barat,2708.299970754117
+Jawa Tengah,Papua Barat Daya,2407.7362573183805
+Jawa Tengah,Papua,3386.3049785678218
+Jawa Tengah,Papua Selatan,3306.6595105993492
+Jawa Tengah,Papua Tengah,2805.923577314298
+Jawa Tengah,Papua Pegunungan,3173.2022289909223
+DI Yogyakarta,Aceh,2233.910085462968
+DI Yogyakarta,Sumatera Utara,1813.4802544082556
+DI Yogyakarta,Sumatera Barat,1346.4052076178884
+DI Yogyakarta,Riau,1353.4736410895405
+DI Yogyakarta,Jambi,1017.05871344715
+DI Yogyakarta,Sumatera Selatan,819.461715783391
+DI Yogyakarta,Bengkulu,1001.1991869912799
+DI Yogyakarta,Lampung,620.9251304757023
+DI Yogyakarta,Kepulauan Bangka Belitung,787.4098076567238
+DI Yogyakarta,Kepulauan Riau,1170.9323826020623
+DI Yogyakarta,DKI Jakarta,426.8109518797668
+DI Yogyakarta,Jawa Barat,320.05366766673444
+DI Yogyakarta,Jawa Tengah,90.23648426580303
+DI Yogyakarta,DI Yogyakarta,0.0
+DI Yogyakarta,Jawa Timur,269.3970062644705
+DI Yogyakarta,Banten,501.83141916564074
+DI Yogyakarta,Bali,542.0436007635006
+DI Yogyakarta,Nusa Tenggara Barat,638.7551281447063
+DI Yogyakarta,Nusa Tenggara Timur,1477.8323172691078
+DI Yogyakarta,Kalimantan Barat,872.5983956025696
+DI Yogyakarta,Kalimantan Tengah,735.4390508714154
+DI Yogyakarta,Kalimantan Selatan,682.7613606907009
+DI Yogyakarta,Kalimantan Timur,1106.1213363524578
+DI Yogyakarta,Kalimantan Utara,1472.299855839821
+DI Yogyakarta,Sulawesi Utara,1907.282808013819
+DI Yogyakarta,Sulawesi Tengah,1302.5914557622493
+DI Yogyakarta,Sulawesi Selatan,1043.3680033434337
+DI Yogyakarta,Sulawesi Tenggara,1407.7461663572244
+DI Yogyakarta,Gorontalo,1685.0951089761365
+DI Yogyakarta,Sulawesi Barat,1101.6106376074947
+DI Yogyakarta,Maluku,2021.969764055849
+DI Yogyakarta,Maluku Utara,2114.142041941585
+DI Yogyakarta,Papua Barat,2736.023979805476
+DI Yogyakarta,Papua Barat Daya,2438.547154891894
+DI Yogyakarta,Papua,3403.5129613517915
+DI Yogyakarta,Papua Selatan,3305.5890665281477
+DI Yogyakarta,Papua Tengah,2823.650368066501
+DI Yogyakarta,Papua Pegunungan,3186.570859234151
+Jawa Timur,Aceh,2401.1679215273234
+Jawa Timur,Sumatera Utara,1973.374155239528
+Jawa Timur,Sumatera Barat,1542.7841082024347
+Jawa Timur,Riau,1521.657794693877
+Jawa Timur,Jambi,1191.2990347814584
+Jawa Timur,Sumatera Selatan,1003.5214866861738
+Jawa Timur,Bengkulu,1222.566985169056
+Jawa Timur,Lampung,850.4798051957287
+Jawa Timur,Kepulauan Bangka Belitung,930.1850774829993
+Jawa Timur,Kepulauan Riau,1293.4556548803714
+Jawa Timur,DKI Jakarta,661.6998067221496
+Jawa Timur,Jawa Barat,568.4387876442737
+Jawa Timur,Jawa Tengah,258.70628213997713
+Jawa Timur,DI Yogyakarta,269.3970062644705
+Jawa Timur,Jawa Timur,0.0
+Jawa Timur,Banten,739.6301981446298
+Jawa Timur,Bali,313.4012955057467
+Jawa Timur,Nusa Tenggara Barat,399.52657754607225
+Jawa Timur,Nusa Tenggara Timur,1237.1252432775661
+Jawa Timur,Kalimantan Barat,888.4376323683808
+Jawa Timur,Kalimantan Tengah,575.215307835799
+Jawa Timur,Kalimantan Selatan,482.13514062466925
+Jawa Timur,Kalimantan Timur,895.1808644810923
+Jawa Timur,Kalimantan Utara,1291.2263321364546
+Jawa Timur,Sulawesi Utara,1655.085802407488
+Jawa Timur,Sulawesi Tengah,1059.0295771647284
+Jawa Timur,Sulawesi Selatan,774.432821642769
+Jawa Timur,Sulawesi Tenggara,1139.1009661998025
+Jawa Timur,Gorontalo,1434.5876228392785
+Jawa Timur,Sulawesi Barat,848.8882677937505
+Jawa Timur,Maluku,1752.614426051379
+Jawa Timur,Maluku Utara,1852.7935844943975
+Jawa Timur,Papua Barat,2466.859770621911
+Jawa Timur,Papua Barat Daya,2170.0563391937053
+Jawa Timur,Papua,3135.1347794769667
+Jawa Timur,Papua Selatan,3048.071581345132
+Jawa Timur,Papua Tengah,2555.086539295423
+Jawa Timur,Papua Pegunungan,2919.486363222379
+Banten,Aceh,1768.904273512886
+Banten,Sumatera Utara,1362.185724972607
+Banten,Sumatera Barat,862.8747424170222
+Banten,Riau,903.1410022469759
+Banten,Jambi,575.2015878322165
+Banten,Sumatera Selatan,380.6104598463252
+Banten,Bengkulu,502.217645163032
+Banten,Lampung,122.58821310538998
+Banten,Kepulauan Bangka Belitung,443.6899270163405
+Banten,Kepulauan Riau,805.2386245420602
+Banten,DKI Jakarta,78.03068879419047
+Banten,Jawa Barat,183.66432738256137
+Banten,Jawa Tengah,481.5102958554509
+Banten,DI Yogyakarta,501.83141916564074
+Banten,Jawa Timur,739.6301981446298
+Banten,Banten,0.0
+Banten,Bali,1038.8846675699713
+Banten,Nusa Tenggara Barat,1132.9113204681985
+Banten,Nusa Tenggara Timur,1973.6040055408287
+Banten,Kalimantan Barat,765.1248115470555
+Banten,Kalimantan Tengah,965.0179832025251
+Banten,Kalimantan Selatan,985.6665453473162
+Banten,Kalimantan Timur,1371.2730585645481
+Banten,Kalimantan Utara,1647.1247213743306
+Banten,Sulawesi Utara,2240.0481905937986
+Banten,Sulawesi Tengah,1629.0968879454988
+Banten,Sulawesi Selatan,1473.435890634009
+Banten,Sulawesi Tenggara,1827.3324831770583
+Banten,Gorontalo,2017.80409559947
+Banten,Sulawesi Barat,1463.1012262766133
+Banten,Maluku,2455.1286289115656
+Banten,Maluku Utara,2478.7373241881883
+Banten,Papua Barat,3151.228464218543
+Banten,Papua Barat Daya,2845.2597458758737
+Banten,Papua,3846.4797999507655
+Banten,Papua Selatan,3785.4719253490152
+Banten,Papua Tengah,3266.2876225785385
+Banten,Papua Pegunungan,3639.036006145623
+Bali,Aceh,2713.067640785018
+Bali,Sumatera Utara,2284.601528501571
+Bali,Sumatera Barat,1855.6964012555961
+Bali,Riau,1834.3800119259165
+Bali,Jambi,1504.627497208833
+Bali,Sumatera Selatan,1316.7478474704974
+Bali,Bengkulu,1530.28674161769
+Bali,Lampung,1154.077452408229
+Bali,Kepulauan Bangka Belitung,1241.592158609802
+Bali,Kepulauan Riau,1598.953718094372
+Bali,DKI Jakarta,961.8585253447344
+Bali,Jawa Barat,860.3952250702888
+Bali,Jawa Tengah,560.0422827647411
+Bali,DI Yogyakarta,542.0436007635006
+Bali,Jawa Timur,313.4012955057467
+Bali,Banten,1038.8846675699713
+Bali,Bali,0.0
+Bali,Nusa Tenggara Barat,99.25195282345085
+Bali,Nusa Tenggara Timur,935.8995643258986
+Bali,Kalimantan Barat,1159.776594832823
+Bali,Kalimantan Tengah,730.3962506016318
+Bali,Kalimantan Selatan,596.7469487470319
+Bali,Kalimantan Timur,931.1028929251099
+Bali,Kalimantan Utara,1355.6016522379211
+Bali,Sulawesi Utara,1550.1720212969287
+Bali,Sulawesi Tengah,1003.8484867341634
+Bali,Sulawesi Selatan,606.1144108485365
+Bali,Sulawesi Tenggara,957.7287419018859
+Bali,Gorontalo,1341.181688579203
+Bali,Sulawesi Barat,778.0950892953426
+Bali,Maluku,1534.3509616145648
+Bali,Maluku Utara,1708.006022591259
+Bali,Papua Barat,2258.689146381104
+Bali,Papua Barat Daya,1974.4767976390574
+Bali,Papua,2894.2601789460527
+Bali,Papua Selatan,2768.178170586001
+Bali,Papua Tengah,2317.5941080514517
+Bali,Papua Pegunungan,2669.7644306152292
+Nusa Tenggara Barat,Aceh,2790.501399212341
+Nusa Tenggara Barat,Sumatera Utara,2361.100607771499
+Nusa Tenggara Barat,Sumatera Barat,1941.3298495825886
+Nusa Tenggara Barat,Riau,1914.0681686240944
+Nusa Tenggara Barat,Jambi,1586.8009917912236
+Nusa Tenggara Barat,Sumatera Selatan,1401.5756714136885
+Nusa Tenggara Barat,Bengkulu,1621.2723705601195
+Nusa Tenggara Barat,Lampung,1246.8127368492896
+Nusa Tenggara Barat,Kepulauan Bangka Belitung,1319.5231875907593
+Nusa Tenggara Barat,Kepulauan Riau,1669.8279302530088
+Nusa Tenggara Barat,DKI Jakarta,1055.535123321851
+Nusa Tenggara Barat,Jawa Barat,955.7981802047404
+Nusa Tenggara Barat,Jawa Tengah,652.3581473615885
+Nusa Tenggara Barat,DI Yogyakarta,638.7551281447063
+Nusa Tenggara Barat,Jawa Timur,399.52657754607225
+Nusa Tenggara Barat,Banten,1132.9113204681985
+Nusa Tenggara Barat,Bali,99.25195282345085
+Nusa Tenggara Barat,Nusa Tenggara Barat,0.0
+Nusa Tenggara Barat,Nusa Tenggara Timur,840.7101514446013
+Nusa Tenggara Barat,Kalimantan Barat,1212.4671285625952
+Nusa Tenggara Barat,Kalimantan Tengah,748.9705477705883
+Nusa Tenggara Barat,Kalimantan Selatan,608.8535515936737
+Nusa Tenggara Barat,Kalimantan Timur,905.6679800306154
+Nusa Tenggara Barat,Kalimantan Utara,1332.1163312131102
+Nusa Tenggara Barat,Sulawesi Utara,1477.4761727783898
+Nusa Tenggara Barat,Sulawesi Tengah,949.5779163679134
+Nusa Tenggara Barat,Sulawesi Selatan,528.1589962533955
+Nusa Tenggara Barat,Sulawesi Tenggara,871.2175676521181
+Nusa Tenggara Barat,Gorontalo,1272.6755634118822
+Nusa Tenggara Barat,Sulawesi Barat,724.067061188481
+Nusa Tenggara Barat,Maluku,1439.0960555734875
+Nusa Tenggara Barat,Maluku Utara,1625.5469420408533
+Nusa Tenggara Barat,Papua Barat,2164.021298559442
+Nusa Tenggara Barat,Papua Barat Daya,1881.9491882416726
+Nusa Tenggara Barat,Papua,2795.893868066808
+Nusa Tenggara Barat,Papua Selatan,2669.4840250676457
+Nusa Tenggara Barat,Papua Tengah,2219.627692059665
+Nusa Tenggara Barat,Papua Pegunungan,2570.903328406608
+Nusa Tenggara Timur,Aceh,3588.2613949898387
+Nusa Tenggara Timur,Sumatera Utara,3157.8229348891564
+Nusa Tenggara Timur,Sumatera Barat,2768.4325031921685
+Nusa Tenggara Timur,Riau,2724.524866871535
+Nusa Tenggara Timur,Jambi,2406.591049414973
+Nusa Tenggara Timur,Sumatera Selatan,2228.963662624589
+Nusa Tenggara Timur,Bengkulu,2459.4244152931965
+Nusa Tenggara Timur,Lampung,2086.9674077055683
+Nusa Tenggara Timur,Kepulauan Bangka Belitung,2130.154079151458
+Nusa Tenggara Timur,Kepulauan Riau,2453.1904730637666
+Nusa Tenggara Timur,DKI Jakarta,1896.1710736165912
+Nusa Tenggara Timur,Jawa Barat,1796.175380259868
+Nusa Tenggara Timur,Jawa Tengah,1492.7130551030564
+Nusa Tenggara Timur,DI Yogyakarta,1477.8323172691078
+Nusa Tenggara Timur,Jawa Timur,1237.1252432775661
+Nusa Tenggara Timur,Banten,1973.6040055408287
+Nusa Tenggara Timur,Bali,935.8995643258986
+Nusa Tenggara Timur,Nusa Tenggara Barat,840.7101514446013
+Nusa Tenggara Timur,Nusa Tenggara Timur,0.0
+Nusa Tenggara Timur,Kalimantan Barat,1940.9746614690196
+Nusa Tenggara Timur,Kalimantan Tengah,1389.5625565344972
+Nusa Tenggara Timur,Kalimantan Selatan,1254.0587162745983
+Nusa Tenggara Timur,Kalimantan Timur,1291.8300719770793
+Nusa Tenggara Timur,Kalimantan Utara,1641.4776821437326
+Nusa Tenggara Timur,Sulawesi Utara,1302.554473547356
+Nusa Tenggara Timur,Sulawesi Tengah,1111.6402275422658
+Nusa Tenggara Timur,Sulawesi Selatan,724.4816581572157
+Nusa Tenggara Timur,Sulawesi Tenggara,698.9065852691209
+Nusa Tenggara Timur,Gorontalo,1193.5617470929938
+Nusa Tenggara Timur,Sulawesi Barat,983.4071611023551
+Nusa Tenggara Timur,Maluku,879.405687720799
+Nusa Tenggara Timur,Maluku Utara,1289.1636532228667
+Nusa Tenggara Timur,Papua Barat,1551.9806238127776
+Nusa Tenggara Timur,Papua Barat Daya,1336.0657547024402
+Nusa Tenggara Timur,Papua,2064.1228333348404
+Nusa Tenggara Timur,Papua Selatan,1851.5520015051475
+Nusa Tenggara Timur,Papua Tengah,1515.4411475816764
+Nusa Tenggara Timur,Papua Pegunungan,1821.6874479674348
+Kalimantan Barat,Aceh,1675.2093986016866
+Kalimantan Barat,Sumatera Utara,1251.7825627684565
+Kalimantan Barat,Sumatera Barat,1004.9303967777556
+Kalimantan Barat,Riau,879.293988315496
+Kalimantan Barat,Jambi,661.1400433585566
+Kalimantan Barat,Sumatera Selatan,606.7832716948653
+Kalimantan Barat,Bengkulu,891.924844496693
+Kalimantan Barat,Lampung,754.157489628171
+Kalimantan Barat,Kepulauan Bangka Belitung,428.9321318689134
+Kalimantan Barat,Kepulauan Riau,553.6757917607273
+Kalimantan Barat,DKI Jakarta,741.6945128786473
+Kalimantan Barat,Jawa Barat,789.8005283154514
+Kalimantan Barat,Jawa Tengah,784.2316605715928
+Kalimantan Barat,DI Yogyakarta,872.5983956025696
+Kalimantan Barat,Jawa Timur,888.4376323683808
+Kalimantan Barat,Banten,765.1248115470555
+Kalimantan Barat,Bali,1159.776594832823
+Kalimantan Barat,Nusa Tenggara Barat,1212.4671285625952
+Kalimantan Barat,Nusa Tenggara Timur,1940.9746614690196
+Kalimantan Barat,Kalimantan Barat,0.0
+Kalimantan Barat,Kalimantan Tengah,564.3840518513039
+Kalimantan Barat,Kalimantan Selatan,689.2420983115843
+Kalimantan Barat,Kalimantan Timur,870.0595177843627
+Kalimantan Barat,Kalimantan Utara,988.7975080947758
+Kalimantan Barat,Sulawesi Utara,1731.2797888178966
+Kalimantan Barat,Sulawesi Tengah,1174.915038706067
+Kalimantan Barat,Sulawesi Selatan,1257.2849131396854
+Kalimantan Barat,Sulawesi Tenggara,1528.3819150307038
+Kalimantan Barat,Gorontalo,1526.8428204651022
+Kalimantan Barat,Sulawesi Barat,1101.9577229467077
+Kalimantan Barat,Maluku,2133.054223018614
+Kalimantan Barat,Maluku Utara,2007.9151571831358
+Kalimantan Barat,Papua Barat,2750.218117022973
+Kalimantan Barat,Papua Barat Daya,2438.016809272683
+Kalimantan Barat,Papua,3494.221669562273
+Kalimantan Barat,Papua Selatan,3567.320648119485
+Kalimantan Barat,Papua Tengah,2930.7839943871077
+Kalimantan Barat,Papua Pegunungan,3320.7403979135265
+Kalimantan Tengah,Aceh,2238.7223693608116
+Kalimantan Tengah,Sumatera Utara,1813.4309113270767
+Kalimantan Tengah,Sumatera Barat,1514.8014535696343
+Kalimantan Tengah,Riau,1418.9261353810334
+Kalimantan Tengah,Jambi,1147.7165553517184
+Kalimantan Tengah,Sumatera Selatan,1021.1767531013759
+Kalimantan Tengah,Bengkulu,1306.7178091818894
+Kalimantan Tengah,Lampung,1024.9585145704134
+Kalimantan Tengah,Kepulauan Bangka Belitung,867.8541619296486
+Kalimantan Tengah,Kepulauan Riau,1108.8542379331452
+Kalimantan Tengah,DKI Jakarta,901.2597136205408
+Kalimantan Tengah,Jawa Barat,872.944363983927
+Kalimantan Tengah,Jawa Tengah,657.9544609575205
+Kalimantan Tengah,DI Yogyakarta,735.4390508714154
+Kalimantan Tengah,Jawa Timur,575.215307835799
+Kalimantan Tengah,Banten,965.0179832025251
+Kalimantan Tengah,Bali,730.3962506016318
+Kalimantan Tengah,Nusa Tenggara Barat,748.9705477705883
+Kalimantan Tengah,Nusa Tenggara Timur,1389.5625565344972
+Kalimantan Tengah,Kalimantan Barat,564.3840518513039
+Kalimantan Tengah,Kalimantan Tengah,0.0
+Kalimantan Tengah,Kalimantan Selatan,144.1225778777892
+Kalimantan Tengah,Kalimantan Timur,406.286074253356
+Kalimantan Tengah,Kalimantan Utara,736.976924695083
+Kalimantan Tengah,Sulawesi Utara,1281.1218534700117
+Kalimantan Tengah,Sulawesi Tengah,677.2032277158571
+Kalimantan Tengah,Sulawesi Selatan,693.2699623996948
+Kalimantan Tengah,Sulawesi Tenggara,974.0468010786785
+Kalimantan Tengah,Gorontalo,1061.12980753697
+Kalimantan Tengah,Sulawesi Barat,554.601676689567
+Kalimantan Tengah,Maluku,1592.1193755537295
+Kalimantan Tengah,Maluku Utara,1533.1284896192644
+Kalimantan Tengah,Papua Barat,2243.6292046898907
+Kalimantan Tengah,Papua Barat Daya,1932.016850106913
+Kalimantan Tengah,Papua,2972.1016741699646
+Kalimantan Tengah,Papua Selatan,3011.9378959412943
+Kalimantan Tengah,Papua Tengah,2400.086728722445
+Kalimantan Tengah,Papua Pegunungan,2786.730438057643
+Kalimantan Selatan,Aceh,2356.503482767692
+Kalimantan Selatan,Sumatera Utara,1928.7926402039777
+Kalimantan Selatan,Sumatera Barat,1603.994394117494
+Kalimantan Selatan,Riau,1521.2173438187208
+Kalimantan Selatan,Jambi,1234.4731253774223
+Kalimantan Selatan,Sumatera Selatan,1092.0004985909459
+Kalimantan Selatan,Bengkulu,1369.4140377056647
+Kalimantan Selatan,Lampung,1060.0339899844682
+Kalimantan Selatan,Kepulauan Bangka Belitung,951.0973974078117
+Kalimantan Selatan,Kepulauan Riau,1221.6522314459723
+Kalimantan Selatan,DKI Jakarta,915.808883520258
+Kalimantan Selatan,Jawa Barat,869.9151280700816
+Kalimantan Selatan,Jawa Tengah,616.2177040518213
+Kalimantan Selatan,DI Yogyakarta,682.7613606907009
+Kalimantan Selatan,Jawa Timur,482.13514062466925
+Kalimantan Selatan,Banten,985.6665453473162
+Kalimantan Selatan,Bali,596.7469487470319
+Kalimantan Selatan,Nusa Tenggara Barat,608.8535515936737
+Kalimantan Selatan,Nusa Tenggara Timur,1254.0587162745983
+Kalimantan Selatan,Kalimantan Barat,689.2420983115843
+Kalimantan Selatan,Kalimantan Tengah,144.1225778777892
+Kalimantan Selatan,Kalimantan Selatan,0.0
+Kalimantan Selatan,Kalimantan Timur,423.3795949314837
+Kalimantan Selatan,Kalimantan Utara,809.1053180440989
+Kalimantan Selatan,Sulawesi Utara,1257.623382185349
+Kalimantan Selatan,Sulawesi Tengah,645.4367496803357
+Kalimantan Selatan,Sulawesi Selatan,573.971159797774
+Kalimantan Selatan,Sulawesi Tenggara,882.0166478474913
+Kalimantan Selatan,Gorontalo,1034.5971201600369
+Kalimantan Selatan,Sulawesi Barat,482.75425478428696
+Kalimantan Selatan,Maluku,1508.879973691283
+Kalimantan Selatan,Maluku Utara,1493.1862469667292
+Kalimantan Selatan,Papua Barat,2180.5688380317315
+Kalimantan Selatan,Papua Barat Daya,1871.057712752933
+Kalimantan Selatan,Papua,2897.157396719669
+Kalimantan Selatan,Papua Selatan,2910.7820904028886
+Kalimantan Selatan,Papua Tengah,2321.096395809371
+Kalimantan Selatan,Papua Pegunungan,2704.3150573765056
+Kalimantan Timur,Aceh,2515.487481036446
+Kalimantan Timur,Sumatera Utara,2103.444097028446
+Kalimantan Timur,Sumatera Barat,1868.5894094212074
+Kalimantan Timur,Riau,1749.3464453126273
+Kalimantan Timur,Jambi,1510.3509713906265
+Kalimantan Timur,Sumatera Selatan,1404.5159175500387
+Kalimantan Timur,Bengkulu,1694.4981458355144
+Kalimantan Timur,Lampung,1429.0474981641255
+Kalimantan Timur,Kepulauan Bangka Belitung,1240.5381470641187
+Kalimantan Timur,Kepulauan Riau,1420.9300368764987
+Kalimantan Timur,DKI Jakarta,1307.3861770659041
+Kalimantan Timur,Jawa Barat,1275.706803694243
+Kalimantan Timur,Jawa Tengah,1038.1741419716768
+Kalimantan Timur,DI Yogyakarta,1106.1213363524578
+Kalimantan Timur,Jawa Timur,895.1808644810923
+Kalimantan Timur,Banten,1371.2730585645481
+Kalimantan Timur,Bali,931.1028929251099
+Kalimantan Timur,Nusa Tenggara Barat,905.6679800306154
+Kalimantan Timur,Nusa Tenggara Timur,1291.8300719770793
+Kalimantan Timur,Kalimantan Barat,870.0595177843627
+Kalimantan Timur,Kalimantan Tengah,406.286074253356
+Kalimantan Timur,Kalimantan Selatan,423.3795949314837
+Kalimantan Timur,Kalimantan Timur,0.0
+Kalimantan Timur,Kalimantan Utara,426.465700463381
+Kalimantan Timur,Sulawesi Utara,882.6308946486114
+Kalimantan Timur,Sulawesi Tengah,305.6802023936493
+Kalimantan Timur,Sulawesi Selatan,575.6998909040022
+Kalimantan Timur,Sulawesi Tenggara,710.7493292546222
+Kalimantan Timur,Gorontalo,667.2505101671416
+Kalimantan Timur,Sulawesi Barat,310.09836981833416
+Kalimantan Timur,Maluku,1276.1055621175071
+Kalimantan Timur,Maluku Utara,1146.5049184762715
+Kalimantan Timur,Papua Barat,1880.595805005293
+Kalimantan Timur,Papua Barat Daya,1568.2728754316943
+Kalimantan Timur,Papua,2624.504182519221
+Kalimantan Timur,Papua Selatan,2724.04130997889
+Kalimantan Timur,Papua Tengah,2063.697204278231
+Kalimantan Timur,Papua Pegunungan,2454.5332373320252
+Kalimantan Utara,Aceh,2481.1918131454713
+Kalimantan Utara,Sumatera Utara,2100.189011331972
+Kalimantan Utara,Sumatera Barat,1973.8303394951538
+Kalimantan Utara,Riau,1820.3267122501634
+Kalimantan Utara,Jambi,1647.3493465292622
+Kalimantan Utara,Sumatera Selatan,1588.6933619360461
+Kalimantan Utara,Bengkulu,1878.024876868844
+Kalimantan Utara,Lampung,1679.6347883785056
+Kalimantan Utara,Kepulauan Bangka Belitung,1412.0918286756148
+Kalimantan Utara,Kepulauan Riau,1483.9852428160395
+Kalimantan Utara,DKI Jakarta,1594.5442886247693
+Kalimantan Utara,Jawa Barat,1586.9561494360728
+Kalimantan Utara,Jawa Tengah,1394.6299137038354
+Kalimantan Utara,DI Yogyakarta,1472.299855839821
+Kalimantan Utara,Jawa Timur,1291.2263321364546
+Kalimantan Utara,Banten,1647.1247213743306
+Kalimantan Utara,Bali,1355.6016522379211
+Kalimantan Utara,Nusa Tenggara Barat,1332.1163312131102
+Kalimantan Utara,Nusa Tenggara Timur,1641.4776821437326
+Kalimantan Utara,Kalimantan Barat,988.7975080947758
+Kalimantan Utara,Kalimantan Tengah,736.976924695083
+Kalimantan Utara,Kalimantan Selatan,809.1053180440989
+Kalimantan Utara,Kalimantan Timur,426.465700463381
+Kalimantan Utara,Kalimantan Utara,0.0
+Kalimantan Utara,Sulawesi Utara,831.0066207438433
+Kalimantan Utara,Sulawesi Tengah,532.319038388451
+Kalimantan Utara,Sulawesi Selatan,962.656361894973
+Kalimantan Utara,Sulawesi Tenggara,978.6593069296692
+Kalimantan Utara,Gorontalo,681.4187168543157
+Kalimantan Utara,Sulawesi Barat,681.5487943429525
+Kalimantan Utara,Maluku,1411.5489058513501
+Kalimantan Utara,Maluku Utara,1123.3222777106625
+Kalimantan Utara,Papua Barat,1888.3666313466792
+Kalimantan Utara,Papua Barat Daya,1587.7922491790157
+Kalimantan Utara,Papua,2647.7540602485356
+Kalimantan Utara,Papua Selatan,2849.2961656361126
+Kalimantan Utara,Papua Tengah,2124.067623103076
+Kalimantan Utara,Papua Pegunungan,2512.3609964227385
+Sulawesi Utara,Aceh,3306.743116005328
+Sulawesi Utara,Sumatera Utara,2916.4596267860356
+Sulawesi Utara,Sumatera Barat,2736.1963071562827
+Sulawesi Utara,Riau,2602.6151379156504
+Sulawesi Utara,Jambi,2385.0983322809243
+Sulawesi Utara,Sumatera Selatan,2286.461395328162
+Sulawesi Utara,Bengkulu,2576.881018686517
+Sulawesi Utara,Lampung,2305.618808413384
+Sulawesi Utara,Kepulauan Bangka Belitung,2120.43076003689
+Sulawesi Utara,Kepulauan Riau,2267.5823003126197
+Sulawesi Utara,DKI Jakarta,2172.0820940059025
+Sulawesi Utara,Jawa Barat,2126.9676068001277
+Sulawesi Utara,Jawa Tengah,1856.1335358217716
+Sulawesi Utara,DI Yogyakarta,1907.282808013819
+Sulawesi Utara,Jawa Timur,1655.085802407488
+Sulawesi Utara,Banten,2240.0481905937986
+Sulawesi Utara,Bali,1550.1720212969287
+Sulawesi Utara,Nusa Tenggara Barat,1477.4761727783898
+Sulawesi Utara,Nusa Tenggara Timur,1302.554473547356
+Sulawesi Utara,Kalimantan Barat,1731.2797888178966
+Sulawesi Utara,Kalimantan Tengah,1281.1218534700117
+Sulawesi Utara,Kalimantan Selatan,1257.623382185349
+Sulawesi Utara,Kalimantan Timur,882.6308946486114
+Sulawesi Utara,Kalimantan Utara,831.0066207438433
+Sulawesi Utara,Sulawesi Utara,0.0
+Sulawesi Utara,Sulawesi Tengah,612.215332207365
+Sulawesi Utara,Sulawesi Selatan,950.2428798204677
+Sulawesi Utara,Sulawesi Tenggara,660.0312188764897
+Sulawesi Utara,Gorontalo,223.2847173440781
+Sulawesi Utara,Sulawesi Barat,806.4933926773408
+Sulawesi Utara,Maluku,684.3024526993312
+Sulawesi Utara,Maluku Utara,292.3266757704162
+Sulawesi Utara,Papua Barat,1057.3647406960074
+Sulawesi Utara,Papua Barat Daya,758.7117531467393
+Sulawesi Utara,Papua,1816.7474528900755
+Sulawesi Utara,Papua Selatan,2049.6900385471813
+Sulawesi Utara,Papua Tengah,1300.8671728841523
+Sulawesi Utara,Papua Pegunungan,1685.8209506535761
+Sulawesi Tengah,Aceh,2818.8669731353766
+Sulawesi Tengah,Sumatera Utara,2408.387657467975
+Sulawesi Tengah,Sumatera Barat,2170.246398289762
+Sulawesi Tengah,Riau,2054.1389515945725
+Sulawesi Tengah,Jambi,1809.3045292956228
+Sulawesi Tengah,Sumatera Selatan,1695.0945812995917
+Sulawesi Tengah,Bengkulu,1982.671440748431
+Sulawesi Tengah,Lampung,1697.6527379074882
+Sulawesi Tengah,Kepulauan Bangka Belitung,1535.5782826314517
+Sulawesi Tengah,Kepulauan Riau,1726.4557557205137
+Sulawesi Tengah,DKI Jakarta,1560.455585858631
+Sulawesi Tengah,Jawa Barat,1514.81894788644
+Sulawesi Tengah,Jawa Tengah,1247.5754701075514
+Sulawesi Tengah,DI Yogyakarta,1302.5914557622493
+Sulawesi Tengah,Jawa Timur,1059.0295771647284
+Sulawesi Tengah,Banten,1629.0968879454988
+Sulawesi Tengah,Bali,1003.8484867341634
+Sulawesi Tengah,Nusa Tenggara Barat,949.5779163679134
+Sulawesi Tengah,Nusa Tenggara Timur,1111.6402275422658
+Sulawesi Tengah,Kalimantan Barat,1174.915038706067
+Sulawesi Tengah,Kalimantan Tengah,677.2032277158571
+Sulawesi Tengah,Kalimantan Selatan,645.4367496803357
+Sulawesi Tengah,Kalimantan Timur,305.6802023936493
+Sulawesi Tengah,Kalimantan Utara,532.319038388451
+Sulawesi Tengah,Sulawesi Utara,612.215332207365
+Sulawesi Tengah,Sulawesi Tengah,0.0
+Sulawesi Tengah,Sulawesi Selatan,475.09613874016026
+Sulawesi Tengah,Sulawesi Tenggara,451.72134145738096
+Sulawesi Tengah,Gorontalo,389.16737220670507
+Sulawesi Tengah,Sulawesi Barat,225.91420216980512
+Sulawesi Tengah,Maluku,974.2788357378187
+Sulawesi Tengah,Maluku Utara,855.9269303093241
+Sulawesi Tengah,Papua Barat,1577.6751886175052
+Sulawesi Tengah,Papua Barat Daya,1265.2512012617467
+Sulawesi Tengah,Papua,2319.3112469116368
+Sulawesi Tengah,Papua Selatan,2424.989300108743
+Sulawesi Tengah,Papua Tengah,1758.045053772113
+Sulawesi Tengah,Papua Pegunungan,2148.9469299062953
+Sulawesi Selatan,Aceh,2929.4735012375236
+Sulawesi Selatan,Sumatera Utara,2502.370799778986
+Sulawesi Selatan,Sumatera Barat,2168.962175355126
+Sulawesi Selatan,Riau,2093.6490661618727
+Sulawesi Selatan,Jambi,1799.3256992898384
+Sulawesi Selatan,Sumatera Selatan,1644.6277885355742
+Sulawesi Selatan,Bengkulu,1909.2184386563054
+Sulawesi Selatan,Lampung,1568.107382248301
+Sulawesi Selatan,Kepulauan Bangka Belitung,1515.6117417768726
+Sulawesi Selatan,Kepulauan Riau,1795.4698895015704
+Sulawesi Selatan,DKI Jakarta,1396.8977064259916
+Sulawesi Selatan,Jawa Barat,1321.5439149674746
+Sulawesi Selatan,Jawa Tengah,1016.9867594481344
+Sulawesi Selatan,DI Yogyakarta,1043.3680033434337
+Sulawesi Selatan,Jawa Timur,774.432821642769
+Sulawesi Selatan,Banten,1473.435890634009
+Sulawesi Selatan,Bali,606.1144108485365
+Sulawesi Selatan,Nusa Tenggara Barat,528.1589962533955
+Sulawesi Selatan,Nusa Tenggara Timur,724.4816581572157
+Sulawesi Selatan,Kalimantan Barat,1257.2849131396854
+Sulawesi Selatan,Kalimantan Tengah,693.2699623996948
+Sulawesi Selatan,Kalimantan Selatan,573.971159797774
+Sulawesi Selatan,Kalimantan Timur,575.6998909040022
+Sulawesi Selatan,Kalimantan Utara,962.656361894973
+Sulawesi Selatan,Sulawesi Utara,950.2428798204677
+Sulawesi Selatan,Sulawesi Tengah,475.09613874016026
+Sulawesi Selatan,Sulawesi Selatan,0.0
+Sulawesi Selatan,Sulawesi Tenggara,364.94021995661427
+Sulawesi Selatan,Gorontalo,750.2222997381778
+Sulawesi Selatan,Sulawesi Barat,281.1076155572713
+Sulawesi Selatan,Maluku,983.3317829817717
+Sulawesi Selatan,Maluku Utara,1102.6685728507766
+Sulawesi Selatan,Papua Barat,1692.7539155933655
+Sulawesi Selatan,Papua Barat Daya,1395.8343914009185
+Sulawesi Selatan,Papua,2373.2667118197596
+Sulawesi Selatan,Papua Selatan,2344.3358418011367
+Sulawesi Selatan,Papua Tengah,1792.953154395987
+Sulawesi Selatan,Papua Pegunungan,2166.505817925495
+Sulawesi Tenggara,Aceh,3200.5063860979826
+Sulawesi Tenggara,Sumatera Utara,2779.7917003863236
+Sulawesi Tenggara,Sumatera Barat,2484.572696092563
+Sulawesi Tenggara,Riau,2392.968213562184
+Sulawesi Tenggara,Jambi,2115.5181507593434
+Sulawesi Tenggara,Sumatera Selatan,1973.1304428668898
+Sulawesi Tenggara,Bengkulu,2246.5399861625465
+Sulawesi Tenggara,Lampung,1917.2829552177514
+Sulawesi Tenggara,Kepulauan Bangka Belitung,1832.606149765856
+Sulawesi Tenggara,Kepulauan Riau,2079.777517551076
+Sulawesi Tenggara,DKI Jakarta,1751.7448274916103
+Sulawesi Tenggara,Jawa Barat,1680.7490650656107
+Sulawesi Tenggara,Jawa Tengah,1378.9571056161722
+Sulawesi Tenggara,DI Yogyakarta,1407.7461663572244
+Sulawesi Tenggara,Jawa Timur,1139.1009661998025
+Sulawesi Tenggara,Banten,1827.3324831770583
+Sulawesi Tenggara,Bali,957.7287419018859
+Sulawesi Tenggara,Nusa Tenggara Barat,871.2175676521181
+Sulawesi Tenggara,Nusa Tenggara Timur,698.9065852691209
+Sulawesi Tenggara,Kalimantan Barat,1528.3819150307038
+Sulawesi Tenggara,Kalimantan Tengah,974.0468010786785
+Sulawesi Tenggara,Kalimantan Selatan,882.0166478474913
+Sulawesi Tenggara,Kalimantan Timur,710.7493292546222
+Sulawesi Tenggara,Kalimantan Utara,978.6593069296692
+Sulawesi Tenggara,Sulawesi Utara,660.0312188764897
+Sulawesi Tenggara,Sulawesi Tengah,451.72134145738096
+Sulawesi Tenggara,Sulawesi Selatan,364.94021995661427
+Sulawesi Tenggara,Sulawesi Tenggara,0.0
+Sulawesi Tenggara,Gorontalo,507.40680640544093
+Sulawesi Tenggara,Sulawesi Barat,427.4221121661347
+Sulawesi Tenggara,Maluku,629.8802342976492
+Sulawesi Tenggara,Maluku Utara,758.5174629652367
+Sulawesi Tenggara,Papua Barat,1329.3558952866329
+Sulawesi Tenggara,Papua Barat Daya,1030.972249214132
+Sulawesi Tenggara,Papua,2021.8947584554542
+Sulawesi Tenggara,Papua Selatan,2039.211740337256
+Sulawesi Tenggara,Papua Tengah,1443.1330578806983
+Sulawesi Tenggara,Papua Pegunungan,1823.500209777135
+Gorontalo,Aceh,3129.1009538595736
+Gorontalo,Sumatera Utara,2731.0729920019207
+Gorontalo,Sumatera Barat,2530.5785446735663
+Gorontalo,Riau,2402.8225656744257
+Gorontalo,Jambi,2175.6935137716137
+Gorontalo,Sumatera Selatan,2071.6015004753303
+Gorontalo,Bengkulu,2361.1948121806877
+Gorontalo,Lampung,2084.6868319038044
+Gorontalo,Kepulauan Bangka Belitung,1907.6447929464603
+Gorontalo,Kepulauan Riau,2069.595722489153
+Gorontalo,DKI Jakarta,1949.4776502416335
+Gorontalo,Jawa Barat,1903.755715647278
+Gorontalo,Jawa Tengah,1633.2075130414541
+Gorontalo,DI Yogyakarta,1685.0951089761365
+Gorontalo,Jawa Timur,1434.5876228392785
+Gorontalo,Banten,2017.80409559947
+Gorontalo,Bali,1341.181688579203
+Gorontalo,Nusa Tenggara Barat,1272.6755634118822
+Gorontalo,Nusa Tenggara Timur,1193.5617470929938
+Gorontalo,Kalimantan Barat,1526.8428204651022
+Gorontalo,Kalimantan Tengah,1061.12980753697
+Gorontalo,Kalimantan Selatan,1034.5971201600369
+Gorontalo,Kalimantan Timur,667.2505101671416
+Gorontalo,Kalimantan Utara,681.4187168543157
+Gorontalo,Sulawesi Utara,223.2847173440781
+Gorontalo,Sulawesi Tengah,389.16737220670507
+Gorontalo,Sulawesi Selatan,750.2222997381778
+Gorontalo,Sulawesi Tenggara,507.40680640544093
+Gorontalo,Gorontalo,0.0
+Gorontalo,Sulawesi Barat,585.7202967006805
+Gorontalo,Maluku,738.92415643604
+Gorontalo,Maluku Utara,481.13307608958553
+Gorontalo,Papua Barat,1232.975904617303
+Gorontalo,Papua Barat Daya,924.0576478961298
+Gorontalo,Papua,1988.2811959448402
+Gorontalo,Papua Selatan,2167.961576368692
+Gorontalo,Papua Tengah,1448.9925789040583
+Gorontalo,Papua Pegunungan,1839.3874731247242
+Sulawesi Barat,Aceh,2773.115324132574
+Sulawesi Barat,Sumatera Utara,2352.8338154881258
+Sulawesi Barat,Sumatera Barat,2069.3923665268667
+Sulawesi Barat,Riau,1970.8215971528468
+Sulawesi Barat,Jambi,1701.9997541754258
+Sulawesi Barat,Sumatera Selatan,1569.6281858419834
+Sulawesi Barat,Bengkulu,1850.3610005605517
+Sulawesi Barat,Lampung,1541.581186294511
+Sulawesi Barat,Kepulauan Bangka Belitung,1421.125290014161
+Sulawesi Barat,Kepulauan Riau,1654.3602206063306
+Sulawesi Barat,DKI Jakarta,1391.057578028216
+Sulawesi Barat,Jawa Barat,1335.1761636619447
+Sulawesi Barat,Jawa Tengah,1053.5511664180506
+Sulawesi Barat,DI Yogyakarta,1101.6106376074947
+Sulawesi Barat,Jawa Timur,848.8882677937505
+Sulawesi Barat,Banten,1463.1012262766133
+Sulawesi Barat,Bali,778.0950892953426
+Sulawesi Barat,Nusa Tenggara Barat,724.067061188481
+Sulawesi Barat,Nusa Tenggara Timur,983.4071611023551
+Sulawesi Barat,Kalimantan Barat,1101.9577229467077
+Sulawesi Barat,Kalimantan Tengah,554.601676689567
+Sulawesi Barat,Kalimantan Selatan,482.75425478428696
+Sulawesi Barat,Kalimantan Timur,310.09836981833416
+Sulawesi Barat,Kalimantan Utara,681.5487943429525
+Sulawesi Barat,Sulawesi Utara,806.4933926773408
+Sulawesi Barat,Sulawesi Tengah,225.91420216980512
+Sulawesi Barat,Sulawesi Selatan,281.1076155572713
+Sulawesi Barat,Sulawesi Tenggara,427.4221121661347
+Sulawesi Barat,Gorontalo,585.7202967006805
+Sulawesi Barat,Sulawesi Barat,0.0
+Sulawesi Barat,Maluku,1037.6004283113366
+Sulawesi Barat,Maluku Utara,1019.5992996501675
+Sulawesi Barat,Papua Barat,1698.0490156095063
+Sulawesi Barat,Papua Barat Daya,1388.315833540003
+Sulawesi Barat,Papua,2419.25405176593
+Sulawesi Barat,Papua Selatan,2465.412702012388
+Sulawesi Barat,Papua Tengah,1845.9029758710737
+Sulawesi Barat,Papua Pegunungan,2232.1607206690305
+Maluku,Aceh,3791.5549915493357
+Maluku,Sumatera Utara,3377.8431426647994
+Maluku,Sumatera Barat,3106.741992711025
+Maluku,Riau,3007.0570786687504
+Maluku,Jambi,2738.805864942621
+Maluku,Sumatera Selatan,2600.8674148254545
+Maluku,Bengkulu,2875.915584050322
+Maluku,Lampung,2546.594150217718
+Maluku,Kepulauan Bangka Belitung,2456.989313998867
+Maluku,Kepulauan Riau,2686.7205898350203
+Maluku,DKI Jakarta,2379.0551371749193
+Maluku,Jawa Barat,2304.8756289381367
+Maluku,Jawa Tengah,1999.6373699006083
+Maluku,DI Yogyakarta,2021.969764055849
+Maluku,Jawa Timur,1752.614426051379
+Maluku,Banten,2455.1286289115656
+Maluku,Bali,1534.3509616145648
+Maluku,Nusa Tenggara Barat,1439.0960555734875
+Maluku,Nusa Tenggara Timur,879.405687720799
+Maluku,Kalimantan Barat,2133.054223018614
+Maluku,Kalimantan Tengah,1592.1193755537295
+Maluku,Kalimantan Selatan,1508.879973691283
+Maluku,Kalimantan Timur,1276.1055621175071
+Maluku,Kalimantan Utara,1411.5489058513501
+Maluku,Sulawesi Utara,684.3024526993312
+Maluku,Sulawesi Tengah,974.2788357378187
+Maluku,Sulawesi Selatan,983.3317829817717
+Maluku,Sulawesi Tenggara,629.8802342976492
+Maluku,Gorontalo,738.92415643604
+Maluku,Sulawesi Barat,1037.6004283113366
+Maluku,Maluku,0.0
+Maluku,Maluku Utara,507.11908137451894
+Maluku,Papua Barat,725.5682291204613
+Maluku,Papua Barat Daya,464.0559023592254
+Maluku,Papua,1392.1847796853162
+Maluku,Papua Selatan,1451.9080249841788
+Maluku,Papua Tengah,813.2784664647941
+Maluku,Papua Pegunungan,1195.613093831701
+Maluku Utara,Aceh,3597.4191167191807
+Maluku Utara,Sumatera Utara,3204.8635538669605
+Maluku Utara,Sumatera Barat,3011.7011660791227
+Maluku Utara,Riau,2883.260903332376
+Maluku Utara,Jambi,2656.2805889380375
+Maluku Utara,Sumatera Selatan,2549.191949022215
+Maluku Utara,Bengkulu,2837.7613038616378
+Maluku Utara,Lampung,2551.3976865055233
+Maluku Utara,Kepulauan Bangka Belitung,2386.88280166528
+Maluku Utara,Kepulauan Riau,2549.4523683022344
+Maluku Utara,DKI Jakarta,2408.084266236678
+Maluku Utara,Jawa Barat,2354.6690295988765
+Maluku Utara,Jawa Tengah,2070.965610871862
+Maluku Utara,DI Yogyakarta,2114.142041941585
+Maluku Utara,Jawa Timur,1852.7935844943975
+Maluku Utara,Banten,2478.7373241881883
+Maluku Utara,Bali,1708.006022591259
+Maluku Utara,Nusa Tenggara Barat,1625.5469420408533
+Maluku Utara,Nusa Tenggara Timur,1289.1636532228667
+Maluku Utara,Kalimantan Barat,2007.9151571831358
+Maluku Utara,Kalimantan Tengah,1533.1284896192644
+Maluku Utara,Kalimantan Selatan,1493.1862469667292
+Maluku Utara,Kalimantan Timur,1146.5049184762715
+Maluku Utara,Kalimantan Utara,1123.3222777106625
+Maluku Utara,Sulawesi Utara,292.3266757704162
+Maluku Utara,Sulawesi Tengah,855.9269303093241
+Maluku Utara,Sulawesi Selatan,1102.6685728507766
+Maluku Utara,Sulawesi Tenggara,758.5174629652367
+Maluku Utara,Gorontalo,481.13307608958553
+Maluku Utara,Sulawesi Barat,1019.5992996501675
+Maluku Utara,Maluku,507.11908137451894
+Maluku Utara,Maluku Utara,0.0
+Maluku Utara,Papua Barat,765.0808823022534
+Maluku Utara,Papua Barat Daya,468.22762906888977
+Maluku Utara,Papua,1524.439176526162
+Maluku Utara,Papua Selatan,1773.8877926127714
+Maluku Utara,Papua Tengah,1013.612468877728
+Maluku Utara,Papua Pegunungan,1395.8551281138264
+Papua Barat,Aceh,4360.315727551267
+Papua Barat,Sumatera Utara,3964.042178765129
+Papua Barat,Sumatera Barat,3747.9124004461605
+Papua Barat,Riau,3629.1609638418036
+Papua Barat,Jambi,3386.0827706356354
+Papua Barat,Sumatera Selatan,3264.545596666539
+Papua Barat,Bengkulu,3547.7006039440625
+Papua Barat,Lampung,3235.9815960582623
+Papua Barat,Kepulauan Bangka Belitung,3109.962686670821
+Papua Barat,Kepulauan Riau,3298.292360624031
+Papua Barat,DKI Jakarta,3076.692950333467
+Papua Barat,Jawa Barat,3009.003040111269
+Papua Barat,Jawa Tengah,2708.299970754117
+Papua Barat,DI Yogyakarta,2736.023979805476
+Papua Barat,Jawa Timur,2466.859770621911
+Papua Barat,Banten,3151.228464218543
+Papua Barat,Bali,2258.689146381104
+Papua Barat,Nusa Tenggara Barat,2164.021298559442
+Papua Barat,Nusa Tenggara Timur,1551.9806238127776
+Papua Barat,Kalimantan Barat,2750.218117022973
+Papua Barat,Kalimantan Tengah,2243.6292046898907
+Papua Barat,Kalimantan Selatan,2180.5688380317315
+Papua Barat,Kalimantan Timur,1880.595805005293
+Papua Barat,Kalimantan Utara,1888.3666313466792
+Papua Barat,Sulawesi Utara,1057.3647406960074
+Papua Barat,Sulawesi Tengah,1577.6751886175052
+Papua Barat,Sulawesi Selatan,1692.7539155933655
+Papua Barat,Sulawesi Tenggara,1329.3558952866329
+Papua Barat,Gorontalo,1232.975904617303
+Papua Barat,Sulawesi Barat,1698.0490156095063
+Papua Barat,Maluku,725.5682291204613
+Papua Barat,Maluku Utara,765.0808823022534
+Papua Barat,Papua Barat,0.0
+Papua Barat,Papua Barat Daya,312.4241077351442
+Papua Barat,Papua,759.4054893696555
+Papua Barat,Papua Selatan,1101.2508459421442
+Papua Barat,Papua Tengah,320.7440555342796
+Papua Barat,Papua Pegunungan,651.7815992413579
+Papua Barat Daya,Aceh,4053.038125742124
+Papua Barat Daya,Sumatera Utara,3654.566143526664
+Papua Barat Daya,Sumatera Barat,3435.490300356018
+Papua Barat Daya,Riau,3317.0628363647993
+Papua Barat Daya,Jambi,3073.7738420115916
+Papua Barat Daya,Sumatera Selatan,2953.1069373801047
+Papua Barat Daya,Bengkulu,3236.8896883756033
+Papua Barat Daya,Lampung,2928.2231927626785
+Papua Barat Daya,Kepulauan Bangka Belitung,2797.920345734859
+Papua Barat Daya,Kepulauan Riau,2986.541988750019
+Papua Barat Daya,DKI Jakarta,2771.2652214675472
+Papua Barat Daya,Jawa Barat,2705.9423292801553
+Papua Barat Daya,Jawa Tengah,2407.7362573183805
+Papua Barat Daya,DI Yogyakarta,2438.547154891894
+Papua Barat Daya,Jawa Timur,2170.0563391937053
+Papua Barat Daya,Banten,2845.2597458758737
+Papua Barat Daya,Bali,1974.4767976390574
+Papua Barat Daya,Nusa Tenggara Barat,1881.9491882416726
+Papua Barat Daya,Nusa Tenggara Timur,1336.0657547024402
+Papua Barat Daya,Kalimantan Barat,2438.016809272683
+Papua Barat Daya,Kalimantan Tengah,1932.016850106913
+Papua Barat Daya,Kalimantan Selatan,1871.057712752933
+Papua Barat Daya,Kalimantan Timur,1568.2728754316943
+Papua Barat Daya,Kalimantan Utara,1587.7922491790157
+Papua Barat Daya,Sulawesi Utara,758.7117531467393
+Papua Barat Daya,Sulawesi Tengah,1265.2512012617467
+Papua Barat Daya,Sulawesi Selatan,1395.8343914009185
+Papua Barat Daya,Sulawesi Tenggara,1030.972249214132
+Papua Barat Daya,Gorontalo,924.0576478961298
+Papua Barat Daya,Sulawesi Barat,1388.315833540003
+Papua Barat Daya,Maluku,464.0559023592254
+Papua Barat Daya,Maluku Utara,468.22762906888977
+Papua Barat Daya,Papua Barat,312.4241077351442
+Papua Barat Daya,Papua Barat Daya,0.0
+Papua Barat Daya,Papua,1064.2641962893078
+Papua Barat Daya,Papua Selatan,1320.8498774409134
+Papua Barat Daya,Papua Tengah,547.403675110301
+Papua Barat Daya,Papua Pegunungan,927.6316779623804
+Papua,Aceh,5117.301139917416
+Papua,Sumatera Utara,4718.027591222607
+Papua,Sumatera Barat,4484.701908602806
+Papua,Riau,4373.386261695157
+Papua,Jambi,4119.406572537377
+Papua,Sumatera Selatan,3988.3555281327617
+Papua,Bengkulu,4266.140327166831
+Papua,Lampung,3938.739624153852
+Papua,Kepulauan Bangka Belitung,3839.865042314134
+Papua,Kepulauan Riau,4045.275377418785
+Papua,DKI Jakarta,3770.108310419437
+Papua,Jawa Barat,3693.59651231803
+Papua,Jawa Tengah,3386.3049785678218
+Papua,DI Yogyakarta,3403.5129613517915
+Papua,Jawa Timur,3135.1347794769667
+Papua,Banten,3846.4797999507655
+Papua,Bali,2894.2601789460527
+Papua,Nusa Tenggara Barat,2795.893868066808
+Papua,Nusa Tenggara Timur,2064.1228333348404
+Papua,Kalimantan Barat,3494.221669562273
+Papua,Kalimantan Tengah,2972.1016741699646
+Papua,Kalimantan Selatan,2897.157396719669
+Papua,Kalimantan Timur,2624.504182519221
+Papua,Kalimantan Utara,2647.7540602485356
+Papua,Sulawesi Utara,1816.7474528900755
+Papua,Sulawesi Tengah,2319.3112469116368
+Papua,Sulawesi Selatan,2373.2667118197596
+Papua,Sulawesi Tenggara,2021.8947584554542
+Papua,Gorontalo,1988.2811959448402
+Papua,Sulawesi Barat,2419.25405176593
+Papua,Maluku,1392.1847796853162
+Papua,Maluku Utara,1524.439176526162
+Papua,Papua Barat,759.4054893696555
+Papua,Papua Barat Daya,1064.2641962893078
+Papua,Papua,0.0
+Papua,Papua Selatan,656.729652712977
+Papua,Papua Tengah,580.4476235446904
+Papua,Papua Pegunungan,254.25139944255267
+Papua Selatan,Aceh,5236.345758117923
+Papua Selatan,Sumatera Utara,4818.027862146179
+Papua Selatan,Sumatera Barat,4512.876891078103
+Papua Selatan,Riau,4430.08996004985
+Papua Selatan,Jambi,4143.132939852997
+Papua Selatan,Sumatera Selatan,3988.055668502829
+Papua Selatan,Bengkulu,4246.588709632525
+Papua Selatan,Lampung,3890.7146244177943
+Papua Selatan,Kepulauan Bangka Belitung,3859.3428292286126
+Papua Selatan,Kepulauan Riau,4118.9813476162435
+Papua Selatan,DKI Jakarta,3707.4614038790946
+Papua Selatan,Jawa Barat,3616.439592795628
+Papua Selatan,Jawa Tengah,3306.6595105993492
+Papua Selatan,DI Yogyakarta,3305.5890665281477
+Papua Selatan,Jawa Timur,3048.071581345132
+Papua Selatan,Banten,3785.4719253490152
+Papua Selatan,Bali,2768.178170586001
+Papua Selatan,Nusa Tenggara Barat,2669.4840250676457
+Papua Selatan,Nusa Tenggara Timur,1851.5520015051475
+Papua Selatan,Kalimantan Barat,3567.320648119485
+Papua Selatan,Kalimantan Tengah,3011.9378959412943
+Papua Selatan,Kalimantan Selatan,2910.7820904028886
+Papua Selatan,Kalimantan Timur,2724.04130997889
+Papua Selatan,Kalimantan Utara,2849.2961656361126
+Papua Selatan,Sulawesi Utara,2049.6900385471813
+Papua Selatan,Sulawesi Tengah,2424.989300108743
+Papua Selatan,Sulawesi Selatan,2344.3358418011367
+Papua Selatan,Sulawesi Tenggara,2039.211740337256
+Papua Selatan,Gorontalo,2167.961576368692
+Papua Selatan,Sulawesi Barat,2465.412702012388
+Papua Selatan,Maluku,1451.9080249841788
+Papua Selatan,Maluku Utara,1773.8877926127714
+Papua Selatan,Papua Barat,1101.2508459421442
+Papua Selatan,Papua Barat Daya,1320.8498774409134
+Papua Selatan,Papua,656.729652712977
+Papua Selatan,Papua Selatan,0.0
+Papua Selatan,Papua Tengah,786.6953872514698
+Papua Selatan,Papua Pegunungan,513.7671035579096
+Papua Tengah,Aceh,4571.073577319831
+Papua Tengah,Sumatera Utara,4165.093232227296
+Papua Tengah,Sumatera Barat,3914.5397963212185
+Papua Tengah,Riau,3808.643793511981
+Papua Tengah,Jambi,3547.7841912930453
+Papua Tengah,Sumatera Selatan,3412.997994856254
+Papua Tengah,Bengkulu,3689.0132295999965
+Papua Tengah,Lampung,3359.1160091414263
+Papua Tengah,Kepulauan Bangka Belitung,3266.985512544386
+Papua Tengah,Kepulauan Riau,3483.653561547166
+Papua Tengah,DKI Jakarta,3189.8408941619805
+Papua Tengah,Jawa Barat,3113.1492614516856
+Papua Tengah,Jawa Tengah,2805.923577314298
+Papua Tengah,DI Yogyakarta,2823.650368066501
+Papua Tengah,Jawa Timur,2555.086539295423
+Papua Tengah,Banten,3266.2876225785385
+Papua Tengah,Bali,2317.5941080514517
+Papua Tengah,Nusa Tenggara Barat,2219.627692059665
+Papua Tengah,Nusa Tenggara Timur,1515.4411475816764
+Papua Tengah,Kalimantan Barat,2930.7839943871077
+Papua Tengah,Kalimantan Tengah,2400.086728722445
+Papua Tengah,Kalimantan Selatan,2321.096395809371
+Papua Tengah,Kalimantan Timur,2063.697204278231
+Papua Tengah,Kalimantan Utara,2124.067623103076
+Papua Tengah,Sulawesi Utara,1300.8671728841523
+Papua Tengah,Sulawesi Tengah,1758.045053772113
+Papua Tengah,Sulawesi Selatan,1792.953154395987
+Papua Tengah,Sulawesi Tenggara,1443.1330578806983
+Papua Tengah,Gorontalo,1448.9925789040583
+Papua Tengah,Sulawesi Barat,1845.9029758710737
+Papua Tengah,Maluku,813.2784664647941
+Papua Tengah,Maluku Utara,1013.612468877728
+Papua Tengah,Papua Barat,320.7440555342796
+Papua Tengah,Papua Barat Daya,547.403675110301
+Papua Tengah,Papua,580.4476235446904
+Papua Tengah,Papua Selatan,786.6953872514698
+Papua Tengah,Papua Tengah,0.0
+Papua Tengah,Papua Pegunungan,391.55055913363464
+Papua Pegunungan,Aceh,4962.6228104354295
+Papua Pegunungan,Sumatera Utara,4556.447711514983
+Papua Pegunungan,Sumatera Barat,4301.5289307118555
+Papua Pegunungan,Riau,4197.965913010419
+Papua Pegunungan,Jambi,3934.0328152320703
+Papua Pegunungan,Sumatera Selatan,3796.203515245448
+Papua Pegunungan,Bengkulu,4069.838550533555
+Papua Pegunungan,Lampung,3734.5910191410408
+Papua Pegunungan,Kepulauan Bangka Belitung,3652.4860888630706
+Papua Pegunungan,Kepulauan Riau,3873.8913905483723
+Papua Pegunungan,DKI Jakarta,3562.0609950025337
+Papua Pegunungan,Jawa Barat,3482.054208879957
+Papua Pegunungan,Jawa Tengah,3173.2022289909223
+Papua Pegunungan,DI Yogyakarta,3186.570859234151
+Papua Pegunungan,Jawa Timur,2919.486363222379
+Papua Pegunungan,Banten,3639.036006145623
+Papua Pegunungan,Bali,2669.7644306152292
+Papua Pegunungan,Nusa Tenggara Barat,2570.903328406608
+Papua Pegunungan,Nusa Tenggara Timur,1821.6874479674348
+Papua Pegunungan,Kalimantan Barat,3320.7403979135265
+Papua Pegunungan,Kalimantan Tengah,2786.730438057643
+Papua Pegunungan,Kalimantan Selatan,2704.3150573765056
+Papua Pegunungan,Kalimantan Timur,2454.5332373320252
+Papua Pegunungan,Kalimantan Utara,2512.3609964227385
+Papua Pegunungan,Sulawesi Utara,1685.8209506535761
+Papua Pegunungan,Sulawesi Tengah,2148.9469299062953
+Papua Pegunungan,Sulawesi Selatan,2166.505817925495
+Papua Pegunungan,Sulawesi Tenggara,1823.500209777135
+Papua Pegunungan,Gorontalo,1839.3874731247242
+Papua Pegunungan,Sulawesi Barat,2232.1607206690305
+Papua Pegunungan,Maluku,1195.613093831701
+Papua Pegunungan,Maluku Utara,1395.8551281138264
+Papua Pegunungan,Papua Barat,651.7815992413579
+Papua Pegunungan,Papua Barat Daya,927.6316779623804
+Papua Pegunungan,Papua,254.25139944255267
+Papua Pegunungan,Papua Selatan,513.7671035579096
+Papua Pegunungan,Papua Tengah,391.55055913363464
+Papua Pegunungan,Papua Pegunungan,0.0

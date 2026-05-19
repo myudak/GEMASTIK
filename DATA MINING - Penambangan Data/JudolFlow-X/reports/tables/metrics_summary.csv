@@ -1,0 +1,9 @@
+task,model,macro_f1,pr_auc,precision_at_k,recall_at_k,brier,metric,value
+content_classification,Random baseline,0.471329,0.558938,0.333333,0.054348,0.343938,,
+content_classification,Weighted index baseline,0.745885,0.991781,1.0,0.163043,0.146792,,
+content_classification,StumpBoost JudolFlow,0.993232,1.0,1.0,0.163043,0.015873,,
+cluster_ranking,JudolFlow ranking,,,,,,cluster_ndcg_at_k,1.0
+cluster_ranking,JudolFlow ranking,,,,,,cluster_precision_at_k,1.0
+cluster_ranking,JudolFlow ranking,,,,,,cluster_recall_at_k,0.344828
+cluster_ranking,JudolFlow ranking,,,,,,cluster_lift_over_weighted,1.0
+entity_extraction,Regex entity extractor,,,,,,proxy_entity_f1,0.94

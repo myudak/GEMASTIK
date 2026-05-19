@@ -1,0 +1,8 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+requests
+reportlab
+tabulate
+python-docx

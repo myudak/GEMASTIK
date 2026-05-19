@@ -1,0 +1,5 @@
+feature,importance,feature_group
+text_risk_score,0.8790572217880481,text
+suspicious_term_count,0.05677748924815107,text
+benign_term_count,0.03994704052832439,text
+benign_terms,0.02421824843547649,text

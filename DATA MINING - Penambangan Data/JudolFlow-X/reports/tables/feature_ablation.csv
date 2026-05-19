@@ -1,0 +1,6 @@
+removed_feature_family,macro_f1,pr_auc,brier
+none,0.993232,1.0,0.021147
+text,0.958787,0.989587,0.051676
+entity,0.993232,1.0,0.021147
+graph,0.993232,1.0,0.021147
+source,0.993232,1.0,0.021147

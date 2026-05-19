@@ -1,0 +1,5 @@
+province,region,price,deficit_score,anomaly_score,recommended_origin,interpretation
+Papua Pegunungan,Maluku-Papua,25500.0,0.332,0.102,Sulawesi Selatan,harga di atas median nasional; kenaikan harga bulanan positif; proxy neraca beras defisit
+DKI Jakarta,Jawa,12917.0,0.63,0.063,Jawa Timur,proxy neraca beras defisit
+Kalimantan Timur,Kalimantan,15727.0,0.199,0.04,Sulawesi Selatan,harga di atas median nasional; proxy neraca beras defisit
+Papua Tengah,Maluku-Papua,16621.0,0.136,0.102,Sulawesi Selatan,harga di atas median nasional; kenaikan harga bulanan positif; proxy neraca beras defisit

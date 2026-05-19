@@ -1,0 +1,24 @@
+{
+  "model_name": "PanganFlow.ID weighted-index calibrated RandomForest ranker",
+  "task": "Province-level rice monitoring priority and interprovincial flow scoring",
+  "training_rows": 1489,
+  "test_rows": 377,
+  "date_min": "2021-01-01",
+  "date_max": "2025-05-01",
+  "test_month_min": "2024-08-01",
+  "test_month_max": "2025-05-01",
+  "top_k": 10,
+  "best_model_metrics": {
+    "model": "PanganFlow hybrid model",
+    "ndcg_at_k": 0.9374125626982582,
+    "precision_at_k": 0.9100000000000001,
+    "recall_at_k": 0.9100000000000001,
+    "lift_over_weighted": 1.0086306463203505
+  },
+  "flow_candidates": 288,
+  "limitations": [
+    "Surplus-deficit is a proxy from annual production and consumption assumptions.",
+    "Flow score is a policy-review prioritization score, not a final logistics optimization.",
+    "BI daily price endpoint is attempted but Bapanas monthly data is used when coverage is more stable."
+  ]
+}

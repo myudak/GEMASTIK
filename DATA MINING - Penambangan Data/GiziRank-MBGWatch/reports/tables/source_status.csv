@@ -1,0 +1,7 @@
+source,status,rows,output,retrieved_at,notes
+Dashboard MBG Kemendikdasmen,reused,438,D:\Home\Projects\GEMASTIK\DATA MINING - Penambangan Data\GiziRank-MBGWatch\data\raw\mbg_rekap_kabupaten.csv,2026-05-15 16:04:21,Existing raw snapshot
+BGN SPPG Operasional,reused,28060,D:\Home\Projects\GEMASTIK\DATA MINING - Penambangan Data\GiziRank-MBGWatch\data\raw\bgn_sppg_operasional_scrape.csv,2026-05-15 16:04:22,Existing raw snapshot
+Bapanas IKP/FSVA,ok,514,D:\Home\Projects\GEMASTIK\DATA MINING - Penambangan Data\GiziRank-MBGWatch\data\raw\bapanas_ikp_kab_kota_2024.csv,2026-05-15 16:04:22,Latest year=2024
+Bapanas harga pangan,ok,27722,D:\Home\Projects\GEMASTIK\DATA MINING - Penambangan Data\GiziRank-MBGWatch\data\raw\bapanas_harga_pangan_konsumen_provinsi.csv,2026-05-15 16:04:23,Latest period=2025-04-01
+BPS poverty table,ok,514,D:\Home\Projects\GEMASTIK\DATA MINING - Penambangan Data\GiziRank-MBGWatch\data\raw\bps_poverty_table.html,2026-05-15 16:04:37,Parsed embedded table year=2025
+Dashboard Stunting TP2S,manual_optional_missing,0,D:\Home\Projects\GEMASTIK\DATA MINING - Penambangan Data\GiziRank-MBGWatch\data\raw\stunting_kabupaten.csv,2026-05-15 16:04:37,No direct tabular snapshot supplied; v1 uses MBG learner-condition proxy and supports this manual CSV.

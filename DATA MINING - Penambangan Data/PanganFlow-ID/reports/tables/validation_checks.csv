@@ -1,0 +1,26 @@
+check,status,value
+no_duplicate_province_period_rows,pass,0
+province_metadata_joined,pass,0
+bps_balance_joined,pass,0
+minimum_panel_rows,pass,1904
+minimum_provinces,pass,38
+past_window_features,pass,rolling z-score uses shifted historical windows
+flow_distance_matrix,pass,1444
+flow_no_self_pairs,pass,0.0
+flow_origin_surplus_positive,pass,0.0
+ranking_snapshot_rows,pass,38.0
+stability_mean_top10_overlap,pass,0.814
+case_studies_generated,pass,4.0
+subgroup_fairness_regions,pass,6.0
+flow_no_self_pairs,pass,0.0
+flow_origin_surplus_positive,pass,0.0
+ranking_snapshot_rows,pass,38.0
+stability_mean_top10_overlap,pass,0.814
+case_studies_generated,pass,4.0
+subgroup_fairness_regions,pass,6.0
+flow_no_self_pairs,pass,0.0
+flow_origin_surplus_positive,pass,0.0
+ranking_snapshot_rows,pass,38.0
+stability_mean_top10_overlap,pass,0.863
+case_studies_generated,pass,4.0
+subgroup_fairness_regions,pass,6.0

@@ -1,0 +1,297 @@
+rank,cluster_id,priority_score,review_action,sample_count,entity_count,domain_count,platform_count,text_risk_mean,model_score_mean,suspicious_share,promotional_share,platforms,top_reasons,example_excerpt,latest_period
+1,C295,0.95639,review first,318,68,21,6,0.708229,0.801729,0.867925,0.537736,"bio_text, comment, forum, image_ocr",high text promotion signal; cross-platform recurrence; multiple masked domains; multi-entity evidence,"parlay sedang ramai, pola malam ini dibagikan di [HANDLE], pembayaran [PAYMENT] mirror [DOMAIN] admin [HANDLE]",2026-04
+2,C162,0.640508,review first,2,1,0,2,0.740569,0.904572,1.0,1.0,"bio_text, public_report",high text promotion signal; public-report channel overlap,"ocr tangkapan layar memuat maxwin, bonus member baru, dan kontak [PHONE]",2026-02
+3,C221,0.637958,review first,2,1,0,2,0.727769,0.904572,1.0,1.0,"comment, forum",high text promotion signal; public-report channel overlap,"ocr tangkapan layar memuat togel, wd harian, dan kontak [PHONE]",2025-04
+4,C269,0.617568,review first,2,1,0,1,0.766292,0.904572,1.0,1.0,image_ocr,high text promotion signal; public-report channel overlap,"ocr tangkapan layar memuat slot, saldo ewallet, dan kontak [PHONE]",2025-10
+5,C074,0.615349,review first,1,1,0,1,0.783017,0.904572,1.0,1.0,short_video,high text promotion signal; public-report channel overlap,"ocr tangkapan layar memuat maxwin, deposit kecil, dan kontak [PHONE]",2025-03
+6,C243,0.610785,review first,1,1,0,1,0.727769,0.904572,1.0,1.0,forum,high text promotion signal; public-report channel overlap,"ocr tangkapan layar memuat maxwin, wd harian, dan kontak [PHONE]",2025-04
+7,C020,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,public_report,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-04
+8,C177,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,comment,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-07
+9,C165,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,forum,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-09
+10,C137,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,comment,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-09
+11,C277,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,image_ocr,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-02
+12,C268,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,short_video,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2026-04
+13,C028,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,comment,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-10
+14,C202,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,short_video,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2026-02
+15,C022,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,forum,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2026-03
+16,C107,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,image_ocr,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-05
+17,C013,0.598503,review first,1,0,0,1,0.724455,0.904572,1.0,0.0,public_report,high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-03
+18,C286,0.59624,review first,1,0,0,1,0.697059,0.904572,1.0,0.0,forum,high text promotion signal,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2026-02
+19,C017,0.59624,review first,1,0,0,1,0.697059,0.904572,1.0,0.0,short_video,high text promotion signal,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas,2025-03
+20,C061,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,public_report,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-06
+21,C010,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,bio_text,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-06
+22,C032,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,bio_text,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-07
+23,C139,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,public_report,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-04
+24,C089,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,bio_text,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-08
+25,C211,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,public_report,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2026-03
+26,C161,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,bio_text,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-04
+27,C155,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,image_ocr,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2026-03
+28,C256,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,comment,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-03
+29,C238,0.588616,review first,1,0,0,1,0.637994,0.900342,1.0,0.0,comment,public-report channel overlap,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-08
+30,C196,0.586028,review first,1,0,0,1,0.606669,0.900342,1.0,0.0,short_video,low-confidence review candidate,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2026-04
+31,C058,0.586028,review first,1,0,0,1,0.606669,0.900342,1.0,0.0,comment,low-confidence review candidate,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-10
+32,C027,0.586028,review first,1,0,0,1,0.606669,0.900342,1.0,0.0,forum,low-confidence review candidate,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2025-12
+33,C207,0.586028,review first,1,0,0,1,0.606669,0.900342,1.0,0.0,bio_text,low-confidence review candidate,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2026-03
+34,C294,0.586028,review first,1,0,0,1,0.606669,0.900342,1.0,0.0,forum,low-confidence review candidate,"bio akun menyebut cuan cepat dan link bio, konteks perlu ditinjau manual",2026-04
+35,C164,0.575776,sample audit,5,2,1,2,0.653202,0.73184,0.8,0.0,"public_report, short_video",high text promotion signal; public-report channel overlap,komentar singkat berisi ajakan dm admin dan klaim bonus tanpa tautan jelas kontak [HANDLE],2026-04
+36,C063,0.55188,sample audit,1,0,0,1,0.645656,0.84272,1.0,0.0,public_report,public-report channel overlap,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-07
+37,C229,0.55188,sample audit,1,0,0,1,0.645656,0.84272,1.0,0.0,image_ocr,public-report channel overlap,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-12
+38,C034,0.55188,sample audit,1,0,0,1,0.645656,0.84272,1.0,0.0,forum,public-report channel overlap,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-01
+39,C050,0.55188,sample audit,1,0,0,1,0.645656,0.84272,1.0,0.0,bio_text,public-report channel overlap,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-05
+40,C081,0.55188,sample audit,1,0,0,1,0.645656,0.84272,1.0,0.0,image_ocr,public-report channel overlap,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-01
+41,C040,0.55188,sample audit,1,0,0,1,0.645656,0.84272,1.0,0.0,image_ocr,public-report channel overlap,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-06
+42,C103,0.55188,sample audit,1,0,0,1,0.645656,0.84272,1.0,0.0,short_video,public-report channel overlap,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-01
+43,C100,0.55188,sample audit,1,0,0,1,0.645656,0.84272,1.0,0.0,public_report,public-report channel overlap,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2026-01
+44,C110,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,comment,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2025-05
+45,C127,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,public_report,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2026-01
+46,C267,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,bio_text,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2025-10
+47,C231,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,short_video,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2025-01
+48,C115,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,bio_text,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2025-05
+49,C113,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,public_report,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2025-09
+50,C158,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,image_ocr,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2025-06
+51,C203,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,bio_text,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2025-05
+52,C072,0.55115,sample audit,1,0,0,1,0.637994,0.842571,1.0,0.0,comment,public-report channel overlap,caption berisi istilah scatter tapi juga membahas bahaya judi online,2026-03
+53,C131,0.548562,sample audit,1,0,0,1,0.606669,0.842571,1.0,0.0,comment,low-confidence review candidate,caption berisi istilah scatter tapi juga membahas bahaya judi online,2026-04
+54,C150,0.545114,sample audit,1,0,0,1,0.614594,0.836245,1.0,0.0,public_report,low-confidence review candidate,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-04
+55,C275,0.545114,sample audit,1,0,0,1,0.614594,0.836245,1.0,0.0,bio_text,low-confidence review candidate,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-12
+56,C287,0.545114,sample audit,1,0,0,1,0.614594,0.836245,1.0,0.0,public_report,low-confidence review candidate,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-06
+57,C003,0.545114,sample audit,1,0,0,1,0.614594,0.836245,1.0,0.0,image_ocr,low-confidence review candidate,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-04
+58,C257,0.545114,sample audit,1,0,0,1,0.614594,0.836245,1.0,0.0,forum,low-confidence review candidate,unggahan edukasi menampilkan contoh tersensor dari pola promosi ilegal,2025-04
+59,C160,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,forum,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-10
+60,C123,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,public_report,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-04
+61,C077,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,forum,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-12
+62,C041,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,image_ocr,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-03
+63,C142,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,comment,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-02
+64,C213,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,comment,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-03
+65,C259,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,comment,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-07
+66,C254,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,bio_text,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-01
+67,C080,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,short_video,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-05
+68,C076,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,image_ocr,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-02
+69,C092,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,public_report,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-12
+70,C214,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,bio_text,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-08
+71,C007,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,comment,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-06
+72,C015,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,comment,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-03
+73,C118,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,comment,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-10
+74,C224,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,comment,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-10
+75,C157,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,forum,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-11
+76,C280,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,public_report,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-04
+77,C285,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,short_video,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-10
+78,C111,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,bio_text,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-04
+79,C109,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,comment,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-03
+80,C016,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,forum,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-03
+81,C176,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,short_video,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-02
+82,C175,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,image_ocr,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-11
+83,C197,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,short_video,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-01
+84,C250,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,image_ocr,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-12
+85,C068,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,short_video,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-11
+86,C283,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,bio_text,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-01
+87,C001,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,image_ocr,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-01
+88,C272,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,public_report,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-03
+89,C006,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,short_video,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-10
+90,C021,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,bio_text,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-01
+91,C262,0.010156,sample audit,1,0,0,1,0.508333,0.102763,0.0,0.0,public_report,public-report channel overlap,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-08
+92,C281,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2026-03
+93,C180,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-09
+94,C168,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-03
+95,C278,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-02
+96,C033,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2026-01
+97,C184,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-08
+98,C031,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-11
+99,C141,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,short_video,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-01
+100,C183,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2026-04
+101,C290,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-06
+102,C266,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-11
+103,C247,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-04
+104,C252,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-05
+105,C251,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-09
+106,C261,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-04
+107,C002,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2026-01
+108,C083,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,low-confidence review candidate,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2026-01
+109,C073,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-10
+110,C075,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,short_video,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-05
+111,C087,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-04
+112,C095,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-03
+113,C094,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-08
+114,C038,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-06
+115,C039,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-03
+116,C273,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-12
+117,C241,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2026-03
+118,C245,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-02
+119,C246,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2026-02
+120,C249,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-01
+121,C048,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-03
+122,C049,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,short_video,low-confidence review candidate,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-02
+123,C060,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,low-confidence review candidate,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-01
+124,C070,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-03
+125,C093,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,short_video,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-06
+126,C088,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-08
+127,C101,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-03
+128,C237,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-03
+129,C244,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-10
+130,C232,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-12
+131,C055,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2026-03
+132,C239,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,short_video,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2026-03
+133,C037,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-11
+134,C025,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2026-01
+135,C012,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-11
+136,C018,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,low-confidence review candidate,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-02
+137,C029,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2026-01
+138,C009,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-10
+139,C019,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,short_video,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-03
+140,C225,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-06
+141,C151,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-01
+142,C152,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-05
+143,C124,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-01
+144,C178,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-10
+145,C185,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-09
+146,C181,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-07
+147,C288,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-10
+148,C170,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-05
+149,C200,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-12
+150,C226,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,short_video,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-04
+151,C217,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2026-03
+152,C209,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-01
+153,C218,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-02
+154,C210,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,low-confidence review candidate,laporan warga meminta verifikasi konten mencurigakan tanpa menyebarkan tautan,2025-06
+155,C133,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-03
+156,C146,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-12
+157,C227,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,bio_text,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2026-04
+158,C228,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-04
+159,C206,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-06
+160,C156,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,image_ocr,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-10
+161,C153,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-04
+162,C120,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,forum,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-09
+163,C132,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,public_report,public-report channel overlap,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-12
+164,C199,0.007404,monitor,1,0,0,1,0.475021,0.102763,0.0,0.0,comment,public-report channel overlap,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-12
+165,C043,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,comment,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-12
+166,C240,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-12
+167,C233,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-04
+168,C062,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,comment,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-02
+169,C129,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,forum,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-03
+170,C114,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,forum,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-07
+171,C104,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,short_video,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-03
+172,C163,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,bio_text,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-04
+173,C147,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,bio_text,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-07
+174,C134,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,comment,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-11
+175,C138,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-11
+176,C011,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,short_video,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-04
+177,C036,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-07
+178,C276,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,forum,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-06
+179,C188,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,comment,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-07
+180,C169,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,public_report,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-04
+181,C172,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,bio_text,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-01
+182,C171,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-07
+183,C284,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,public_report,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-01
+184,C187,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,short_video,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-08
+185,C215,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,forum,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-01
+186,C201,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,forum,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-12
+187,C204,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,comment,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-12
+188,C212,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,short_video,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-10
+189,C042,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,forum,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-08
+190,C044,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,forum,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-11
+191,C071,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-07
+192,C205,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,public_report,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-11
+193,C067,0.005351,monitor,1,0,0,1,0.450166,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-02
+194,C117,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,bio_text,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-03
+195,C121,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2026-03
+196,C105,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-08
+197,C189,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,short_video,low-confidence review candidate,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-10
+198,C271,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,bio_text,low-confidence review candidate,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-12
+199,C194,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,short_video,low-confidence review candidate,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-04
+200,C144,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,forum,low-confidence review candidate,diskusi sekolah tentang cara menjaga ruang digital produktif,2026-01
+201,C230,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,public_report,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-05
+202,C056,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-06
+203,C004,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,forum,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-08
+204,C112,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,comment,low-confidence review candidate,diskusi sekolah tentang cara menjaga ruang digital produktif,2025-08
+205,C079,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-03
+206,C220,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,bio_text,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-12
+207,C053,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,forum,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-01
+208,C045,0.00467,monitor,1,0,0,1,0.44193,0.102763,0.0,0.0,comment,low-confidence review candidate,artikel edukasi dampak sosial ekonomi judi online bagi remaja,2025-04
+209,C119,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-08
+210,C099,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-10
+211,C084,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-12
+212,C078,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-04
+213,C065,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-04
+214,C255,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-07
+215,C260,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-03
+216,C069,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-10
+217,C149,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-01
+218,C154,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-12
+219,C122,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-07
+220,C258,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-02
+221,C091,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-01
+222,C046,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-09
+223,C235,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-09
+224,C234,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-04
+225,C096,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-01
+226,C098,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-03
+227,C057,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-04
+228,C064,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-06
+229,C005,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-07
+230,C296,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-04
+231,C236,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-03
+232,C253,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-11
+233,C242,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-09
+234,C248,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-05
+235,C066,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-09
+236,C051,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-12
+237,C125,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-03
+238,C052,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2026-04
+239,C047,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-09
+240,C059,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-09
+241,C035,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-10
+242,C030,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2026-02
+243,C026,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-08
+244,C024,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-12
+245,C279,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-06
+246,C274,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2026-03
+247,C282,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-03
+248,C289,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-03
+249,C136,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-02
+250,C192,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-12
+251,C167,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-03
+252,C179,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-01
+253,C190,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-04
+254,C263,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-02
+255,C270,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-04
+256,C264,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2026-04
+257,C166,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-03
+258,C291,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-01
+259,C292,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-02
+260,C293,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-11
+261,C173,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-10
+262,C008,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2026-03
+263,C014,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-02
+264,C023,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2026-02
+265,C085,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-07
+266,C126,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-04
+267,C208,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-02
+268,C145,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-04
+269,C195,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2026-04
+270,C135,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-05
+271,C140,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-06
+272,C143,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-10
+273,C186,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,forum,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-04
+274,C182,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-04
+275,C191,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-08
+276,C102,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-01
+277,C108,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-06
+278,C106,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-10
+279,C159,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,public_report,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-10
+280,C148,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,comment,low-confidence review candidate,kampanye literasi digital anti judi online untuk siswa dan keluarga,2025-04
+281,C222,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,image_ocr,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-07
+282,C216,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-03
+283,C223,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2026-04
+284,C128,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,short_video,public-report channel overlap,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-12
+285,C198,0.002646,monitor,1,0,0,1,0.41743,0.102763,0.0,0.0,bio_text,public-report channel overlap,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-07
+286,C193,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,public_report,low-confidence review candidate,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-01
+287,C265,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,forum,low-confidence review candidate,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-01
+288,C174,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,bio_text,low-confidence review candidate,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-07
+289,C090,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,public_report,low-confidence review candidate,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-01
+290,C086,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,image_ocr,low-confidence review candidate,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-11
+291,C082,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,comment,low-confidence review candidate,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2026-02
+292,C219,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,short_video,low-confidence review candidate,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-02
+293,C130,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,public_report,low-confidence review candidate,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-05
+294,C116,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,bio_text,low-confidence review candidate,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2026-04
+295,C054,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,short_video,low-confidence review candidate,turnamen e-sport komunitas tanpa taruhan dan tanpa transaksi uang,2025-02
+296,C097,0.0,monitor,1,0,0,1,0.385406,0.102763,0.0,0.0,short_video,low-confidence review candidate,kelas keamanan siber membahas pelaporan konten ilegal melalui kanal resmi,2025-01

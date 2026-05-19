@@ -1,0 +1,39 @@
+province,year,rice_production_million_ton,population_million,rice_consumption_kg_capita_year,source_note
+Aceh,2024,0.86,5.6,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Sumatera Utara,2024,2.08,15.59,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Sumatera Barat,2024,0.77,5.84,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Riau,2024,0.14,6.73,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Jambi,2024,0.2,3.78,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Sumatera Selatan,2024,1.6,8.89,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Bengkulu,2024,0.18,2.12,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Lampung,2024,1.49,9.42,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Kepulauan Bangka Belitung,2024,0.04,1.53,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Kepulauan Riau,2024,0.0,2.23,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+DKI Jakarta,2024,0.0,10.68,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Jawa Barat,2024,5.44,50.35,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Jawa Tengah,2024,5.05,37.89,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+DI Yogyakarta,2024,0.32,3.73,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Jawa Timur,2024,5.54,41.81,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Banten,2024,0.9,12.43,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Bali,2024,0.48,4.43,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Nusa Tenggara Barat,2024,0.92,5.65,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Nusa Tenggara Timur,2024,0.47,5.7,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Kalimantan Barat,2024,0.46,5.74,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Kalimantan Tengah,2024,0.2,2.82,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Kalimantan Selatan,2024,0.61,4.24,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Kalimantan Timur,2024,0.11,4.05,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Kalimantan Utara,2024,0.05,0.75,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Sulawesi Utara,2024,0.25,2.69,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Sulawesi Tengah,2024,0.55,3.11,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Sulawesi Selatan,2024,3.08,9.46,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Sulawesi Tenggara,2024,0.36,2.8,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Gorontalo,2024,0.16,1.22,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Sulawesi Barat,2024,0.2,1.5,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Maluku,2024,0.06,1.91,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Maluku Utara,2024,0.02,1.43,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Papua Barat,2024,0.02,0.58,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Papua Barat Daya,2024,0.01,0.65,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Papua,2024,0.1,1.1,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Papua Selatan,2024,0.2,0.54,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Papua Tengah,2024,0.02,1.4,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
+Papua Pegunungan,2024,0.0,1.5,81.23,Manual official snapshot seed from BPS/Bapanas public tables; replace with raw BPS export for final submission.
