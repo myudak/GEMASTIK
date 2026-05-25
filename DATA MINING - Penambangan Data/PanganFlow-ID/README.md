@@ -32,6 +32,24 @@ uv run streamlit run dashboard/app.py
 
 Jika semua dependensi sudah tersedia di environment aktif, perintah `python src/...` juga bisa dipakai.
 
+## Notebook
+
+Notebook eksplorasi tersedia di:
+
+```text
+notebooks/PanganFlow-ID-analysis.ipynb
+```
+
+Jalankan dari root proyek agar path relatif terbaca:
+
+```powershell
+cd "D:\Home\Projects\GEMASTIK\DATA MINING - Penambangan Data\PanganFlow-ID"
+uv run python -m ipykernel install --user --name panganflow-id --display-name "Python (PanganFlow.ID)"
+uv run --with jupyterlab jupyter lab
+```
+
+Jika tidak memakai Jupyter Lab, buka `.ipynb` langsung dari VS Code/Cursor dan pilih kernel `Python (PanganFlow.ID)` atau interpreter `.venv`.
+
 ## Output Utama
 
 - `data/processed/province_commodity_panel.csv`
@@ -48,4 +66,3 @@ Pipeline bersifat official-first:
 - BPS dipakai untuk produksi beras dan proxy konsumsi/kebutuhan. Jika unduhan portal tidak stabil, pipeline menyimpan snapshot resmi/manual yang ditandai pada `reports/tables/source_status.csv`.
 
 Sistem ini memberi **prioritas tinjauan kebijakan dan redistribusi**, bukan keputusan final distribusi aktual.
-
