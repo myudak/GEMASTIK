@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { Progress } from "@/components/ui/progress";
 import type { WorkflowStepId } from "@/lib/workflow-data";
 import { workflowSteps } from "@/lib/workflow-data";
 import { cn } from "@/lib/utils";
@@ -16,10 +17,10 @@ export function StepProgress({ activeStep }: StepProgressProps) {
   return (
     <div className="mt-8 overflow-x-auto pb-2">
       <div className="relative mx-auto grid min-w-[760px] max-w-[1120px] grid-cols-5">
-        <div className="absolute left-[10%] right-[10%] top-6 h-px bg-white/22" />
-        <div
-          className="absolute left-[10%] top-6 h-px bg-blue-500 transition-all"
-          style={{ width: `${Math.max(activeIndex, 0) * 20}%` }}
+        <Progress
+          aria-hidden
+          className="absolute left-[10%] right-[10%] top-6 h-px w-auto bg-border"
+          value={Math.max(activeIndex, 0) * 25}
         />
         {workflowSteps.map((step, index) => {
           const active = index === activeIndex;
@@ -35,10 +36,10 @@ export function StepProgress({ activeStep }: StepProgressProps) {
                 className={cn(
                   "relative z-10 grid size-12 place-items-center rounded-full border text-xl font-semibold transition",
                   active
-                    ? "border-blue-400 bg-blue-600 text-white shadow-[0_0_26px_rgba(37,99,235,0.54)]"
+                    ? "border-primary bg-primary text-primary-foreground shadow-[0_0_26px_color-mix(in_oklch,var(--primary)_45%,transparent)]"
                     : complete
-                      ? "border-blue-400 bg-blue-500/22 text-blue-100"
-                      : "border-slate-500 bg-slate-950 text-slate-300",
+                      ? "border-primary bg-primary/18 text-foreground"
+                      : "border-border bg-card text-muted-foreground",
                 )}
               >
                 {step.number}
@@ -46,7 +47,9 @@ export function StepProgress({ activeStep }: StepProgressProps) {
               <span
                 className={cn(
                   "mt-4 text-lg transition",
-                  active ? "font-bold text-blue-400" : "text-slate-300 group-hover:text-white",
+                  active
+                    ? "font-bold text-primary"
+                    : "text-muted-foreground group-hover:text-foreground",
                 )}
               >
                 {step.label}

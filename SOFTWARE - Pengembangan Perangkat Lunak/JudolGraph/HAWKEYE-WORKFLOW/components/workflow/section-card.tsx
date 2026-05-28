@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 type SectionCardProps = {
@@ -10,14 +11,18 @@ type SectionCardProps = {
 
 export function SectionCard({ title, children, className }: SectionCardProps) {
   return (
-    <section
+    <Card
       className={cn(
-        "rounded-[8px] border border-white/14 bg-slate-950/38 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]",
+        "rounded-lg border-border/80 bg-card/85 shadow-[inset_0_1px_0_color-mix(in_oklch,var(--foreground)_8%,transparent)]",
         className,
       )}
     >
-      {title ? <h2 className="mb-5 text-xl font-bold text-white">{title}</h2> : null}
-      {children}
-    </section>
+      {title ? (
+        <CardHeader>
+          <CardTitle className="text-xl font-bold text-card-foreground">{title}</CardTitle>
+        </CardHeader>
+      ) : null}
+      <CardContent className={title ? "pt-0" : undefined}>{children}</CardContent>
+    </Card>
   );
 }

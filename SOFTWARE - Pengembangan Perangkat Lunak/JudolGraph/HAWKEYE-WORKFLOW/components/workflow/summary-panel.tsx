@@ -9,13 +9,15 @@ import {
 } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
 
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 import { SectionCard } from "@/components/workflow/section-card";
 import { reviewSummary } from "@/lib/workflow-data";
 
 export function CrawlSummaryPanel() {
   return (
     <SectionCard title="Ringkasan">
-      <div className="divide-y divide-white/10">
+      <div>
         <SummaryRow
           icon={<GlobeHemisphereWest size={26} />}
           label="URL / Domain Seed"
@@ -54,8 +56,8 @@ export function CompletedProcessPanel() {
     <SectionCard title="Proses yang dilakukan">
       <div className="space-y-5">
         {items.map((item) => (
-          <div className="flex items-center gap-4 text-lg text-slate-100" key={item}>
-            <CheckCircle aria-hidden className="text-blue-400" size={24} />
+          <div className="flex items-center gap-4 text-lg text-foreground" key={item}>
+            <CheckCircle aria-hidden className="text-primary" size={24} />
             {item}
           </div>
         ))}
@@ -76,18 +78,22 @@ function SummaryRow({
   highlight?: boolean;
 }) {
   return (
-    <div className="grid grid-cols-[32px_1fr_1.1fr] items-center gap-4 py-4 text-lg">
-      <span className="text-slate-300">{icon}</span>
-      <span className="text-slate-100">{label}</span>
-      <span
-        className={
-          highlight
-            ? "w-fit rounded-[8px] border border-blue-400/40 bg-blue-500/12 px-3 py-2 text-blue-300"
-            : "text-white"
-        }
-      >
-        {value}
-      </span>
-    </div>
+    <>
+      <Separator />
+      <div className="grid grid-cols-[32px_1fr_1.1fr] items-center gap-4 py-4 text-lg">
+        <span className="text-muted-foreground">{icon}</span>
+        <span className="text-foreground">{label}</span>
+        {highlight ? (
+          <Badge
+            className="w-fit rounded-lg border-primary/40 bg-primary/12 px-3 py-2 text-primary"
+            variant="outline"
+          >
+            {value}
+          </Badge>
+        ) : (
+          <span className="text-foreground">{value}</span>
+        )}
+      </div>
+    </>
   );
 }

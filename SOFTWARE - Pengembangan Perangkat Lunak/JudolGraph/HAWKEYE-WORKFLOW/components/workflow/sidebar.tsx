@@ -26,7 +26,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="border-sidebar fixed inset-y-0 left-0 z-20 hidden w-[290px] flex-col border-r bg-[#031327]/92 px-5 py-9 backdrop-blur md:flex">
+    <aside className="fixed inset-y-0 left-0 z-20 hidden w-[290px] flex-col border-r border-sidebar-border bg-sidebar/95 px-5 py-9 text-sidebar-foreground backdrop-blur md:flex">
       <Link href="/cases/new" className="mb-12 flex items-center gap-3">
         <Image
           src="/hawkeye-logo.png"
@@ -37,8 +37,10 @@ export function Sidebar() {
           priority
         />
         <div>
-          <p className="text-[26px] font-black leading-none text-white">HAWKEYE</p>
-          <p className="mt-2 text-[11px] font-bold text-blue-300">DIGITAL INVESTIGATION TOOL</p>
+          <p className="text-[26px] font-black leading-none text-sidebar-foreground">HAWKEYE</p>
+          <p className="mt-2 text-[11px] font-bold text-sidebar-primary">
+            DIGITAL INVESTIGATION TOOL
+          </p>
         </div>
       </Link>
 
@@ -52,10 +54,10 @@ export function Sidebar() {
               href={item.href}
               key={item.href}
               className={cn(
-                "flex h-[60px] items-center gap-4 rounded-[8px] px-5 text-lg text-slate-300 transition",
+                "flex h-[60px] items-center gap-4 rounded-lg px-5 text-lg text-sidebar-foreground/72 transition",
                 active
-                  ? "bg-blue-600/82 text-white shadow-[0_0_40px_rgba(37,99,235,0.22)]"
-                  : "hover:bg-white/[0.05] hover:text-white",
+                  ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-[0_0_38px_color-mix(in_oklch,var(--sidebar-primary)_28%,transparent)]"
+                  : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
               )}
             >
               <Icon aria-hidden size={30} weight={active ? "duotone" : "regular"} />
@@ -65,7 +67,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="mt-auto flex items-center gap-4 text-slate-400">
+      <div className="mt-auto flex items-center gap-4 text-sidebar-foreground/62">
         <ShieldCheck aria-hidden size={42} />
         <p className="max-w-[180px] text-base leading-snug">
           Tool untuk investigasi yang etis & legal

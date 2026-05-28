@@ -8,6 +8,7 @@ import {
   Wallet,
 } from "@phosphor-icons/react";
 
+import { Badge } from "@/components/ui/badge";
 import type { DetectedEntity } from "@/lib/workflow-data";
 
 const entityIcons = {
@@ -22,17 +23,20 @@ export function EntityRow({ entity }: { entity: DetectedEntity }) {
   const Icon = entityIcons[entity.icon];
 
   return (
-    <div className="grid min-h-14 grid-cols-[210px_1fr_auto] items-center gap-4 rounded-[8px] border border-white/10 bg-slate-950/28 px-4">
+    <div className="grid min-h-14 grid-cols-[210px_1fr_auto] items-center gap-4 rounded-lg border border-border bg-background/25 px-4">
       <div className="flex items-center gap-3">
-        <Icon aria-hidden className="text-blue-400" size={28} />
-        <span className="text-lg text-white">{entity.category}</span>
+        <Icon aria-hidden className="text-primary" size={28} />
+        <span className="text-lg text-foreground">{entity.category}</span>
       </div>
-      <span className="rounded-[8px] border border-white/10 bg-white/[0.04] px-4 py-2 text-lg text-slate-100">
+      <span className="rounded-lg border border-border bg-muted/35 px-4 py-2 text-lg text-foreground">
         {entity.value}
       </span>
-      <span className="rounded-full bg-blue-500/16 px-4 py-2 text-sm font-bold text-blue-300">
+      <Badge
+        className="h-8 rounded-full bg-primary/16 px-4 text-sm font-bold text-primary"
+        variant="secondary"
+      >
         {entity.confidence}%
-      </span>
+      </Badge>
     </div>
   );
 }
