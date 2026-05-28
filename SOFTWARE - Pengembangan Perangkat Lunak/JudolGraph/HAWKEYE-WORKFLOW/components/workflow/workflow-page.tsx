@@ -4,20 +4,15 @@ import {
   CaretRight,
   CheckCircle,
   Copy,
-  Desktop,
   FileText,
   FloppyDisk,
-  GlobeHemisphereWest,
   Graph,
-  ImageSquare,
   Info,
   Link as LinkIcon,
   ListChecks,
-  PaperPlaneTilt,
   Plus,
   ShieldCheck,
   WarningCircle,
-  Wallet,
   XCircle,
 } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
@@ -30,6 +25,7 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/workflow/app-shell";
 import { EntityRow } from "@/components/workflow/entity-row";
+import { EvidenceFlow } from "@/components/workflow/evidence-flow";
 import { EvidenceRow } from "@/components/workflow/evidence-row";
 import { PrimaryButton } from "@/components/workflow/primary-button";
 import { SectionCard } from "@/components/workflow/section-card";
@@ -211,43 +207,7 @@ function GraphStep() {
       <div className="grid gap-6 lg:grid-cols-[1fr_390px]">
         <div>
           <SectionCard>
-            <div className="relative h-[420px]">
-              <GraphNode
-                className="left-[3%] top-[10%]"
-                icon="channel"
-                title="promo-tg88"
-                subtitle="kanal publik"
-              />
-              <GraphNode
-                className="right-[4%] top-[10%]"
-                icon="payment"
-                title="DANA 0812-xxxx-5678"
-                subtitle="indikasi pembayaran"
-              />
-              <GraphNode
-                className="left-[30%] top-[42%]"
-                icon="domain"
-                title="slot-gacor88.xyz"
-                subtitle="Domain Utama"
-                large
-              />
-              <GraphNode
-                className="bottom-[5%] left-[3%]"
-                icon="mirror"
-                title="Mirror Cluster A"
-                subtitle="mirror"
-              />
-              <GraphNode
-                className="bottom-[5%] right-[6%]"
-                icon="image"
-                title="screenshot_001"
-                subtitle="bukti visual"
-              />
-              <GraphLine className="left-[25%] top-[29%] h-24 w-[23%] rotate-[38deg]" />
-              <GraphLine className="right-[27%] top-[29%] h-24 w-[22%] rotate-[-38deg]" />
-              <GraphLine className="bottom-[26%] left-[24%] h-24 w-[23%] rotate-[-38deg]" />
-              <GraphLine className="bottom-[26%] right-[28%] h-24 w-[21%] rotate-[38deg]" />
-            </div>
+            <EvidenceFlow />
           </SectionCard>
           <div className="mt-5 rounded-lg border border-primary/28 bg-primary/10 px-7 py-5 text-lg text-foreground">
             <Info aria-hidden className="mr-4 inline text-primary" size={28} />
@@ -442,47 +402,6 @@ function PromoEvidence() {
       </div>
     </div>
   );
-}
-
-function GraphNode({
-  className,
-  icon,
-  title,
-  subtitle,
-  large,
-}: {
-  className: string;
-  icon: "channel" | "payment" | "domain" | "mirror" | "image";
-  title: string;
-  subtitle: string;
-  large?: boolean;
-}) {
-  const icons = {
-    channel: PaperPlaneTilt,
-    payment: Wallet,
-    domain: GlobeHemisphereWest,
-    mirror: Desktop,
-    image: ImageSquare,
-  };
-  const Icon = icons[icon];
-
-  return (
-    <div
-      className={`absolute z-10 flex items-center gap-4 rounded-lg border border-border bg-card/80 p-5 shadow-xl ${large ? "w-[336px] border-primary bg-primary/10" : "w-72"} ${className}`}
-    >
-      <span className="grid size-[60px] shrink-0 place-items-center rounded-full bg-primary/20 text-3xl text-primary">
-        <Icon aria-hidden size={34} weight="duotone" />
-      </span>
-      <div>
-        <p className="text-xl font-bold text-foreground">{title}</p>
-        <p className="mt-1 text-lg text-muted-foreground">{subtitle}</p>
-      </div>
-    </div>
-  );
-}
-
-function GraphLine({ className }: { className: string }) {
-  return <div className={`absolute border-t-2 border-primary/45 ${className}`} />;
 }
 
 function ReviewLine({
