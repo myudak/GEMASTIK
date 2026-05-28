@@ -21,6 +21,7 @@ import {
   type NodeProps,
   getBezierPath,
 } from "@xyflow/react";
+import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -34,6 +35,8 @@ type EvidenceNodeData = {
 type EvidenceEdgeData = {
   label: string;
 };
+
+type FlowColorMode = "dark" | "light";
 
 const evidenceNodes = [
   {
@@ -137,11 +140,28 @@ const edgeTypes = {
 };
 
 export function EvidenceFlow() {
+  const [colorMode, setColorMode] = useState<FlowColorMode>("dark");
+
+  useEffect(() => {
+    const syncColorMode = () => {
+      setColorMode(document.documentElement.classList.contains("dark") ? "dark" : "light");
+    };
+    const observer = new MutationObserver(syncColorMode);
+
+    syncColorMode();
+    observer.observe(document.documentElement, {
+      attributeFilter: ["class"],
+      attributes: true,
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="h-[420px] overflow-hidden rounded-lg">
       <ReactFlow
         className="hawkeye-flow"
-        colorMode="dark"
+        colorMode={colorMode}
         defaultEdges={evidenceEdges}
         defaultNodes={evidenceNodes}
         edgesFocusable={false}
