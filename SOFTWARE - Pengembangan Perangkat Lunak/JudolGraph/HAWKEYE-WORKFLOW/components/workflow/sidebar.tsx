@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { ThemeToggle } from "@/components/workflow/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -29,11 +30,19 @@ export function Sidebar() {
     <aside className="fixed inset-y-0 left-0 z-20 hidden w-[290px] flex-col border-r border-sidebar-border bg-sidebar/95 px-5 py-9 text-sidebar-foreground backdrop-blur md:flex">
       <Link href="/cases/new" className="mb-12 flex items-center gap-3">
         <Image
-          src="/hawkeye-logo.png"
+          src="/hawkeye_dark_rounded_bg_transparent_512.png"
           alt="HAWKEYE"
           width={70}
           height={70}
-          className="size-16 object-contain"
+          className="hidden size-16 object-contain dark:block"
+          priority
+        />
+        <Image
+          src="/hawkeye_light_rounded_bg_transparent_512.png"
+          alt="HAWKEYE"
+          width={70}
+          height={70}
+          className="size-16 object-contain dark:hidden"
           priority
         />
         <div>
@@ -67,11 +76,14 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="mt-auto flex items-center gap-4 text-sidebar-foreground/62">
-        <ShieldCheck aria-hidden size={42} />
-        <p className="max-w-[180px] text-base leading-snug">
-          Tool untuk investigasi yang etis & legal
-        </p>
+      <div className="mt-auto space-y-5">
+        <ThemeToggle />
+        <div className="flex items-center gap-4 text-sidebar-foreground/62">
+          <ShieldCheck aria-hidden size={42} />
+          <p className="max-w-[180px] text-base leading-snug">
+            Tool untuk investigasi yang etis & legal
+          </p>
+        </div>
       </div>
     </aside>
   );
