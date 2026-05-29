@@ -1,22 +1,25 @@
 "use client";
 
 import {
+  ArrowRight,
   CaretRight,
   CheckCircle,
   Copy,
   FileText,
   FloppyDisk,
   Graph,
+  Hash,
   Info,
   Link as LinkIcon,
   ListChecks,
   Plus,
   ShieldCheck,
-  WarningCircle,
   XCircle,
 } from "@phosphor-icons/react";
 import Image from "next/image";
-import type { ReactNode } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useReducer, useState, type FormEvent, type ReactNode } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -27,23 +30,51 @@ import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/workflow/app-shell";
 import { EntityRow } from "@/components/workflow/entity-row";
 import { EvidenceFlow } from "@/components/workflow/evidence-flow";
+import { EvidenceAction } from "@/components/workflow/evidence-action";
 import { EvidenceRow } from "@/components/workflow/evidence-row";
+import { StatusBadge } from "@/components/workflow/evidence-status-badge";
 import { PrimaryButton } from "@/components/workflow/primary-button";
 import { SectionCard } from "@/components/workflow/section-card";
 import { CompletedProcessPanel, CrawlSummaryPanel } from "@/components/workflow/summary-panel";
-import { StepProgress } from "@/components/workflow/step-progress";
 import {
-  detectedEntities,
-  evidenceItems,
-  reviewSummary,
-  riskSignals,
-  type WorkflowStepId,
-  workflowSteps,
+  getCaseEntities,
+  getCaseEvidence,
+  getSelectedCase,
+  getSelectedEvidence,
+  getSelectedGraphNode,
+  useDemoStore,
+} from "@/lib/demo-store";
+import type {
+  GraphNodeType,
+  OcrEvidence,
+  SeedInput,
+  VerificationStatus,
+  WorkflowStepId,
 } from "@/lib/workflow-data";
+import { workflowSteps } from "@/lib/workflow-data";
 
 type WorkflowPageProps = {
   stepId: WorkflowStepId;
 };
+
+type SeedFormState = SeedInput;
+
+const graphTypeFilters: Array<"all" | GraphNodeType> = [
+  "all",
+  "domain",
+  "channel",
+  "payment",
+  "referral",
+  "mirror",
+  "screenshot",
+  "keyword",
+];
+const graphStatusFilters: Array<"all" | VerificationStatus> = [
+  "all",
+  "Verified",
+  "Need Review",
+  "Rejected",
+];
 
 export function WorkflowPage({ stepId }: WorkflowPageProps) {
   const step = workflowSteps.find((item) => item.id === stepId) ?? workflowSteps[0];
@@ -57,7 +88,7 @@ export function WorkflowPage({ stepId }: WorkflowPageProps) {
             {step.subtitle}
           </p>
         </header>
-        <StepProgress activeStep={stepId} />
+        <StepProgressShell activeStep={stepId} />
         <div className="mt-7">
           <StepContent stepId={stepId} />
         </div>
@@ -74,37 +105,137 @@ function StepContent({ stepId }: { stepId: WorkflowStepId }) {
   return <ReviewStep />;
 }
 
-function SeedStep() {
+function StepProgressShell({ activeStep }: { activeStep: WorkflowStepId }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_430px]">
+    <div className="mt-9">
+      {/* imported component kept in page shell via route state */}
+      <StepProgressInline activeStep={activeStep} />
+    </div>
+  );
+}
+
+function StepProgressInline({ activeStep }: { activeStep: WorkflowStepId }) {
+  const activeIndex = workflowSteps.findIndex((item) => item.id === activeStep);
+
+  return (
+    <div className="grid gap-4 md:grid-cols-5">
+      {workflowSteps.map((step, index) => {
+        const active = step.id === activeStep;
+        const done = index < activeIndex;
+
+        return (
+          <Link
+            className="group flex items-center gap-3 rounded-lg border border-border bg-card/65 p-3 transition hover:border-primary"
+            href={step.href}
+            key={step.id}
+          >
+            <span
+              className={
+                active || done
+                  ? "grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"
+                  : "grid size-9 place-items-center rounded-full border border-border text-muted-foreground"
+              }
+            >
+              {done ? <CheckCircle aria-hidden size={19} /> : step.number}
+            </span>
+            <span>
+              <span
+                className={
+                  active
+                    ? "block font-bold text-foreground"
+                    : "block font-medium text-muted-foreground"
+                }
+              >
+                {step.label}
+              </span>
+              <span className="text-xs text-muted-foreground">{step.title}</span>
+            </span>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+function SeedStep() {
+  const { actions } = useDemoStore();
+  const { push } = useRouter();
+  const [formState, updateFormState] = useReducer(
+    (state: SeedFormState, patch: Partial<SeedFormState>) => ({ ...state, ...patch }),
+    {
+      caseName: "Operasi Demo HAWKEYE",
+      note: "Validasi sumber publik, tidak membutuhkan login.",
+      seed: "https://slot-gacor88.xyz",
+      seedType: "url",
+    },
+  );
+  const [message, setMessage] = useState<string | null>(null);
+
+  function submitCase(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const result = actions.createCase(formState);
+
+    setMessage(result.message);
+    if (result.ok) push("/crawler");
+  }
+
+  return (
+    <form className="grid gap-6 lg:grid-cols-[1fr_430px]" onSubmit={submitCase}>
       <div>
         <SectionCard title="Tambah Seed Investigasi">
           <div className="space-y-6">
             <div>
               <p className="mb-3 text-lg font-medium text-foreground">Jenis Seed</p>
-              <RadioGroup className="grid gap-3 sm:grid-cols-2" defaultValue="url">
+              <RadioGroup
+                className="grid gap-3 sm:grid-cols-2"
+                onValueChange={(value) =>
+                  updateFormState({ seedType: value === "domain" ? "domain" : "url" })
+                }
+                value={formState.seedType}
+              >
                 <SeedChoice label="URL" value="url" />
                 <SeedChoice label="Domain" value="domain" />
               </RadioGroup>
             </div>
             <Field
               label="URL / Domain"
+              onChange={(seed) => updateFormState({ seed })}
               placeholder="Contoh: https://example.com atau example.com"
+              value={formState.seed}
             />
-            <Field label="Nama Kasus" placeholder="Contoh: Investigasi Situs Example" />
+            <Field
+              label="Nama Kasus"
+              onChange={(caseName) => updateFormState({ caseName })}
+              placeholder="Contoh: Investigasi Situs Example"
+              value={formState.caseName}
+            />
             <label className="block" htmlFor="case-note">
               <span className="mb-3 block text-lg font-medium text-foreground">Catatan Awal</span>
               <Textarea
                 className="min-h-[124px] resize-none bg-background/35 p-4 text-lg"
                 id="case-note"
-                placeholder="Tuliskan konteks, tujuan, atau informasi penting terkait kasus ini…"
+                onChange={(event) => updateFormState({ note: event.target.value })}
+                placeholder="Tuliskan konteks, tujuan, atau informasi penting terkait kasus ini..."
+                value={formState.note}
               />
             </label>
+            {message ? (
+              <p className="rounded-lg border border-border bg-background/35 p-3 text-sm text-muted-foreground">
+                {message}
+              </p>
+            ) : null}
           </div>
         </SectionCard>
         <div className="mt-6 flex flex-wrap gap-5">
-          <PrimaryButton href="/crawler">Mulai Investigasi</PrimaryButton>
-          <Button className="h-14 gap-3 px-7 text-base font-semibold" variant="secondary">
+          <Button className="h-14 gap-3 px-7 text-base font-semibold" type="submit">
+            <ArrowRight aria-hidden size={24} />
+            Mulai Investigasi
+          </Button>
+          <Button
+            className="h-14 gap-3 px-7 text-base font-semibold"
+            type="button"
+            variant="secondary"
+          >
             <FloppyDisk aria-hidden size={24} />
             Simpan Draft
           </Button>
@@ -127,28 +258,56 @@ function SeedStep() {
           />
         </SectionCard>
       </div>
-    </div>
+    </form>
   );
 }
 
 function CrawlStep() {
+  const store = useDemoStore();
+  const selectedCase = getSelectedCase(store);
+  const evidence = getCaseEvidence(store);
+  const selectedEvidence = getSelectedEvidence(store);
+
   return (
     <>
       <div className="grid gap-6 lg:grid-cols-[1fr_430px]">
         <SectionCard title="Hasil Crawl">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <p className="text-muted-foreground">{selectedCase.name}</p>
+            <StatusBadge status={selectedCase.reviewDecision} />
+          </div>
           <Separator />
-          <div className="hidden py-4 text-muted-foreground lg:grid lg:grid-cols-[220px_130px_120px_1fr]">
+          <div className="hidden py-4 text-muted-foreground lg:grid lg:grid-cols-[250px_130px_120px_1fr]">
             <span>Jenis Bukti</span>
             <span>Status</span>
-            <span>Waktu</span>
+            <span>Progress</span>
             <span>Deskripsi</span>
           </div>
-          {evidenceItems.map((item) => (
-            <EvidenceRow item={item} key={item.label} />
+          {evidence.map((item) => (
+            <EvidenceRow
+              item={item}
+              key={item.id}
+              onSelect={() => store.actions.selectEvidence(item.id)}
+              selected={item.id === selectedEvidence.id}
+            />
           ))}
         </SectionCard>
         <div className="space-y-5">
-          <CrawlSummaryPanel />
+          <CrawlSummaryPanel evidence={evidence} selectedCase={selectedCase} />
+          <SectionCard title="Detail Bukti Dipilih">
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-foreground">{selectedEvidence.title}</h3>
+              <p className="text-muted-foreground">{selectedEvidence.description}</p>
+              <InfoGrid
+                items={[
+                  ["Status", selectedEvidence.status],
+                  ["Confidence", `${selectedEvidence.confidence}%`],
+                  ["Hash", selectedEvidence.hash.slice(0, 24) + "..."],
+                  ["Sumber", selectedEvidence.source],
+                ]}
+              />
+            </div>
+          </SectionCard>
           <CompletedProcessPanel />
         </div>
       </div>
@@ -158,44 +317,74 @@ function CrawlStep() {
 }
 
 function OcrStep() {
+  const store = useDemoStore();
+  const evidence = getCaseEvidence(store);
+  const ocrEvidence = evidence.filter(isOcrEvidence);
+  const selectedEvidence = getSelectedEvidence(store);
+  const selectedOcr = isOcrEvidence(selectedEvidence) ? selectedEvidence : ocrEvidence[0];
+  const relatedEntityIds = new Set(selectedOcr?.entityIds ?? []);
+  const relatedEntities = getCaseEntities(store).filter((entity) =>
+    relatedEntityIds.has(entity.id),
+  );
+  const [copyMessage, setCopyMessage] = useState<string | null>(null);
+
+  async function copyOcrText() {
+    if (!selectedOcr?.ocrText) return;
+    await navigator.clipboard.writeText(selectedOcr.ocrText);
+    setCopyMessage("Teks OCR disalin untuk demo.");
+  }
+
   return (
     <>
-      <div className="grid gap-6 lg:grid-cols-[1fr_600px]">
+      <div className="grid gap-6 lg:grid-cols-[1fr_560px]">
         <SectionCard title="Bukti Visual (Screenshot)">
-          <PromoEvidence />
-          <h3 className="mb-3 mt-6 text-lg font-medium text-foreground">Teks Hasil OCR</h3>
-          <div className="relative rounded-lg border border-border bg-background/35 p-4 font-mono text-base leading-7 text-foreground">
-            <Button
-              aria-label="Salin teks OCR"
-              className="absolute right-3 top-3"
-              size="icon"
-              type="button"
-              variant="ghost"
-            >
-              <Copy aria-hidden size={22} />
-            </Button>
-            PROMO SPESIAL
-            <br />
-            BONUS DEPOSIT 100%
-            <br />
-            RTP TINGGI - MENANG LEBIH SERING
-            <br />
-            HUBUNGI: PROMO-TG88
-            <br />
-            PEMBAYARAN VIA DANA
+          <div className="mb-4 grid gap-3 md:grid-cols-3">
+            {ocrEvidence.map((item) => (
+              <button
+                className={
+                  item.id === selectedOcr?.id
+                    ? "rounded-lg border border-primary bg-primary/12 p-3 text-left"
+                    : "rounded-lg border border-border bg-background/35 p-3 text-left transition hover:border-primary"
+                }
+                key={item.id}
+                onClick={() => store.actions.selectEvidence(item.id)}
+                type="button"
+              >
+                <span className="block text-sm font-bold text-foreground">{item.title}</span>
+                <span className="mt-1 block text-xs text-muted-foreground">
+                  {item.confidence}% · {item.status}
+                </span>
+              </button>
+            ))}
           </div>
+          {selectedOcr ? <OcrEvidencePreview item={selectedOcr} /> : null}
+          <div className="mb-3 mt-6 flex items-center justify-between gap-4">
+            <h3 className="text-lg font-medium text-foreground">Teks Hasil OCR</h3>
+            <EvidenceAction onClick={copyOcrText}>
+              <Copy aria-hidden size={18} />
+              Salin OCR
+            </EvidenceAction>
+          </div>
+          <div className="relative whitespace-pre-wrap rounded-lg border border-border bg-background/35 p-4 font-mono text-base leading-7 text-foreground">
+            {selectedOcr?.ocrText}
+          </div>
+          {copyMessage ? <p className="mt-3 text-sm text-primary">{copyMessage}</p> : null}
         </SectionCard>
         <div className="space-y-5">
-          <SectionCard title="Entitas Terdeteksi">
+          <SectionCard title="Entitas dari Bukti Dipilih">
             <div className="space-y-3">
-              {detectedEntities.map((entity) => (
-                <EntityRow entity={entity} key={entity.category} />
+              {relatedEntities.map((entity) => (
+                <EntityRow entity={entity} key={entity.id} />
               ))}
             </div>
           </SectionCard>
           <SectionCard title="Catatan Sistem">
             <Checklist
-              items={["OCR confidence 94%", "1 entitas perlu review", "5 entitas tersimpan"]}
+              items={[
+                `OCR confidence ${selectedOcr?.confidence ?? 0}%`,
+                `${relatedEntities.filter((item) => item.status === "Need Review").length} entitas perlu review`,
+                `${relatedEntities.length} entitas tersimpan`,
+              ]}
             />
           </SectionCard>
         </div>
@@ -206,45 +395,98 @@ function OcrStep() {
 }
 
 function GraphStep() {
+  const store = useDemoStore();
+  const selectedCase = getSelectedCase(store);
+  const [typeFilter, setTypeFilter] = useState<"all" | GraphNodeType>("all");
+  const [statusFilter, setStatusFilter] = useState<"all" | VerificationStatus>("all");
+  const selectedNode = getSelectedGraphNode(store);
+  const nodes = store.graphNodes.filter(
+    (node) =>
+      node.caseId === selectedCase.id &&
+      (typeFilter === "all" || node.type === typeFilter) &&
+      (statusFilter === "all" || node.status === statusFilter),
+  );
+  const edges = store.graphEdges.filter((edge) => edge.caseId === selectedCase.id);
+
   return (
     <>
       <div className="grid gap-6 lg:grid-cols-[1fr_390px]">
         <div>
           <SectionCard>
-            <EvidenceFlow />
+            <div className="mb-5 flex flex-wrap gap-2">
+              {graphTypeFilters.map((filter) => (
+                <FilterButton
+                  active={typeFilter === filter}
+                  key={filter}
+                  onClick={() => setTypeFilter(filter)}
+                >
+                  {filter === "all" ? "Semua tipe" : filter}
+                </FilterButton>
+              ))}
+            </div>
+            <div className="mb-5 flex flex-wrap gap-2">
+              {graphStatusFilters.map((filter) => (
+                <FilterButton
+                  active={statusFilter === filter}
+                  key={filter}
+                  onClick={() => setStatusFilter(filter)}
+                >
+                  {filter === "all" ? "Semua status" : filter}
+                </FilterButton>
+              ))}
+            </div>
+            <EvidenceFlow
+              edges={edges}
+              nodes={nodes}
+              onSelectNode={store.actions.selectGraphNode}
+              selectedNodeId={selectedNode.id}
+            />
           </SectionCard>
           <div className="mt-5 rounded-lg border border-primary/28 bg-primary/10 px-7 py-5 text-lg text-foreground">
             <Info aria-hidden className="mr-4 inline text-primary" size={28} />
             Hubungan ini adalah sinyal awal dan tetap memerlukan verifikasi manusia.
           </div>
         </div>
-        <SectionCard title="Skor Risiko">
-          <div className="mx-auto grid size-44 place-items-center rounded-full border-[9px] border-destructive/80 text-center">
+        <SectionCard title="Detail Node">
+          <div className="space-y-5">
             <div>
-              <span className="text-6xl font-black text-destructive">
-                {reviewSummary.riskScore}
-              </span>
-              <span className="text-xl text-muted-foreground">/100</span>
+              <p className="text-sm uppercase text-muted-foreground">{selectedNode.type}</p>
+              <h3 className="mt-1 text-2xl font-black text-foreground">{selectedNode.label}</h3>
+              <p className="mt-2 text-muted-foreground">{selectedNode.subtitle}</p>
             </div>
-          </div>
-          <Badge
-            className="mx-auto mt-4 flex h-10 w-fit rounded-full border-destructive/30 bg-destructive/14 px-8 text-xl font-bold text-destructive"
-            variant="outline"
-          >
-            Kritis
-          </Badge>
-          <div className="mt-8 border-t border-border pt-6">
-            <h3 className="mb-5 text-lg font-bold text-foreground">Alasan Skor Risiko Tinggi</h3>
-            <div className="space-y-4">
-              {riskSignals.map((signal) => (
-                <div
-                  className="flex items-center gap-4 text-lg text-muted-foreground"
-                  key={signal.label}
-                >
-                  <WarningCircle aria-hidden className="text-destructive" size={25} />
-                  {signal.label}
-                </div>
-              ))}
+            <InfoGrid
+              items={[
+                ["Status", selectedNode.status],
+                ["Risk", selectedNode.riskLevel],
+                ["Skor", String(selectedNode.score)],
+                [
+                  "Relasi",
+                  String(
+                    edges.filter(
+                      (edge) => edge.source === selectedNode.id || edge.target === selectedNode.id,
+                    ).length,
+                  ),
+                ],
+              ]}
+            />
+            <div className="border-t border-border pt-5">
+              <h3 className="mb-4 text-lg font-bold text-foreground">Sinyal Risiko</h3>
+              <div className="space-y-3">
+                {store.riskSignals.map((signal) => (
+                  <div
+                    className="rounded-lg border border-border bg-background/35 p-3"
+                    key={signal.id}
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="font-medium text-foreground">{signal.label}</span>
+                      <Badge variant="outline">+{signal.weight}</Badge>
+                    </div>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      confidence {Math.round(signal.confidence * 100)}%
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </SectionCard>
@@ -255,6 +497,13 @@ function GraphStep() {
 }
 
 function ReviewStep() {
+  const store = useDemoStore();
+  const selectedCase = getSelectedCase(store);
+  const evidence = getCaseEvidence(store);
+  const entities = getCaseEntities(store);
+  const verifiedEvidence = evidence.filter((item) => item.status === "Verified");
+  const pendingEvidence = evidence.filter((item) => item.status === "Need Review");
+
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_500px]">
       <div className="space-y-5">
@@ -262,59 +511,83 @@ function ReviewStep() {
           <ReviewLine
             icon={<ShieldCheck size={28} />}
             label="Nama Kasus"
-            value={reviewSummary.caseName}
+            value={selectedCase.name}
           />
           <ReviewLine
             icon={<LinkIcon size={28} />}
             label="Seed Utama"
-            value={reviewSummary.seed}
+            value={selectedCase.seed}
             accent
           />
           <ReviewLine
             icon={<FileText size={28} />}
-            label="Jumlah Bukti"
-            value={String(reviewSummary.evidenceCount)}
+            label="Bukti Verified"
+            value={`${verifiedEvidence.length} / ${evidence.length}`}
           />
           <ReviewLine
             icon={<ListChecks size={28} />}
             label="Jumlah Entitas"
-            value={String(reviewSummary.entityCount)}
+            value={String(entities.length)}
           />
           <ReviewLine
             icon={<ShieldCheck size={28} />}
             label="Skor Risiko"
-            value={`${reviewSummary.riskScore} / 100`}
+            value={`${selectedCase.riskScore} / 100`}
             pill
           />
           <ReviewLine
             icon={<Info size={28} />}
             label="Catatan Investigator"
-            value={reviewSummary.note}
+            value={selectedCase.summary}
           />
         </SectionCard>
         <SectionCard title="Bukti Terverifikasi">
-          <Checklist
-            items={[
-              "Metadata halaman publik",
-              "Screenshot promosi sintetis",
-              "Tautan keluar dan referral",
-            ]}
-          />
+          <div className="space-y-3">
+            {verifiedEvidence.map((item) => (
+              <div
+                className="flex items-center justify-between gap-4 rounded-lg border border-border bg-background/35 p-4"
+                key={item.id}
+              >
+                <span className="text-foreground">{item.title}</span>
+                <StatusBadge status={item.status} />
+              </div>
+            ))}
+          </div>
         </SectionCard>
       </div>
       <div className="space-y-5">
         <SectionCard title="Aksi Review">
           <div className="space-y-4">
-            <ReviewAction icon={<ShieldCheck size={30} />} label="Verifikasi Kasus" active />
-            <ReviewAction icon={<Plus size={30} />} label="Minta Bukti Tambahan" />
-            <ReviewAction icon={<XCircle size={30} />} label="Tandai Ditolak" />
+            <ReviewAction
+              active={selectedCase.reviewDecision === "Verified"}
+              icon={<ShieldCheck size={30} />}
+              label="Verified"
+              onClick={() => store.actions.setReviewDecision("Verified")}
+            />
+            <ReviewAction
+              active={selectedCase.reviewDecision === "Need Review"}
+              icon={<Plus size={30} />}
+              label="Need Review"
+              onClick={() => store.actions.setReviewDecision("Need Review")}
+            />
+            <ReviewAction
+              active={selectedCase.reviewDecision === "Rejected"}
+              icon={<XCircle size={30} />}
+              label="Rejected"
+              onClick={() => store.actions.setReviewDecision("Rejected")}
+            />
           </div>
+          <p className="mt-4 rounded-lg border border-border bg-background/35 p-3 text-sm text-muted-foreground">
+            {pendingEvidence.length > 0
+              ? `${pendingEvidence.length} bukti masih Need Review. Laporan final hanya memuat bukti Verified.`
+              : "Semua bukti prioritas sudah melalui human review."}
+          </p>
         </SectionCard>
         <SectionCard title="Struktur Laporan">
           <ReportItem icon={<FileText size={27} />} label="Ringkasan Eksekutif" />
           <ReportItem icon={<Graph size={27} />} label="Evidence Graph" />
-          <ReportItem icon={<LinkIcon size={27} />} label="Lampiran Bukti" />
-          <ReportItem icon={<Info size={27} />} label="Audit Trail" />
+          <ReportItem icon={<LinkIcon size={27} />} label="Lampiran Bukti Verified" />
+          <ReportItem icon={<Hash size={27} />} label="Audit Trail & Hash" />
         </SectionCard>
         <div className="grid gap-4 sm:grid-cols-[1fr_1.4fr]">
           <PrimaryButton href="/evidence-graph" direction="back" variant="secondary">
@@ -350,11 +623,26 @@ function SeedChoice({ label, value }: { label: string; value: string }) {
   );
 }
 
-function Field({ label, placeholder }: { label: string; placeholder: string }) {
+function Field({
+  label,
+  onChange,
+  placeholder,
+  value,
+}: {
+  label: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  value: string;
+}) {
   return (
     <label className="block">
       <span className="mb-3 block text-lg font-medium text-foreground">{label}</span>
-      <Input className="h-[52px] bg-background/35 px-4 text-lg" placeholder={placeholder} />
+      <Input
+        className="h-[52px] bg-background/35 px-4 text-lg"
+        onChange={(event) => onChange(event.target.value)}
+        placeholder={placeholder}
+        value={value}
+      />
     </label>
   );
 }
@@ -372,41 +660,42 @@ function Checklist({ items }: { items: string[] }) {
   );
 }
 
-function PromoEvidence() {
+function OcrEvidencePreview({ item }: { item: OcrEvidence }) {
   return (
     <figure className="overflow-hidden rounded-lg border border-border bg-background/35">
       <div className="relative aspect-[16/9] w-full">
         <Image
-          alt="Bukti visual sintetis berupa screenshot halaman promosi yang diproses OCR."
+          alt={`${item.title} untuk bukti OCR sintetis.`}
           className="object-cover"
           fill
           priority
           sizes="(min-width: 1024px) 640px, 100vw"
-          src="/evidence/ocr-promo-evidence.png"
+          src={item.imageSrc}
         />
       </div>
-      <figcaption className="border-t border-border px-4 py-3 text-sm text-muted-foreground">
-        Bukti sintetis untuk demo OCR. Teks pada gambar digunakan sebagai sumber ekstraksi entitas.
+      <figcaption className="flex flex-wrap items-center justify-between gap-3 border-t border-border px-4 py-3 text-sm text-muted-foreground">
+        <span>{item.title}</span>
+        <span>{item.hash.slice(0, 16)}...</span>
       </figcaption>
     </figure>
   );
 }
 
 function ReviewLine({
+  accent,
   icon,
   label,
-  value,
-  accent,
   pill,
+  value,
 }: {
+  accent?: boolean;
   icon: ReactNode;
   label: string;
-  value: string;
-  accent?: boolean;
   pill?: boolean;
+  value: string;
 }) {
   return (
-    <div className="grid grid-cols-[34px_1fr_1.1fr] items-center gap-5 border-t border-border py-4 text-lg first:border-t-0">
+    <div className="grid gap-3 border-t border-border py-4 text-lg first:border-t-0 md:grid-cols-[34px_180px_1fr] md:items-center">
       <span className="text-muted-foreground">{icon}</span>
       <span className="text-muted-foreground">{label}</span>
       <span
@@ -425,17 +714,20 @@ function ReviewLine({
 }
 
 function ReviewAction({
+  active,
   icon,
   label,
-  active,
+  onClick,
 }: {
+  active?: boolean;
   icon: ReactNode;
   label: string;
-  active?: boolean;
+  onClick: () => void;
 }) {
   return (
     <Button
       className="h-16 w-full justify-start gap-5 px-6 text-left text-xl font-semibold"
+      onClick={onClick}
       type="button"
       variant={active ? "outline" : "secondary"}
     >
@@ -454,5 +746,54 @@ function ReportItem({ icon, label }: { icon: ReactNode; label: string }) {
       </div>
       <CaretRight aria-hidden className="text-muted-foreground" size={24} />
     </div>
+  );
+}
+
+function InfoGrid({ items }: { items: Array<[string, string]> }) {
+  return (
+    <div className="grid gap-3">
+      {items.map(([label, value]) => (
+        <div
+          className="flex items-center justify-between gap-4 rounded-lg border border-border bg-background/35 p-3"
+          key={label}
+        >
+          <span className="text-muted-foreground">{label}</span>
+          <span className="text-right font-medium text-foreground">{value}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function FilterButton({
+  active,
+  children,
+  onClick,
+}: {
+  active: boolean;
+  children: ReactNode;
+  onClick: () => void;
+}) {
+  return (
+    <Button
+      className="h-9 capitalize"
+      onClick={onClick}
+      size="sm"
+      type="button"
+      variant={active ? "default" : "outline"}
+    >
+      {children}
+    </Button>
+  );
+}
+
+function isOcrEvidence(item: unknown): item is OcrEvidence {
+  return Boolean(
+    item &&
+    typeof item === "object" &&
+    "imageSrc" in item &&
+    "ocrText" in item &&
+    (item as { imageSrc?: string }).imageSrc &&
+    (item as { ocrText?: string }).ocrText,
   );
 }

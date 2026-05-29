@@ -14,7 +14,7 @@ import {
 } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -22,16 +22,12 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/workflow/app-shell";
+import { EntityRow } from "@/components/workflow/entity-row";
+import { StatusBadge } from "@/components/workflow/evidence-status-badge";
 import { SectionCard } from "@/components/workflow/section-card";
 import { ThemeToggle } from "@/components/workflow/theme-toggle";
-import {
-  entityDetail,
-  investigationCases,
-  linkCheckResult,
-  publicReportStats,
-  reviewActions,
-  reviewSummary,
-} from "@/lib/workflow-data";
+import { getCaseEntities, getCaseEvidence, getSelectedCase, useDemoStore } from "@/lib/demo-store";
+import { publicReportStats, type DemoCase } from "@/lib/workflow-data";
 
 export function LoginPage() {
   return (
@@ -45,8 +41,8 @@ export function LoginPage() {
             Masuk ke HAWKEYE
           </h1>
           <p className="mt-4 max-w-2xl text-xl leading-relaxed text-muted-foreground">
-            Akses mockup investigator untuk meninjau kasus, evidence graph, human review, dan
-            laporan berbasis bukti sintetis.
+            Akses demo investigator untuk meninjau kasus, evidence graph, human review, dan laporan
+            berbasis bukti sintetis.
           </p>
         </div>
         <SectionCard title="Login Investigator">
@@ -74,90 +70,143 @@ export function LoginPage() {
 }
 
 export function DashboardPage() {
+  const store = useDemoStore();
+  const selectedCase = getSelectedCase(store);
+  const selectedEvidence = getCaseEvidence(store);
+  const selectedEntities = getCaseEntities(store);
+  const activeCases = store.cases.filter((item) => item.status !== "Rejected").length;
+  const needReview = store.cases.filter((item) => item.status === "Need Review").length;
+
   return (
     <AppShell>
       <PageIntro
+        description="Ringkasan kasus, bukti, entitas, dan prioritas review berdasarkan data sintetis."
         eyebrow="Investigator Workspace"
         title="Dashboard"
-        description="Ringkasan sederhana untuk memantau kasus, bukti, entitas, dan status review."
       />
       <div className="mt-8 grid gap-5 md:grid-cols-4">
-        <Metric label="Kasus aktif" value="3" />
-        <Metric label="Bukti terkumpul" value="9" />
-        <Metric label="Entitas ditemukan" value="15" />
-        <Metric label="Perlu review" value="2" tone="warn" />
+        <Metric label="Kasus aktif" value={String(activeCases)} />
+        <Metric label="Bukti terkumpul" value={String(store.evidence.length)} />
+        <Metric label="Entitas ditemukan" value={String(store.entities.length)} />
+        <Metric label="Perlu review" tone="warn" value={String(needReview)} />
       </div>
-      <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_380px]">
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_390px]">
         <SectionCard title="Daftar Kasus">
           <div className="space-y-3">
-            {investigationCases.map((item) => (
-              <div className="rounded-lg border border-border bg-background/35 p-4" key={item.id}>
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground">{item.name}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{item.seed}</p>
-                  </div>
-                  <Badge variant={item.risk === "Tinggi" ? "destructive" : "outline"}>
-                    Risiko {item.risk}
-                  </Badge>
-                </div>
-                <Separator className="my-4" />
-                <div className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-4">
-                  <span>{item.status}</span>
-                  <span>{item.evidenceCount} bukti</span>
-                  <span>{item.entityCount} entitas</span>
-                  <span>{item.updatedAt}</span>
-                </div>
-              </div>
+            {store.cases.map((item) => (
+              <CaseCard
+                item={item}
+                key={item.id}
+                onSelect={() => store.actions.selectCase(item.id)}
+                selected={item.id === selectedCase.id}
+              />
             ))}
           </div>
         </SectionCard>
-        <SectionCard title="Prioritas">
-          <div className="space-y-4">
-            <ScoreCard />
-            <Button asChild className="h-12 w-full">
-              <Link href="/cases/new">
-                Buat Kasus Baru
-                <ArrowRight aria-hidden size={19} />
-              </Link>
-            </Button>
-            <Button asChild className="h-12 w-full" variant="secondary">
-              <Link href="/entities/slot-gacor88">Lihat Detail Entitas</Link>
-            </Button>
-          </div>
-        </SectionCard>
+        <div className="space-y-6">
+          <SectionCard title="Prioritas Dipilih">
+            <div className="space-y-4">
+              <ScoreCard item={selectedCase} />
+              <InfoRow
+                icon={<Fingerprint size={24} />}
+                label={`${selectedEvidence.length} bukti dalam case`}
+              />
+              <InfoRow
+                icon={<ClipboardText size={24} />}
+                label={`${selectedEntities.length} entitas terdeteksi`}
+              />
+              <Button asChild className="h-12 w-full">
+                <Link href="/cases/new">
+                  Buat Kasus Baru
+                  <ArrowRight aria-hidden size={19} />
+                </Link>
+              </Button>
+              <Button asChild className="h-12 w-full" variant="secondary">
+                <Link href="/entities/slot-gacor88">Lihat Detail Entitas</Link>
+              </Button>
+            </div>
+          </SectionCard>
+          <SectionCard title="Audit Terakhir">
+            <div className="space-y-3">
+              {store.auditTrail.slice(0, 4).map((event) => (
+                <div
+                  className="rounded-lg border border-border bg-background/35 p-3"
+                  key={event.id}
+                >
+                  <p className="font-medium text-foreground">{event.action}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{event.at}</p>
+                </div>
+              ))}
+            </div>
+          </SectionCard>
+        </div>
       </div>
     </AppShell>
   );
 }
 
 export function EntityDetailPage() {
+  const store = useDemoStore();
+  const entities = getCaseEntities(store);
+  const selectedEntity =
+    entities.find((item) => item.value === "slot-gacor88.xyz") ?? entities[0] ?? store.entities[0];
+  const relatedEvidence = store.evidence.filter((item) =>
+    selectedEntity.evidenceIds.includes(item.id),
+  );
+
   return (
     <AppShell>
       <PageIntro
-        eyebrow="Panel Detail Entitas"
-        title={entityDetail.value}
         description="Detail entitas sintetis untuk meninjau risk signals, confidence value, bukti terkait, dan status verifikasi."
+        eyebrow="Panel Detail Entitas"
+        title={selectedEntity.value}
       />
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_380px]">
+      <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_390px]">
         <div className="space-y-6">
           <div className="grid gap-5 md:grid-cols-3">
-            <Metric label="Tipe entitas" value={entityDetail.type} />
-            <Metric label="Confidence" value={`${entityDetail.confidence}%`} />
-            <Metric label="Status" value={entityDetail.status} tone="warn" />
+            <Metric label="Tipe entitas" value={selectedEntity.type} />
+            <Metric label="Confidence" value={`${selectedEntity.confidence}%`} />
+            <Metric
+              label="Status"
+              tone={selectedEntity.status === "Need Review" ? "warn" : undefined}
+              value={selectedEntity.status}
+            />
           </div>
+          <SectionCard title="Entitas Terkait">
+            <div className="space-y-3">
+              {entities.slice(0, 8).map((item) => (
+                <EntityRow entity={item} key={item.id} />
+              ))}
+            </div>
+          </SectionCard>
           <SectionCard title="Bukti Terkait">
             <div className="space-y-3">
-              {entityDetail.relatedEvidence.map((item) => (
-                <InfoRow icon={<Fingerprint size={24} />} key={item} label={item} />
+              {relatedEvidence.map((item) => (
+                <div
+                  className="flex items-center justify-between gap-4 rounded-lg border border-border bg-background/35 p-4"
+                  key={item.id}
+                >
+                  <span>
+                    <span className="block font-medium text-foreground">{item.title}</span>
+                    <span className="mt-1 block text-xs text-muted-foreground">
+                      {item.hash.slice(0, 18)}...
+                    </span>
+                  </span>
+                  <StatusBadge status={item.status} />
+                </div>
               ))}
             </div>
           </SectionCard>
         </div>
         <SectionCard title="Risk Signals">
           <div className="space-y-3">
-            {entityDetail.riskSignals.map((item) => (
-              <InfoRow icon={<WarningCircle size={24} />} key={item} label={item} tone="danger" />
+            {store.riskSignals.map((item) => (
+              <InfoRow
+                icon={<WarningCircle size={24} />}
+                key={item.id}
+                label={`${item.label} · +${item.weight} · ${Math.round(item.confidence * 100)}%`}
+                tone={item.status === "Need Review" ? "danger" : undefined}
+              />
             ))}
           </div>
           <Button asChild className="mt-6 h-12 w-full" variant="secondary">
@@ -170,37 +219,53 @@ export function EntityDetailPage() {
 }
 
 export function HumanReviewPage() {
+  const store = useDemoStore();
+  const selectedCase = getSelectedCase(store);
+
   return (
     <AppShell>
       <PageIntro
+        description="Keputusan akhir tetap berada pada investigator sebelum laporan dibuat."
         eyebrow="Panel Human Review"
         title="Review Investigator"
-        description="Keputusan akhir tetap berada pada investigator sebelum laporan dibuat."
       />
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_420px]">
         <SectionCard title="Ringkasan Review">
           <div className="grid gap-4">
-            <InfoRow icon={<LinkIcon size={24} />} label={reviewSummary.seed} />
-            <InfoRow icon={<ClipboardText size={24} />} label={reviewSummary.note} />
+            <InfoRow icon={<LinkIcon size={24} />} label={selectedCase.seed} />
+            <InfoRow icon={<ClipboardText size={24} />} label={selectedCase.summary} />
             <InfoRow
               icon={<ShieldCheck size={24} />}
-              label={`Skor risiko ${reviewSummary.riskScore}/100`}
+              label={`Skor risiko ${selectedCase.riskScore}/100`}
+            />
+            <InfoRow
+              icon={<Fingerprint size={24} />}
+              label={`Status saat ini: ${selectedCase.reviewDecision}`}
             />
           </div>
         </SectionCard>
         <SectionCard title="Keputusan">
           <div className="space-y-4">
-            {reviewActions.map((action) => (
+            {(["Verified", "Need Review", "Rejected"] as const).map((decision) => (
               <button
-                className="flex w-full items-start gap-4 rounded-lg border border-border bg-background/35 p-4 text-left transition hover:border-primary"
-                key={action.label}
+                className={
+                  selectedCase.reviewDecision === decision
+                    ? "flex w-full items-start gap-4 rounded-lg border border-primary bg-primary/12 p-4 text-left"
+                    : "flex w-full items-start gap-4 rounded-lg border border-border bg-background/35 p-4 text-left transition hover:border-primary"
+                }
+                key={decision}
+                onClick={() => store.actions.setReviewDecision(decision)}
                 type="button"
               >
-                <ReviewIcon label={action.label} />
+                <ReviewIcon label={decision} />
                 <span>
-                  <span className="block text-lg font-bold text-foreground">{action.label}</span>
+                  <span className="block text-lg font-bold text-foreground">{decision}</span>
                   <span className="mt-1 block text-sm text-muted-foreground">
-                    {action.description}
+                    {decision === "Verified"
+                      ? "Bukti cukup dan dapat masuk paket laporan."
+                      : decision === "Rejected"
+                        ? "Tidak cukup bukti atau tidak sesuai ruang lingkup."
+                        : "Perlu pemeriksaan investigator sebelum diputuskan."}
                   </span>
                 </span>
               </button>
@@ -219,17 +284,26 @@ export function HumanReviewPage() {
 }
 
 export function PublicPortalPage() {
+  const store = useDemoStore();
+  const [reportUrl, setReportUrl] = useState("https://contoh-domain-publik.example");
+  const [reportNote, setReportNote] = useState("Terlihat pola promosi dan redirect publik.");
+
   return (
     <PublicShell>
       <main className="mx-auto max-w-6xl px-5 py-10">
         <PublicHero
-          title="Portal Publik HAWKEYE"
           description="Masyarakat dapat mengirim laporan awal dan memeriksa indikasi terbatas tanpa login."
+          title="Portal Publik HAWKEYE"
         />
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_380px]">
           <SectionCard title="Formulir Pelaporan">
             <div className="space-y-5">
-              <Field label="URL atau Domain" placeholder="https://example.com" />
+              <Field
+                label="URL atau Domain"
+                onChange={setReportUrl}
+                placeholder="https://example.com"
+                value={reportUrl}
+              />
               <label className="block" htmlFor="public-report-note">
                 <span className="mb-3 block text-base font-medium text-foreground">
                   Keterangan singkat
@@ -237,12 +311,23 @@ export function PublicPortalPage() {
                 <Textarea
                   className="min-h-28 bg-background/35"
                   id="public-report-note"
-                  placeholder="Tuliskan alasan pelaporan secara ringkas…"
+                  onChange={(event) => setReportNote(event.target.value)}
+                  placeholder="Tuliskan alasan pelaporan secara ringkas..."
+                  value={reportNote}
                 />
               </label>
-              <Button className="h-12 w-full" type="button">
+              <Button
+                className="h-12 w-full"
+                onClick={() => store.actions.submitPublicReport(reportUrl)}
+                type="button"
+              >
                 Kirim Laporan Sintetis
               </Button>
+              {store.publicReportMessage ? (
+                <p className="rounded-lg border border-border bg-background/35 p-3 text-sm text-muted-foreground">
+                  {store.publicReportMessage}
+                </p>
+              ) : null}
             </div>
           </SectionCard>
           <div className="space-y-6">
@@ -272,30 +357,52 @@ export function PublicPortalPage() {
 }
 
 export function LinkCheckerPage() {
+  const store = useDemoStore();
+  const [value, setValue] = useState("slot-gacor88.xyz/ref?id=synthetic");
+  const result = store.linkCheckResult;
+
   return (
     <PublicShell>
       <main className="mx-auto max-w-5xl px-5 py-10">
         <PublicHero
-          title="Link Checker Publik"
           description="Hasil bersifat indikatif dan bukan hasil investigasi penuh."
+          title="Link Checker Publik"
         />
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_360px]">
           <SectionCard title="Periksa URL / Domain">
             <div className="flex flex-col gap-3 sm:flex-row">
               <Input
                 className="h-12 bg-background/35 text-base"
-                defaultValue={linkCheckResult.domain}
+                onChange={(event) => setValue(event.target.value)}
+                value={value}
               />
-              <Button className="h-12" type="button">
+              <Button
+                className="h-12"
+                onClick={() => store.actions.runLinkCheck(value)}
+                type="button"
+              >
                 <MagnifyingGlass aria-hidden size={20} />
                 Periksa
               </Button>
             </div>
             <div className="mt-6 rounded-lg border border-border bg-background/35 p-5">
-              <Badge className="mb-3 rounded-full" variant="outline">
-                {linkCheckResult.level}
+              <Badge
+                className="mb-3 rounded-full"
+                variant={result.level === "Indikasi Tinggi" ? "destructive" : "outline"}
+              >
+                {result.level} · {result.score}/100
               </Badge>
-              <p className="text-muted-foreground">{linkCheckResult.description}</p>
+              <p className="text-muted-foreground">{result.description}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {result.signals.map((signal) => (
+                  <span
+                    className="rounded-full border border-border px-3 py-1 text-sm text-muted-foreground"
+                    key={signal}
+                  >
+                    {signal}
+                  </span>
+                ))}
+              </div>
             </div>
           </SectionCard>
           <SectionCard title="Batasan Informasi">
@@ -381,6 +488,45 @@ function PublicHero({ description, title }: { description: string; title: string
   );
 }
 
+function CaseCard({
+  item,
+  onSelect,
+  selected,
+}: {
+  item: DemoCase;
+  onSelect: () => void;
+  selected: boolean;
+}) {
+  return (
+    <button
+      className={
+        selected
+          ? "w-full rounded-lg border border-primary bg-primary/10 p-4 text-left"
+          : "w-full rounded-lg border border-border bg-background/35 p-4 text-left transition hover:border-primary"
+      }
+      onClick={onSelect}
+      type="button"
+    >
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h3 className="text-lg font-bold text-foreground">{item.name}</h3>
+          <p className="mt-1 text-sm text-muted-foreground">{item.seed}</p>
+        </div>
+        <Badge variant={item.riskLevel === "Critical" ? "destructive" : "outline"}>
+          {item.riskLevel}
+        </Badge>
+      </div>
+      <Separator className="my-4" />
+      <div className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-4">
+        <span>{item.status}</span>
+        <span>{item.evidenceIds.length || "-"} bukti</span>
+        <span>{item.entityIds.length || "-"} entitas</span>
+        <span>{item.updatedAt}</span>
+      </div>
+    </button>
+  );
+}
+
 function Metric({ label, tone, value }: { label: string; value: string; tone?: "warn" }) {
   return (
     <SectionCard>
@@ -398,15 +544,15 @@ function Metric({ label, tone, value }: { label: string; value: string; tone?: "
   );
 }
 
-function ScoreCard() {
+function ScoreCard({ item }: { item: DemoCase }) {
   return (
     <div className="rounded-lg border border-border bg-background/35 p-5">
       <p className="text-sm text-muted-foreground">Skor risiko prioritas</p>
       <div className="mt-3 flex items-end gap-2">
-        <strong className="text-5xl font-black text-destructive">{reviewSummary.riskScore}</strong>
+        <strong className="text-5xl font-black text-destructive">{item.riskScore}</strong>
         <span className="pb-1 text-lg text-muted-foreground">/100</span>
       </div>
-      <p className="mt-3 text-sm text-muted-foreground">{reviewSummary.note}</p>
+      <p className="mt-3 text-sm text-muted-foreground">{item.summary}</p>
     </div>
   );
 }
@@ -429,17 +575,27 @@ function ReviewIcon({ label }: { label: string }) {
 
 function Field({
   label,
+  onChange,
   placeholder,
   type = "text",
+  value,
 }: {
   label: string;
+  onChange?: (value: string) => void;
   placeholder: string;
   type?: string;
+  value?: string;
 }) {
   return (
     <label className="block">
       <span className="mb-3 block text-base font-medium text-foreground">{label}</span>
-      <Input className="h-12 bg-background/35 text-base" placeholder={placeholder} type={type} />
+      <Input
+        className="h-12 bg-background/35 text-base"
+        onChange={onChange ? (event) => onChange(event.target.value) : undefined}
+        placeholder={placeholder}
+        type={type}
+        value={value}
+      />
     </label>
   );
 }

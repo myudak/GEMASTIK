@@ -1,65 +1,71 @@
 "use client";
 
-import { Camera, CheckCircle, FileText, Link as LinkIcon } from "@phosphor-icons/react";
+import { Camera, Code, FileText, Link as LinkIcon, Wallet } from "@phosphor-icons/react";
 
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import type { EvidenceItem } from "@/lib/workflow-data";
+import { StatusBadge } from "@/components/workflow/evidence-status-badge";
+import type { EvidenceItem, EvidenceKind } from "@/lib/workflow-data";
 
-const evidenceIcons = {
-  metadata: FileText,
-  screenshot: Camera,
+const evidenceIcons: Record<EvidenceKind, typeof FileText> = {
+  html: Code,
   link: LinkIcon,
+  metadata: FileText,
+  mirror: LinkIcon,
+  payment: Wallet,
+  screenshot: Camera,
 };
 
-export function EvidenceRow({ item }: { item: EvidenceItem }) {
-  const Icon = evidenceIcons[item.icon];
+export function EvidenceRow({
+  item,
+  onSelect,
+  selected = false,
+}: {
+  item: EvidenceItem;
+  onSelect?: () => void;
+  selected?: boolean;
+}) {
+  const Icon = evidenceIcons[item.kind];
 
   return (
     <>
       <Separator />
-      <div className="grid gap-5 py-6 lg:grid-cols-[220px_130px_120px_1fr]">
-        <div className="flex items-center gap-4">
-          <span className="grid size-[52px] shrink-0 place-items-center rounded-lg border border-border bg-primary/10 text-primary">
+      <button
+        className="grid w-full gap-5 py-5 text-left transition hover:bg-muted/20 lg:grid-cols-[250px_130px_120px_1fr]"
+        onClick={onSelect}
+        type="button"
+      >
+        <div className="flex items-center gap-4 px-1">
+          <span
+            className={
+              selected
+                ? "grid size-[52px] shrink-0 place-items-center rounded-lg border border-primary bg-primary/18 text-primary"
+                : "grid size-[52px] shrink-0 place-items-center rounded-lg border border-border bg-background/40 text-primary"
+            }
+          >
             <Icon aria-hidden size={28} />
           </span>
-          <span className="font-semibold text-foreground">{item.label}</span>
+          <span>
+            <span className="block font-semibold text-foreground">{item.title}</span>
+            <span className="mt-1 block text-xs text-muted-foreground">{item.source}</span>
+          </span>
         </div>
-        <Badge
-          className="h-8 w-fit gap-2 rounded-lg border-emerald-400/28 bg-emerald-500/10 px-3 text-sm font-semibold text-emerald-300"
-          variant="outline"
-        >
-          <CheckCircle aria-hidden size={18} />
-          {item.status}
-        </Badge>
-        <p className="text-muted-foreground">{item.time}</p>
-        <div className="space-y-3">
-          {item.preview === "webpage" ? <EvidencePreview /> : null}
-          <p className="max-w-80 leading-relaxed text-muted-foreground">{item.description}</p>
+        <StatusBadge status={item.status} />
+        <div className="text-sm text-muted-foreground">
+          <span className="block">{item.progress}%</span>
+          <span className="mt-1 block">{item.collectedAt.split(", ")[1] ?? item.collectedAt}</span>
         </div>
-      </div>
-    </>
-  );
-}
-
-function EvidencePreview() {
-  return (
-    <div className="h-24 w-[272px] overflow-hidden rounded-lg border border-border bg-background text-foreground shadow-lg">
-      <div className="flex h-6 items-center justify-between border-b border-border px-3 text-[7px] font-bold">
-        <span>Pemerintah Dorong Transformasi</span>
-        <span className="text-muted-foreground">Berita publik</span>
-      </div>
-      <div className="grid grid-cols-[1fr_80px] gap-2 p-3">
-        <div>
-          <div className="mb-2 h-3 w-32 rounded bg-foreground" />
-          <div className="space-y-1">
-            <div className="h-1.5 rounded bg-muted-foreground/40" />
-            <div className="h-1.5 w-4/5 rounded bg-muted-foreground/40" />
-            <div className="h-1.5 w-3/5 rounded bg-muted-foreground/40" />
+        <div className="space-y-2 pr-2">
+          <p className="max-w-2xl leading-relaxed text-muted-foreground">{item.description}</p>
+          <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+            <span className="rounded-full border border-border px-2 py-1">
+              confidence {item.confidence}%
+            </span>
+            <span className="rounded-full border border-border px-2 py-1">
+              hash {item.hash.slice(0, 10)}...
+            </span>
           </div>
         </div>
-        <div className="rounded bg-muted" />
-      </div>
-    </div>
+      </button>
+    </>
   );
 }

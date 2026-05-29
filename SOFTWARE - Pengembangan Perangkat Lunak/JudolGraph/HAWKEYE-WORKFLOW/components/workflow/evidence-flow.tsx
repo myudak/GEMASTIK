@@ -1,10 +1,13 @@
 "use client";
 
 import {
-  Desktop,
+  Code,
   GlobeHemisphereWest,
   ImageSquare,
+  Link as LinkIcon,
   PaperPlaneTilt,
+  Tag,
+  UserCircle,
   Wallet,
 } from "@phosphor-icons/react";
 import {
@@ -21,115 +24,22 @@ import {
   type NodeProps,
   getBezierPath,
 } from "@xyflow/react";
+import { useMemo } from "react";
 
 import { useThemeMode } from "@/components/workflow/theme-mode";
 import { cn } from "@/lib/utils";
+import type { GraphEdge, GraphNode, GraphNodeType, VerificationStatus } from "@/lib/workflow-data";
 
-type EvidenceNodeData = {
-  icon: "channel" | "payment" | "domain" | "mirror" | "image";
-  title: string;
-  subtitle: string;
-  focus?: boolean;
+type EvidenceNodeData = GraphNode & {
+  selected: boolean;
 };
 
 type EvidenceEdgeData = {
   label: string;
+  status: VerificationStatus;
 };
 
 type FlowColorMode = "dark" | "light";
-
-const evidenceNodes = [
-  {
-    id: "channel",
-    type: "evidence",
-    position: { x: 20, y: 28 },
-    data: {
-      icon: "channel",
-      title: "promo-tg88",
-      subtitle: "kanal publik",
-    },
-  },
-  {
-    id: "payment",
-    type: "evidence",
-    position: { x: 560, y: 28 },
-    data: {
-      icon: "payment",
-      title: "DANA 0812-xxxx-5678",
-      subtitle: "indikasi pembayaran",
-    },
-  },
-  {
-    id: "domain",
-    type: "evidence",
-    position: { x: 280, y: 190 },
-    data: {
-      icon: "domain",
-      title: "slot-gacor88.xyz",
-      subtitle: "Domain Utama",
-      focus: true,
-    },
-  },
-  {
-    id: "mirror",
-    type: "evidence",
-    position: { x: 42, y: 342 },
-    data: {
-      icon: "mirror",
-      title: "Mirror Cluster A",
-      subtitle: "mirror",
-    },
-  },
-  {
-    id: "screenshot",
-    type: "evidence",
-    position: { x: 570, y: 342 },
-    data: {
-      icon: "image",
-      title: "screenshot_001",
-      subtitle: "bukti visual",
-    },
-  },
-] satisfies Node<EvidenceNodeData>[];
-
-const evidenceEdges = [
-  {
-    id: "channel-domain",
-    source: "channel",
-    target: "domain",
-    sourceHandle: "bottom",
-    targetHandle: "top",
-    type: "labeled",
-    data: { label: "mengarah ke" },
-  },
-  {
-    id: "payment-domain",
-    source: "payment",
-    target: "domain",
-    sourceHandle: "bottom",
-    targetHandle: "top",
-    type: "labeled",
-    data: { label: "menerima bayar dari" },
-  },
-  {
-    id: "domain-mirror",
-    source: "domain",
-    target: "mirror",
-    sourceHandle: "bottom",
-    targetHandle: "top",
-    type: "labeled",
-    data: { label: "mirror dari" },
-  },
-  {
-    id: "domain-screenshot",
-    source: "domain",
-    target: "screenshot",
-    sourceHandle: "bottom",
-    targetHandle: "top",
-    type: "labeled",
-    data: { label: "bukti visual" },
-  },
-] satisfies Edge<EvidenceEdgeData>[];
 
 const nodeTypes = {
   evidence: EvidenceNode,
@@ -139,27 +49,64 @@ const edgeTypes = {
   labeled: LabeledEdge,
 };
 
-export function EvidenceFlow() {
+export function EvidenceFlow({
+  edges,
+  nodes,
+  onSelectNode,
+  selectedNodeId,
+}: {
+  edges: GraphEdge[];
+  nodes: GraphNode[];
+  onSelectNode: (nodeId: string) => void;
+  selectedNodeId: string;
+}) {
   const colorMode: FlowColorMode = useThemeMode();
+  const flowNodes = useMemo<Node<EvidenceNodeData>[]>(
+    () =>
+      nodes.map((node) => ({
+        data: { ...node, selected: node.id === selectedNodeId },
+        id: node.id,
+        position: node.position,
+        type: "evidence",
+      })),
+    [nodes, selectedNodeId],
+  );
+  const visibleNodeIds = useMemo(() => new Set(nodes.map((node) => node.id)), [nodes]);
+  const flowEdges = useMemo<Edge<EvidenceEdgeData>[]>(() => {
+    const nextEdges: Edge<EvidenceEdgeData>[] = [];
+
+    for (const edge of edges) {
+      if (visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target)) {
+        nextEdges.push({
+          data: { label: edge.relation, status: edge.status },
+          id: edge.id,
+          source: edge.source,
+          target: edge.target,
+          type: "labeled",
+        });
+      }
+    }
+
+    return nextEdges;
+  }, [edges, visibleNodeIds]);
 
   return (
-    <div className="h-[420px] overflow-hidden rounded-lg">
+    <div className="h-[520px] overflow-hidden rounded-lg">
       <ReactFlow
         className="hawkeye-flow"
         colorMode={colorMode}
-        defaultEdges={evidenceEdges}
-        defaultNodes={evidenceNodes}
+        edges={flowEdges}
         edgesFocusable={false}
         edgeTypes={edgeTypes}
-        elementsSelectable={false}
         fitView
-        fitViewOptions={{ padding: 0.16 }}
-        maxZoom={1.1}
-        minZoom={0.68}
-        nodesFocusable={false}
-        nodeTypes={nodeTypes}
+        fitViewOptions={{ padding: 0.18 }}
+        maxZoom={1.16}
+        minZoom={0.56}
+        nodes={flowNodes}
         nodesConnectable={false}
         nodesDraggable={false}
+        nodeTypes={nodeTypes}
+        onNodeClick={(_, node) => onSelectNode(node.id)}
         panOnDrag={false}
         panOnScroll={false}
         proOptions={{ hideAttribution: true }}
@@ -182,30 +129,42 @@ export function EvidenceFlow() {
 
 function EvidenceNode({ data }: NodeProps<Node<EvidenceNodeData>>) {
   const Icon = {
+    alias: UserCircle,
     channel: PaperPlaneTilt,
-    payment: Wallet,
     domain: GlobeHemisphereWest,
-    mirror: Desktop,
-    image: ImageSquare,
-  }[data.icon];
+    html: Code,
+    keyword: Tag,
+    mirror: GlobeHemisphereWest,
+    payment: Wallet,
+    referral: LinkIcon,
+    screenshot: ImageSquare,
+  } satisfies Record<GraphNodeType, typeof GlobeHemisphereWest>;
+
+  const NodeIcon = Icon[data.type];
 
   return (
-    <div
+    <button
       className={cn(
-        "relative flex items-center gap-4 rounded-lg border border-border bg-card/90 p-5 shadow-xl",
-        data.focus ? "w-[336px] border-primary bg-primary/10" : "w-72",
+        "relative flex w-[238px] items-center gap-3 rounded-lg border border-border bg-card/95 p-4 text-left shadow-xl transition",
+        data.riskLevel === "Critical" && "border-destructive/45 bg-destructive/10",
+        data.status === "Verified" && "border-emerald-500/35",
+        data.status === "Rejected" && "opacity-55",
+        data.selected && "border-primary bg-primary/14 ring-2 ring-primary/30",
       )}
+      type="button"
     >
       <Handle className="opacity-0" id="top" position={Position.Top} type="target" />
       <Handle className="opacity-0" id="bottom" position={Position.Bottom} type="source" />
-      <span className="grid size-[60px] shrink-0 place-items-center rounded-full bg-primary/20 text-primary">
-        <Icon aria-hidden size={34} weight="duotone" />
+      <span className="grid size-12 shrink-0 place-items-center rounded-full bg-primary/20 text-primary">
+        <NodeIcon aria-hidden size={28} weight="duotone" />
       </span>
-      <div>
-        <p className="text-xl font-bold text-foreground">{data.title}</p>
-        <p className="mt-1 text-lg text-muted-foreground">{data.subtitle}</p>
-      </div>
-    </div>
+      <span className="min-w-0">
+        <span className="block truncate text-base font-bold text-foreground">{data.label}</span>
+        <span className="mt-1 block truncate text-xs text-muted-foreground">
+          {data.subtitle} · {data.score}
+        </span>
+      </span>
+    </button>
   );
 }
 
@@ -222,13 +181,14 @@ function LabeledEdge({
   targetPosition,
 }: EdgeProps<Edge<EvidenceEdgeData>>) {
   const [edgePath, labelX, labelY] = getBezierPath({
+    sourcePosition,
     sourceX,
     sourceY,
-    sourcePosition,
+    targetPosition,
     targetX,
     targetY,
-    targetPosition,
   });
+  const rejected = data?.status === "Rejected";
 
   return (
     <>
@@ -238,8 +198,11 @@ function LabeledEdge({
         path={edgePath}
         style={{
           ...style,
-          stroke: "color-mix(in oklch, var(--primary) 58%, var(--border))",
-          strokeDasharray: "7 7",
+          opacity: rejected ? 0.36 : 0.88,
+          stroke: rejected
+            ? "color-mix(in oklch, var(--muted-foreground) 48%, transparent)"
+            : "color-mix(in oklch, var(--primary) 58%, var(--border))",
+          strokeDasharray: rejected ? "3 7" : "7 7",
           strokeWidth: 2,
         }}
       />

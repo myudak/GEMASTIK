@@ -12,31 +12,40 @@ import type { ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { SectionCard } from "@/components/workflow/section-card";
-import { reviewSummary } from "@/lib/workflow-data";
+import type { DemoCase, EvidenceItem } from "@/lib/workflow-data";
 
-export function CrawlSummaryPanel() {
+export function CrawlSummaryPanel({
+  evidence,
+  selectedCase,
+}: {
+  evidence: EvidenceItem[];
+  selectedCase: DemoCase;
+}) {
+  const verifiedCount = evidence.filter((item) => item.status === "Verified").length;
+  const firstHash = evidence[0]?.hash ?? "pending";
+
   return (
     <SectionCard title="Ringkasan">
       <div>
         <SummaryRow
           icon={<GlobeHemisphereWest size={26} />}
           label="URL / Domain Seed"
-          value={reviewSummary.seed}
+          value={selectedCase.seed}
         />
         <SummaryRow
           icon={<Database size={26} />}
           label="Jumlah Bukti"
-          value={String(reviewSummary.evidenceCount)}
+          value={`${evidence.length} item`}
         />
         <SummaryRow
           icon={<Hash size={26} />}
           label="Hash SHA-256 Tersimpan"
-          value="a3b7d9f0e2c6...8f1a2b4c7d9e"
+          value={`${firstHash.slice(0, 14)}...`}
         />
         <SummaryRow
           icon={<LinkIcon size={26} />}
           label="Status Pipeline"
-          value="Berjalan"
+          value={`${verifiedCount}/${evidence.length} verified`}
           highlight
         />
       </div>
@@ -50,6 +59,7 @@ export function CompletedProcessPanel() {
     "Ekstraksi teks halaman",
     "Simpan screenshot",
     "Simpan hash integritas",
+    "Bangun relasi awal",
   ];
 
   return (

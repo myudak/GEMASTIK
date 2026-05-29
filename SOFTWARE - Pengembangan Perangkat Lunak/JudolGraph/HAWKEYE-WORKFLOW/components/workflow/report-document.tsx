@@ -3,6 +3,22 @@ import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
 import type { ReportDocumentData } from "@/lib/workflow-data";
 
 const styles = StyleSheet.create({
+  badge: {
+    backgroundColor: "#fce8e6",
+    borderRadius: 999,
+    color: "#b42318",
+    fontWeight: 700,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    width: 74,
+  },
+  label: {
+    color: "#666666",
+    width: 112,
+  },
+  listItem: {
+    marginBottom: 5,
+  },
   page: {
     backgroundColor: "#ffffff",
     color: "#1f1f1f",
@@ -10,14 +26,12 @@ const styles = StyleSheet.create({
     fontSize: 10,
     padding: 36,
   },
-  title: {
-    fontSize: 22,
-    fontWeight: 700,
-    marginBottom: 6,
-  },
-  subtitle: {
-    color: "#666666",
-    marginBottom: 20,
+  row: {
+    borderTop: "1px solid #eeeeee",
+    flexDirection: "row",
+    gap: 8,
+    marginTop: 8,
+    paddingTop: 8,
   },
   section: {
     border: "1px solid #e5e5e5",
@@ -30,31 +44,21 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     marginBottom: 8,
   },
-  row: {
-    borderTop: "1px solid #eeeeee",
-    flexDirection: "row",
-    gap: 8,
-    paddingTop: 8,
-    marginTop: 8,
-  },
-  label: {
+  subtitle: {
     color: "#666666",
-    width: 110,
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 700,
+    marginBottom: 6,
   },
   value: {
     flex: 1,
   },
-  badge: {
-    backgroundColor: "#fce8e6",
-    borderRadius: 999,
-    color: "#b42318",
-    fontWeight: 700,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    width: 74,
-  },
-  listItem: {
-    marginBottom: 5,
+  warning: {
+    color: "#b45309",
+    marginTop: 8,
   },
 });
 
@@ -70,41 +74,56 @@ export function HawkeyeReportDocument({ data }: { data: ReportDocumentData }) {
           <Text>{data.executiveSummary}</Text>
           <View style={styles.row}>
             <Text style={styles.label}>Kasus</Text>
-            <Text style={styles.value}>{data.summary.caseName}</Text>
+            <Text style={styles.value}>{data.case.name}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Seed</Text>
-            <Text style={styles.value}>{data.summary.seed}</Text>
+            <Text style={styles.value}>{data.case.seed}</Text>
           </View>
           <View style={styles.row}>
             <Text style={styles.label}>Skor Risiko</Text>
-            <Text style={styles.badge}>{data.summary.riskScore}/100</Text>
+            <Text style={styles.badge}>{data.case.riskScore}/100</Text>
           </View>
+          {data.pendingReviewCount > 0 ? (
+            <Text style={styles.warning}>
+              {data.pendingReviewCount} bukti masih Need Review dan tidak masuk lampiran final.
+            </Text>
+          ) : null}
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Lampiran Bukti</Text>
+          <Text style={styles.sectionTitle}>Lampiran Bukti Verified</Text>
           {data.evidence.map((item) => (
-            <Text key={item.label} style={styles.listItem}>
-              - {item.label}: {item.description}
+            <Text key={item.id} style={styles.listItem}>
+              - {item.title}: {item.description} Hash {item.hash.slice(0, 16)}...
             </Text>
           ))}
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Risk Signals</Text>
-          {data.riskSignals.map((item) => (
-            <Text key={item.label} style={styles.listItem}>
-              - {item.label}
+          <Text style={styles.sectionTitle}>Entitas Verified</Text>
+          {data.entities.map((item) => (
+            <Text key={item.id} style={styles.listItem}>
+              - {item.type}: {item.value} ({item.confidence}%)
             </Text>
           ))}
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Risk Scoring</Text>
+          {data.riskSignals.map((item) => (
+            <Text key={item.id} style={styles.listItem}>
+              - {item.label}: bobot {item.weight}, confidence {Math.round(item.confidence * 100)}%
+            </Text>
+          ))}
+          <Text style={styles.warning}>{data.graphSummary}</Text>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Audit Trail</Text>
           {data.auditTrail.map((item) => (
-            <Text key={item} style={styles.listItem}>
-              - {item}
+            <Text key={item.id} style={styles.listItem}>
+              - {item.at} - {item.action}: {item.detail}
             </Text>
           ))}
         </View>

@@ -1,14 +1,15 @@
 "use client";
 
-import { DownloadSimple, FilePdf } from "@phosphor-icons/react";
+import { DownloadSimple, FilePdf, ShieldCheck, WarningCircle } from "@phosphor-icons/react";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AppShell } from "@/components/workflow/app-shell";
 import { SectionCard } from "@/components/workflow/section-card";
-import { reportDocumentData } from "@/lib/workflow-data";
+import { createReportData, useDemoStore } from "@/lib/demo-store";
+import type { ReportDocumentData } from "@/lib/workflow-data";
 
 const PdfPreview = dynamic(
   () => import("@/components/workflow/pdf-preview").then((module) => module.PdfPreview),
@@ -19,26 +20,33 @@ const PdfPreview = dynamic(
 );
 
 export function ReportPage() {
+  const store = useDemoStore();
+  const reportData = useMemo(() => createReportData(store), [store]);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   useEffect(() => {
     let objectUrl: string | null = null;
+    let cancelled = false;
 
     async function generatePreview() {
-      const blob = await createReportBlob();
+      const blob = await createReportBlob(reportData);
+      if (cancelled) return;
+
       objectUrl = URL.createObjectURL(blob);
       setPreviewUrl(objectUrl);
     }
 
+    setPreviewUrl(null);
     void generatePreview();
 
     return () => {
+      cancelled = true;
       if (objectUrl) URL.revokeObjectURL(objectUrl);
     };
-  }, []);
+  }, [reportData]);
 
   async function downloadReport() {
-    const blob = await createReportBlob();
+    const blob = await createReportBlob(reportData);
     const objectUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
 
@@ -60,7 +68,7 @@ export function ReportPage() {
               Preview Laporan
             </h1>
             <p className="mt-3 max-w-4xl text-xl leading-relaxed text-muted-foreground">
-              Laporan dibuat dari data sintetis lokal dan dapat diunduh sebagai PDF.
+              Laporan final memakai bukti dan entitas yang sudah diverifikasi manusia.
             </p>
           </div>
           <Button className="h-12 px-5 text-base font-semibold" onClick={downloadReport}>
@@ -69,27 +77,46 @@ export function ReportPage() {
           </Button>
         </header>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_360px]">
+        <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_380px]">
           <SectionCard title="Pratinjau PDF">
             <div className="max-h-[720px] overflow-auto rounded-lg border border-border bg-muted/30 p-4">
               {previewUrl ? <PdfPreview fileUrl={previewUrl} /> : <PreviewLoading />}
             </div>
           </SectionCard>
           <div className="space-y-6">
-            <SectionCard title="Isi Laporan">
-              <ReportItem label="Ringkasan Eksekutif" />
-              <ReportItem label="Evidence Graph" />
-              <ReportItem label="Lampiran Bukti" />
-              <ReportItem label="Risk Scoring" />
-              <ReportItem label="Audit Trail" />
+            <SectionCard title="Status Laporan">
+              <div className="flex items-center gap-3 rounded-lg border border-border bg-background/35 p-4">
+                {reportData.pendingReviewCount > 0 ? (
+                  <WarningCircle className="text-amber-500" size={30} weight="duotone" />
+                ) : (
+                  <ShieldCheck className="text-emerald-500" size={30} weight="duotone" />
+                )}
+                <div>
+                  <p className="font-bold text-foreground">
+                    {reportData.pendingReviewCount > 0
+                      ? `${reportData.pendingReviewCount} bukti belum verified`
+                      : "Laporan siap final"}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Bukti Need Review dan Rejected tidak masuk lampiran final.
+                  </p>
+                </div>
+              </div>
             </SectionCard>
-            <SectionCard title="Status">
+            <SectionCard title="Isi Laporan">
+              <ReportItem label={`Ringkasan: ${reportData.case.name}`} />
+              <ReportItem label={`Bukti verified: ${reportData.evidence.length}`} />
+              <ReportItem label={`Entitas verified: ${reportData.entities.length}`} />
+              <ReportItem label={`Risk signal: ${reportData.riskSignals.length}`} />
+              <ReportItem label={`Audit event: ${reportData.auditTrail.length}`} />
+            </SectionCard>
+            <SectionCard title="PDF Generator">
               <div className="flex items-center gap-3 rounded-lg border border-border bg-background/35 p-4">
                 <FilePdf className="text-primary" size={30} weight="duotone" />
                 <div>
-                  <p className="font-bold text-foreground">PDF siap diekspor</p>
+                  <p className="font-bold text-foreground">PDF dibuat di browser</p>
                   <p className="text-sm text-muted-foreground">
-                    Dibuat langsung di browser tanpa backend.
+                    Menggunakan data sintetis lokal tanpa backend.
                   </p>
                 </div>
               </div>
@@ -117,11 +144,11 @@ function PreviewLoading() {
   );
 }
 
-async function createReportBlob() {
+async function createReportBlob(data: ReportDocumentData) {
   const [{ pdf }, { HawkeyeReportDocument }] = await Promise.all([
     import("@react-pdf/renderer"),
     import("@/components/workflow/report-document"),
   ]);
 
-  return pdf(<HawkeyeReportDocument data={reportDocumentData} />).toBlob();
+  return pdf(<HawkeyeReportDocument data={data} />).toBlob();
 }

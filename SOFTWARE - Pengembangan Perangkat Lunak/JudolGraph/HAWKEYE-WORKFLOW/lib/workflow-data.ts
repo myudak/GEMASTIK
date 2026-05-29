@@ -9,63 +9,131 @@ export type WorkflowStep = {
   href: string;
 };
 
-export type EvidenceIcon = "metadata" | "screenshot" | "link";
+export type VerificationStatus = "Draft" | "Need Review" | "Verified" | "Rejected";
+export type RiskLevel = "Low" | "Medium" | "High" | "Critical";
 
-export type EvidenceItem = {
-  icon: EvidenceIcon;
-  label: string;
-  status: "Berhasil";
-  time: string;
-  description: string;
-  preview?: "webpage";
-};
-
-export type EntityIcon = "domain" | "channel" | "payment" | "referral" | "keyword";
-
-export type DetectedEntity = {
-  icon: EntityIcon;
-  category: string;
-  value: string;
-  confidence: number;
-};
-
-export type RiskSignal = {
-  label: string;
-};
-
-export type ReviewSummary = {
-  caseName: string;
-  seed: string;
-  evidenceCount: number;
-  entityCount: number;
-  riskScore: number;
-  note: string;
-};
-
-export type InvestigationCase = {
+export type DemoCase = {
   id: string;
   name: string;
   seed: string;
-  status: "Investigasi" | "Perlu Review" | "Terverifikasi";
-  risk: "Tinggi" | "Sedang";
-  evidenceCount: number;
-  entityCount: number;
+  status: "Investigasi" | "Need Review" | "Verified" | "Rejected";
+  riskLevel: RiskLevel;
+  riskScore: number;
   updatedAt: string;
+  summary: string;
+  evidenceIds: string[];
+  entityIds: string[];
+  signalIds: string[];
+  reviewDecision: VerificationStatus;
 };
 
-export type EntityDetail = {
+export type SeedInput = {
+  seedType: "url" | "domain";
+  seed: string;
+  caseName: string;
+  note: string;
+};
+
+export type EvidenceKind = "metadata" | "html" | "screenshot" | "link" | "payment" | "mirror";
+
+export type EvidenceItem = {
   id: string;
-  type: string;
+  caseId: string;
+  kind: EvidenceKind;
+  title: string;
+  source: string;
+  url: string;
+  status: VerificationStatus;
+  collectedAt: string;
+  progress: number;
+  confidence: number;
+  hash: string;
+  description: string;
+  imageSrc?: string;
+  ocrText?: string;
+  entityIds: string[];
+};
+
+export type OcrEvidence = EvidenceItem & {
+  imageSrc: string;
+  ocrText: string;
+};
+
+export type EntityType =
+  | "Domain"
+  | "Public Channel"
+  | "Payment Indicator"
+  | "Referral Link"
+  | "Promo Keyword"
+  | "Mirror Domain"
+  | "Alias"
+  | "Screenshot"
+  | "HTML Pattern";
+
+export type DetectedEntity = {
+  id: string;
+  caseId: string;
+  type: EntityType;
   value: string;
   confidence: number;
-  status: "Need Review" | "Verified" | "Rejected";
-  riskSignals: string[];
-  relatedEvidence: string[];
+  status: VerificationStatus;
+  evidenceIds: string[];
+  riskSignalIds: string[];
+  note: string;
 };
 
-export type ReviewAction = {
-  label: "Verified" | "Need Review" | "Rejected";
+export type RiskSignal = {
+  id: string;
+  label: string;
+  weight: number;
+  confidence: number;
+  status: VerificationStatus;
   description: string;
+};
+
+export type GraphNodeType =
+  | "domain"
+  | "channel"
+  | "payment"
+  | "referral"
+  | "keyword"
+  | "mirror"
+  | "alias"
+  | "screenshot"
+  | "html";
+
+export type GraphNode = {
+  id: string;
+  caseId: string;
+  entityId?: string;
+  type: GraphNodeType;
+  label: string;
+  subtitle: string;
+  riskLevel: RiskLevel;
+  status: VerificationStatus;
+  score: number;
+  position: { x: number; y: number };
+};
+
+export type GraphEdge = {
+  id: string;
+  caseId: string;
+  source: string;
+  target: string;
+  relation: string;
+  evidenceId: string;
+  status: VerificationStatus;
+};
+
+export type ReviewDecision = VerificationStatus;
+
+export type AuditEvent = {
+  id: string;
+  caseId: string;
+  at: string;
+  actor: string;
+  action: string;
+  detail: string;
 };
 
 export type PublicReportSummary = {
@@ -74,19 +142,24 @@ export type PublicReportSummary = {
 };
 
 export type LinkCheckResult = {
-  domain: string;
+  input: string;
   level: "Indikasi Rendah" | "Indikasi Sedang" | "Indikasi Tinggi";
+  score: number;
   description: string;
+  signals: string[];
 };
 
 export type ReportDocumentData = {
   title: string;
   generatedAt: string;
   executiveSummary: string;
+  case: DemoCase;
   evidence: EvidenceItem[];
+  entities: DetectedEntity[];
   riskSignals: RiskSignal[];
-  auditTrail: string[];
-  summary: ReviewSummary;
+  graphSummary: string;
+  auditTrail: AuditEvent[];
+  pendingReviewCount: number;
 };
 
 export const workflowSteps: WorkflowStep[] = [
@@ -95,7 +168,7 @@ export const workflowSteps: WorkflowStep[] = [
     number: 1,
     label: "Seed",
     title: "Buat Kasus Baru",
-    subtitle: "Mulai investigasi digital dari sebuah seed.",
+    subtitle: "Validasi URL atau domain publik sebelum masuk ke pipeline investigasi.",
     href: "/cases/new",
   },
   {
@@ -103,8 +176,7 @@ export const workflowSteps: WorkflowStep[] = [
     number: 2,
     label: "Crawl",
     title: "Pengumpulan Bukti",
-    subtitle:
-      "Sistem mengambil bukti digital dari sumber publik berdasarkan seed yang telah divalidasi.",
+    subtitle: "Demo pipeline mengambil metadata, teks halaman, tautan, screenshot, dan hash bukti.",
     href: "/crawler",
   },
   {
@@ -112,7 +184,7 @@ export const workflowSteps: WorkflowStep[] = [
     number: 3,
     label: "OCR",
     title: "OCR & Ekstraksi Entitas",
-    subtitle: "Bukti visual diproses untuk mengekstraksi teks dan entitas penting.",
+    subtitle: "Bukti visual sintetis diproses untuk mengekstraksi teks, entitas, dan confidence.",
     href: "/screenshots",
   },
   {
@@ -120,7 +192,7 @@ export const workflowSteps: WorkflowStep[] = [
     number: 4,
     label: "Graph",
     title: "Evidence Graph & Penilaian Risiko",
-    subtitle: "Sistem memetakan hubungan antarbukti dan menghitung skor risiko awal.",
+    subtitle: "Relasi antarbukti dipetakan sebagai node dan edge untuk mendukung prioritas risiko.",
     href: "/evidence-graph",
   },
   {
@@ -128,172 +200,871 @@ export const workflowSteps: WorkflowStep[] = [
     number: 5,
     label: "Review & Laporan",
     title: "Human Review",
-    subtitle: "Investigator meninjau status akhir sebelum laporan dibuat.",
+    subtitle: "Investigator memverifikasi bukti sebelum laporan final diekspor.",
     href: "/review",
   },
 ];
 
-export const evidenceItems: EvidenceItem[] = [
-  {
-    icon: "metadata",
-    label: "Metadata halaman publik",
-    status: "Berhasil",
-    time: "20 Mei 2025 14:28:31 WIB",
-    description: "Metadata dasar halaman publik, termasuk judul, deskripsi, dan header.",
-  },
-  {
-    icon: "screenshot",
-    label: "Screenshot halaman",
-    status: "Berhasil",
-    time: "20 Mei 2025 14:28:33 WIB",
-    description: "Bukti visual sintetis dari halaman publik yang diproses.",
-    preview: "webpage",
-  },
-  {
-    icon: "link",
-    label: "Tautan keluar",
-    status: "Berhasil",
-    time: "20 Mei 2025 14:28:35 WIB",
-    description: "Daftar tautan keluar yang ditemukan pada halaman publik.",
-  },
-];
-
-export const detectedEntities: DetectedEntity[] = [
-  {
-    icon: "domain",
-    category: "Domain",
-    value: "tg88.com",
-    confidence: 96,
-  },
-  {
-    icon: "channel",
-    category: "Kanal Publik",
-    value: "t.me/promo-tg88",
-    confidence: 95,
-  },
-  {
-    icon: "payment",
-    category: "Indikasi Pembayaran",
-    value: "DANA",
-    confidence: 98,
-  },
-  {
-    icon: "referral",
-    category: "Referral Link",
-    value: "t.me/promo-tg88",
-    confidence: 95,
-  },
-  {
-    icon: "keyword",
-    category: "Kata Kunci Promosi",
-    value: "bonus deposit, RTP tinggi",
-    confidence: 94,
-  },
-];
-
-export const riskSignals: RiskSignal[] = [
-  { label: "konten promosi judi online" },
-  { label: "mirror domain" },
-  { label: "kanal publik berulang" },
-  { label: "indikasi pembayaran" },
-];
-
-export const reviewSummary: ReviewSummary = {
-  caseName: "Investigasi Situs Example",
-  seed: "https://example.com",
-  evidenceCount: 3,
-  entityCount: 5,
-  riskScore: 92,
-  note: "Indikasi kuat aktivitas promosi sintetis dan pola pengalihan trafik.",
-};
-
-export const investigationCases: InvestigationCase[] = [
+export const initialCases: DemoCase[] = [
   {
     id: "case-slot-gacor88",
-    name: "Investigasi Situs Example",
-    seed: "https://example.com",
-    status: "Perlu Review",
-    risk: "Tinggi",
-    evidenceCount: 3,
-    entityCount: 5,
-    updatedAt: "20 Mei 2025, 14:35 WIB",
+    name: "Operasi Slot Gacor88",
+    seed: "https://slot-gacor88.xyz",
+    status: "Need Review",
+    riskLevel: "Critical",
+    riskScore: 92,
+    updatedAt: "30 Mei 2026, 09:38 WIB",
+    summary:
+      "Seed publik memperlihatkan konten promosi, referral, mirror cluster, dan indikasi pembayaran tersamarkan.",
+    evidenceIds: [
+      "ev-meta-root",
+      "ev-html-root",
+      "ev-text-root",
+      "ev-outbound-links",
+      "ev-screenshot-promo",
+      "ev-ocr-promo",
+      "ev-payment-image",
+      "ev-payment-hash",
+      "ev-mirror-page",
+      "ev-referral-map",
+      "ev-html-fingerprint",
+      "ev-audit-note",
+    ],
+    entityIds: [
+      "ent-domain-root",
+      "ent-domain-mirror-a",
+      "ent-domain-mirror-b",
+      "ent-channel-promo",
+      "ent-payment-wallet",
+      "ent-referral-param",
+      "ent-alias-bang",
+      "ent-keyword-slot",
+      "ent-keyword-rtp",
+      "ent-keyword-bonus",
+      "ent-screenshot-promo",
+      "ent-screenshot-payment",
+      "ent-html-fingerprint",
+      "ent-redirect-public",
+      "ent-title-pattern",
+      "ent-meta-description",
+      "ent-public-handle",
+      "ent-mirror-cluster",
+    ],
+    signalIds: [
+      "sig-promo-content",
+      "sig-payment",
+      "sig-mirror",
+      "sig-public-channel",
+      "sig-referral",
+      "sig-keyword-density",
+    ],
+    reviewDecision: "Need Review",
   },
   {
     id: "case-bonus-aman",
     name: "Laporan Domain Promo",
-    seed: "promo-example.test",
+    seed: "promo-aman.club",
     status: "Investigasi",
-    risk: "Sedang",
-    evidenceCount: 2,
-    entityCount: 4,
-    updatedAt: "20 Mei 2025, 13:10 WIB",
+    riskLevel: "High",
+    riskScore: 74,
+    updatedAt: "30 Mei 2026, 08:11 WIB",
+    summary: "Domain publik dengan tautan keluar dan beberapa kata kunci promosi.",
+    evidenceIds: [],
+    entityIds: [],
+    signalIds: ["sig-promo-content", "sig-referral"],
+    reviewDecision: "Draft",
   },
   {
-    id: "case-publik-01",
+    id: "case-mirror-cluster",
+    name: "Mirror Cluster Publik",
+    seed: "mirror-cluster-a.example",
+    status: "Verified",
+    riskLevel: "High",
+    riskScore: 81,
+    updatedAt: "29 Mei 2026, 17:42 WIB",
+    summary: "Kemiripan konten dan pola redirect sudah diverifikasi sebagai sinyal prioritas.",
+    evidenceIds: [],
+    entityIds: [],
+    signalIds: ["sig-mirror", "sig-public-channel"],
+    reviewDecision: "Verified",
+  },
+  {
+    id: "case-public-report",
     name: "Laporan Publik Terkurasi",
-    seed: "https://lapor.example.net",
-    status: "Terverifikasi",
-    risk: "Sedang",
-    evidenceCount: 4,
-    entityCount: 6,
-    updatedAt: "19 Mei 2025, 17:42 WIB",
+    seed: "lapor-demo.example",
+    status: "Need Review",
+    riskLevel: "Medium",
+    riskScore: 56,
+    updatedAt: "29 Mei 2026, 13:09 WIB",
+    summary: "Laporan publik dengan indikasi terbatas, menunggu validasi investigator.",
+    evidenceIds: [],
+    entityIds: [],
+    signalIds: ["sig-keyword-density"],
+    reviewDecision: "Need Review",
   },
 ];
 
-export const entityDetail: EntityDetail = {
-  id: "slot-gacor88",
-  type: "Domain",
-  value: "slot-gacor88.xyz",
-  confidence: 94,
-  status: "Need Review",
-  riskSignals: riskSignals.map((signal) => signal.label),
-  relatedEvidence: [
-    "Metadata halaman publik",
-    "Screenshot promosi sintetis",
-    "Tautan keluar dan referral",
-  ],
-};
+export const initialEvidence: EvidenceItem[] = [
+  {
+    id: "ev-meta-root",
+    caseId: "case-slot-gacor88",
+    kind: "metadata",
+    title: "Metadata halaman utama",
+    source: "Crawler publik",
+    url: "https://slot-gacor88.xyz",
+    status: "Verified",
+    collectedAt: "30 Mei 2026, 09:10 WIB",
+    progress: 100,
+    confidence: 88,
+    hash: "6f4c9c6e7a7a9f7a8e91b7b8ed2c0e22f2adfb4f4a3e8d7f5b6a9a1c2d3e4f50",
+    description: "Judul, meta description, header publik, dan canonical path berhasil dibaca.",
+    entityIds: ["ent-domain-root", "ent-title-pattern", "ent-meta-description"],
+  },
+  {
+    id: "ev-html-root",
+    caseId: "case-slot-gacor88",
+    kind: "html",
+    title: "Struktur HTML publik",
+    source: "Crawler publik",
+    url: "https://slot-gacor88.xyz",
+    status: "Verified",
+    collectedAt: "30 Mei 2026, 09:11 WIB",
+    progress: 100,
+    confidence: 82,
+    hash: "d9a4b0ef7c1a2602ad1f6fd76d7c65bb1c4e9a7d32b112f0c5e99a1223344556",
+    description: "Navigasi, section promo, tombol publik, dan struktur heading terdeteksi.",
+    entityIds: ["ent-html-fingerprint", "ent-keyword-slot", "ent-keyword-bonus"],
+  },
+  {
+    id: "ev-text-root",
+    caseId: "case-slot-gacor88",
+    kind: "metadata",
+    title: "Teks halaman publik",
+    source: "Crawler publik",
+    url: "https://slot-gacor88.xyz",
+    status: "Verified",
+    collectedAt: "30 Mei 2026, 09:12 WIB",
+    progress: 100,
+    confidence: 86,
+    hash: "b64ef08ad2e4282cda2ec10be39d41ff071c57273f0db77b917f0c117e64ad2a",
+    description: "Teks halaman memuat frasa promosi dan pola CTA publik.",
+    entityIds: ["ent-keyword-slot", "ent-keyword-rtp", "ent-public-handle"],
+  },
+  {
+    id: "ev-outbound-links",
+    caseId: "case-slot-gacor88",
+    kind: "link",
+    title: "Tautan keluar dan referral",
+    source: "Link parser",
+    url: "https://slot-gacor88.xyz/ref?id=synthetic",
+    status: "Need Review",
+    collectedAt: "30 Mei 2026, 09:13 WIB",
+    progress: 100,
+    confidence: 79,
+    hash: "1ad7ed092f5f1c8d6e0b0c2716b2c452dd6735f9a2210f8b6b577b1a324fac91",
+    description: "Parameter referral dan redirect publik ditemukan pada halaman.",
+    entityIds: ["ent-referral-param", "ent-redirect-public", "ent-channel-promo"],
+  },
+  {
+    id: "ev-screenshot-promo",
+    caseId: "case-slot-gacor88",
+    kind: "screenshot",
+    title: "Screenshot promosi sintetis",
+    source: "Screenshot worker",
+    url: "https://slot-gacor88.xyz",
+    status: "Need Review",
+    collectedAt: "30 Mei 2026, 09:14 WIB",
+    progress: 100,
+    confidence: 94,
+    hash: "2a3b5f0de1a7cd847182a663dbcc11f55ab1f98d6a3de5b6f78c90a12b3c44d5e",
+    description: "Bukti visual sintetis berisi promosi, handle publik, dan indikator pembayaran.",
+    imageSrc: "/evidence/ocr-promo-evidence.png",
+    ocrText:
+      "PROMO SPESIAL\nBONUS DEPOSIT 100%\nRTP TINGGI\nHUBUNGI: PROMO-TG88\nPEMBAYARAN VIA DANA",
+    entityIds: [
+      "ent-screenshot-promo",
+      "ent-channel-promo",
+      "ent-payment-wallet",
+      "ent-keyword-bonus",
+      "ent-keyword-rtp",
+    ],
+  },
+  {
+    id: "ev-ocr-promo",
+    caseId: "case-slot-gacor88",
+    kind: "screenshot",
+    title: "Hasil OCR banner promosi",
+    source: "OCR worker",
+    url: "ocr://ev-screenshot-promo",
+    status: "Verified",
+    collectedAt: "30 Mei 2026, 09:15 WIB",
+    progress: 100,
+    confidence: 91,
+    hash: "bb8fe34064ab8d1b3cecd6104f3bcde0e1728438713e7fc98c321046f273222f",
+    description: "OCR berhasil membaca kata kunci promosi dari gambar sintetis.",
+    entityIds: ["ent-keyword-slot", "ent-keyword-bonus", "ent-keyword-rtp"],
+  },
+  {
+    id: "ev-payment-image",
+    caseId: "case-slot-gacor88",
+    kind: "payment",
+    title: "Instruksi pembayaran tersamarkan",
+    source: "Screenshot worker",
+    url: "https://slot-gacor88.xyz/deposit",
+    status: "Need Review",
+    collectedAt: "30 Mei 2026, 09:16 WIB",
+    progress: 100,
+    confidence: 89,
+    hash: "4dc4f81ea7c03ed0db529a56e3f8dd9b24f77e296a8e1505f8f0a64f78c0135a",
+    description: "Screenshot sintetis menampilkan instruksi pembayaran demo yang tersamarkan.",
+    imageSrc: "/evidence/ocr-payment-evidence.png",
+    ocrText:
+      "INSTRUKSI PEMBAYARAN\nDEPOSIT PROMO\nDOMPET DIGITAL\nID: PAY-88XX-5678\nSTATUS: MENUNGGU KONFIRMASI\nKODE REF: HAWK-DEMO",
+    entityIds: ["ent-payment-wallet", "ent-screenshot-payment", "ent-keyword-bonus"],
+  },
+  {
+    id: "ev-payment-hash",
+    caseId: "case-slot-gacor88",
+    kind: "payment",
+    title: "Hash instruksi pembayaran",
+    source: "Integrity panel",
+    url: "hash://ev-payment-image",
+    status: "Draft",
+    collectedAt: "30 Mei 2026, 09:17 WIB",
+    progress: 72,
+    confidence: 76,
+    hash: "5bb718ed2e12179ecbb4c4b15e33c29d5af9e28ff0f71d86a7d7ccda92814321",
+    description: "Hash tersimpan, menunggu validasi chain-of-custody investigator.",
+    entityIds: ["ent-payment-wallet"],
+  },
+  {
+    id: "ev-mirror-page",
+    caseId: "case-slot-gacor88",
+    kind: "mirror",
+    title: "Mirror dan referral sintetis",
+    source: "Screenshot worker",
+    url: "https://mirror-cluster-a.example",
+    status: "Need Review",
+    collectedAt: "30 Mei 2026, 09:18 WIB",
+    progress: 100,
+    confidence: 86,
+    hash: "a10d89b3a8f0f42f5d45e62b4f26af47b31e83f0e2a28f6382f48ad6120fe43c",
+    description:
+      "Bukti visual sintetis mengaitkan mirror cluster, alias, handle publik, dan referral.",
+    imageSrc: "/evidence/ocr-mirror-referral-evidence.png",
+    ocrText:
+      "MIRROR CLUSTER A\nREFERRAL LINK TERDETEKSI\nalias: BANG-J88\nhandle publik: promo-tg88\nref?id=synthetic\nBUKTI SINTETIS",
+    entityIds: [
+      "ent-mirror-cluster",
+      "ent-domain-mirror-a",
+      "ent-alias-bang",
+      "ent-public-handle",
+      "ent-referral-param",
+    ],
+  },
+  {
+    id: "ev-referral-map",
+    caseId: "case-slot-gacor88",
+    kind: "link",
+    title: "Pemetaan referral publik",
+    source: "Relation builder",
+    url: "relation://referral",
+    status: "Verified",
+    collectedAt: "30 Mei 2026, 09:19 WIB",
+    progress: 100,
+    confidence: 81,
+    hash: "750f18b84eed21e70f1f541a3211d0b43845523aeb09ad6a8054dbf4c19a8e00",
+    description: "Relasi referral menghubungkan domain utama, alias, dan handle publik.",
+    entityIds: ["ent-referral-param", "ent-alias-bang", "ent-channel-promo"],
+  },
+  {
+    id: "ev-html-fingerprint",
+    caseId: "case-slot-gacor88",
+    kind: "html",
+    title: "Kemiripan struktur HTML",
+    source: "Similarity worker",
+    url: "fingerprint://mirror-cluster-a",
+    status: "Rejected",
+    collectedAt: "30 Mei 2026, 09:20 WIB",
+    progress: 100,
+    confidence: 62,
+    hash: "8f945bd09db71e96705d4f0ad6937e2e308651ed73cb80bcc679eb83f4a07e53",
+    description: "Sinyal kemiripan terlalu lemah untuk masuk laporan final tanpa bukti tambahan.",
+    entityIds: ["ent-html-fingerprint", "ent-domain-mirror-b"],
+  },
+  {
+    id: "ev-audit-note",
+    caseId: "case-slot-gacor88",
+    kind: "metadata",
+    title: "Catatan investigator awal",
+    source: "Andi Pratama",
+    url: "audit://case-slot-gacor88",
+    status: "Verified",
+    collectedAt: "30 Mei 2026, 09:21 WIB",
+    progress: 100,
+    confidence: 92,
+    hash: "d27a9bb6a8ed400cb26249a09532b272271cecb3e72ff80f71ac28942fd27353",
+    description: "Investigator menandai temuan sebagai prioritas review, bukan putusan otomatis.",
+    entityIds: ["ent-domain-root"],
+  },
+];
 
-export const reviewActions: ReviewAction[] = [
+export const initialEntities: DetectedEntity[] = [
+  entity("ent-domain-root", "Domain", "slot-gacor88.xyz", 96, "Need Review", [
+    "ev-meta-root",
+    "ev-html-root",
+  ]),
+  entity("ent-domain-mirror-a", "Mirror Domain", "mirror-cluster-a.example", 84, "Need Review", [
+    "ev-mirror-page",
+  ]),
+  entity("ent-domain-mirror-b", "Mirror Domain", "bonus-rtpku.example", 62, "Rejected", [
+    "ev-html-fingerprint",
+  ]),
+  entity("ent-channel-promo", "Public Channel", "promo-tg88", 95, "Verified", [
+    "ev-screenshot-promo",
+    "ev-referral-map",
+  ]),
+  entity(
+    "ent-payment-wallet",
+    "Payment Indicator",
+    "DOMPET DIGITAL / PAY-88XX-5678",
+    89,
+    "Need Review",
+    ["ev-payment-image"],
+  ),
+  entity("ent-referral-param", "Referral Link", "ref?id=synthetic", 87, "Verified", [
+    "ev-outbound-links",
+    "ev-referral-map",
+  ]),
+  entity("ent-alias-bang", "Alias", "BANG-J88", 88, "Need Review", ["ev-mirror-page"]),
+  entity("ent-keyword-slot", "Promo Keyword", "slot", 94, "Verified", ["ev-text-root"]),
+  entity("ent-keyword-rtp", "Promo Keyword", "RTP tinggi", 91, "Verified", ["ev-screenshot-promo"]),
+  entity("ent-keyword-bonus", "Promo Keyword", "bonus deposit", 93, "Verified", [
+    "ev-screenshot-promo",
+    "ev-payment-image",
+  ]),
+  entity("ent-screenshot-promo", "Screenshot", "screenshot_promo_001.png", 94, "Need Review", [
+    "ev-screenshot-promo",
+  ]),
+  entity("ent-screenshot-payment", "Screenshot", "screenshot_payment_002.png", 89, "Need Review", [
+    "ev-payment-image",
+  ]),
+  entity("ent-html-fingerprint", "HTML Pattern", "section-promo-grid", 74, "Rejected", [
+    "ev-html-fingerprint",
+  ]),
+  entity("ent-redirect-public", "Referral Link", "/go/referral-public", 79, "Need Review", [
+    "ev-outbound-links",
+  ]),
+  entity("ent-title-pattern", "Promo Keyword", "Promo Spesial", 86, "Verified", ["ev-meta-root"]),
+  entity("ent-meta-description", "Promo Keyword", "menang lebih sering", 80, "Verified", [
+    "ev-meta-root",
+  ]),
+  entity("ent-public-handle", "Public Channel", "handle publik: promo-tg88", 91, "Verified", [
+    "ev-mirror-page",
+  ]),
+  entity("ent-mirror-cluster", "Mirror Domain", "Mirror Cluster A", 86, "Need Review", [
+    "ev-mirror-page",
+  ]),
+];
+
+export const initialRiskSignals: RiskSignal[] = [
   {
-    label: "Verified",
-    description: "Bukti cukup dan dapat masuk paket laporan.",
+    id: "sig-promo-content",
+    label: "Konten promosi judi online",
+    weight: 25,
+    confidence: 0.94,
+    status: "Verified",
+    description: "Kata slot, bonus, RTP, deposit, dan pola CTA promosi muncul berulang.",
   },
   {
-    label: "Need Review",
-    description: "Perlu pemeriksaan investigator sebelum diputuskan.",
+    id: "sig-payment",
+    label: "Indikasi pembayaran",
+    weight: 20,
+    confidence: 0.89,
+    status: "Need Review",
+    description: "Instruksi pembayaran tersamarkan ditemukan pada bukti visual sintetis.",
   },
   {
-    label: "Rejected",
-    description: "Tidak cukup bukti atau tidak sesuai ruang lingkup.",
+    id: "sig-mirror",
+    label: "Mirror domain",
+    weight: 20,
+    confidence: 0.86,
+    status: "Need Review",
+    description: "Mirror cluster dan pola referral muncul pada bukti visual dan relasi.",
   },
+  {
+    id: "sig-public-channel",
+    label: "Kanal promosi publik",
+    weight: 15,
+    confidence: 0.91,
+    status: "Verified",
+    description: "Handle publik ditemukan pada beberapa bukti dan graph relation.",
+  },
+  {
+    id: "sig-referral",
+    label: "Affiliate / referral link",
+    weight: 10,
+    confidence: 0.87,
+    status: "Verified",
+    description: "Parameter referral menghubungkan domain utama, alias, dan handle publik.",
+  },
+  {
+    id: "sig-keyword-density",
+    label: "Kepadatan kata kunci promosi",
+    weight: 10,
+    confidence: 0.82,
+    status: "Verified",
+    description: "Kata kunci promosi muncul pada teks halaman dan OCR visual.",
+  },
+];
+
+export const initialGraphNodes: GraphNode[] = [
+  graphNode(
+    "node-domain-root",
+    "domain",
+    "slot-gacor88.xyz",
+    "Domain utama",
+    "Critical",
+    "Need Review",
+    92,
+    380,
+    230,
+    "ent-domain-root",
+  ),
+  graphNode(
+    "node-channel-promo",
+    "channel",
+    "promo-tg88",
+    "Handle publik",
+    "High",
+    "Verified",
+    86,
+    20,
+    40,
+    "ent-channel-promo",
+  ),
+  graphNode(
+    "node-payment",
+    "payment",
+    "PAY-88XX-5678",
+    "Indikasi pembayaran",
+    "Critical",
+    "Need Review",
+    89,
+    740,
+    40,
+    "ent-payment-wallet",
+  ),
+  graphNode(
+    "node-referral",
+    "referral",
+    "ref?id=synthetic",
+    "Referral link",
+    "High",
+    "Verified",
+    81,
+    30,
+    250,
+    "ent-referral-param",
+  ),
+  graphNode(
+    "node-mirror-a",
+    "mirror",
+    "Mirror Cluster A",
+    "Mirror domain",
+    "High",
+    "Need Review",
+    84,
+    760,
+    250,
+    "ent-mirror-cluster",
+  ),
+  graphNode(
+    "node-mirror-b",
+    "mirror",
+    "bonus-rtpku.example",
+    "Sinyal ditolak",
+    "Medium",
+    "Rejected",
+    62,
+    720,
+    440,
+    "ent-domain-mirror-b",
+  ),
+  graphNode(
+    "node-screenshot-promo",
+    "screenshot",
+    "screenshot_promo_001",
+    "Bukti visual",
+    "High",
+    "Need Review",
+    94,
+    250,
+    440,
+    "ent-screenshot-promo",
+  ),
+  graphNode(
+    "node-screenshot-payment",
+    "screenshot",
+    "screenshot_payment_002",
+    "Bukti visual",
+    "High",
+    "Need Review",
+    89,
+    510,
+    440,
+    "ent-screenshot-payment",
+  ),
+  graphNode(
+    "node-keyword-slot",
+    "keyword",
+    "slot / gacor",
+    "Kata kunci",
+    "High",
+    "Verified",
+    94,
+    180,
+    140,
+    "ent-keyword-slot",
+  ),
+  graphNode(
+    "node-keyword-bonus",
+    "keyword",
+    "bonus deposit",
+    "Kata kunci",
+    "High",
+    "Verified",
+    93,
+    570,
+    140,
+    "ent-keyword-bonus",
+  ),
+  graphNode(
+    "node-keyword-rtp",
+    "keyword",
+    "RTP tinggi",
+    "Kata kunci",
+    "High",
+    "Verified",
+    91,
+    380,
+    30,
+    "ent-keyword-rtp",
+  ),
+  graphNode(
+    "node-alias",
+    "alias",
+    "BANG-J88",
+    "Alias operator",
+    "High",
+    "Need Review",
+    88,
+    960,
+    140,
+    "ent-alias-bang",
+  ),
+  graphNode(
+    "node-html",
+    "html",
+    "section-promo-grid",
+    "HTML pattern",
+    "Medium",
+    "Rejected",
+    62,
+    980,
+    330,
+    "ent-html-fingerprint",
+  ),
+  graphNode(
+    "node-public-handle",
+    "channel",
+    "handle publik",
+    "Dari halaman mirror",
+    "High",
+    "Verified",
+    91,
+    210,
+    610,
+    "ent-public-handle",
+  ),
+  graphNode(
+    "node-redirect",
+    "referral",
+    "/go/referral-public",
+    "Redirect publik",
+    "Medium",
+    "Need Review",
+    79,
+    610,
+    610,
+    "ent-redirect-public",
+  ),
+];
+
+export const initialGraphEdges: GraphEdge[] = [
+  edge(
+    "edge-channel-domain",
+    "node-channel-promo",
+    "node-domain-root",
+    "mengarahkan ke",
+    "ev-referral-map",
+    "Verified",
+  ),
+  edge(
+    "edge-payment-domain",
+    "node-payment",
+    "node-domain-root",
+    "instruksi pada",
+    "ev-payment-image",
+    "Need Review",
+  ),
+  edge(
+    "edge-referral-domain",
+    "node-referral",
+    "node-domain-root",
+    "parameter dari",
+    "ev-outbound-links",
+    "Need Review",
+  ),
+  edge(
+    "edge-domain-mirror-a",
+    "node-domain-root",
+    "node-mirror-a",
+    "mirip dengan",
+    "ev-mirror-page",
+    "Need Review",
+  ),
+  edge(
+    "edge-domain-mirror-b",
+    "node-domain-root",
+    "node-mirror-b",
+    "sinyal lemah",
+    "ev-html-fingerprint",
+    "Rejected",
+  ),
+  edge(
+    "edge-promo-domain",
+    "node-screenshot-promo",
+    "node-domain-root",
+    "bukti visual",
+    "ev-screenshot-promo",
+    "Need Review",
+  ),
+  edge(
+    "edge-payment-shot-domain",
+    "node-screenshot-payment",
+    "node-domain-root",
+    "bukti pembayaran",
+    "ev-payment-image",
+    "Need Review",
+  ),
+  edge(
+    "edge-slot-shot",
+    "node-keyword-slot",
+    "node-screenshot-promo",
+    "terbaca OCR",
+    "ev-screenshot-promo",
+    "Verified",
+  ),
+  edge(
+    "edge-rtp-shot",
+    "node-keyword-rtp",
+    "node-screenshot-promo",
+    "terbaca OCR",
+    "ev-screenshot-promo",
+    "Verified",
+  ),
+  edge(
+    "edge-bonus-shot",
+    "node-keyword-bonus",
+    "node-screenshot-promo",
+    "terbaca OCR",
+    "ev-screenshot-promo",
+    "Verified",
+  ),
+  edge(
+    "edge-bonus-payment",
+    "node-keyword-bonus",
+    "node-payment",
+    "muncul pada",
+    "ev-payment-image",
+    "Need Review",
+  ),
+  edge(
+    "edge-mirror-alias",
+    "node-mirror-a",
+    "node-alias",
+    "alias dari",
+    "ev-mirror-page",
+    "Need Review",
+  ),
+  edge(
+    "edge-alias-channel",
+    "node-alias",
+    "node-channel-promo",
+    "dipromosikan oleh",
+    "ev-mirror-page",
+    "Need Review",
+  ),
+  edge(
+    "edge-html-mirror-b",
+    "node-html",
+    "node-mirror-b",
+    "kemiripan lemah",
+    "ev-html-fingerprint",
+    "Rejected",
+  ),
+  edge(
+    "edge-public-handle-channel",
+    "node-public-handle",
+    "node-channel-promo",
+    "menyebut",
+    "ev-mirror-page",
+    "Verified",
+  ),
+  edge(
+    "edge-redirect-referral",
+    "node-redirect",
+    "node-referral",
+    "mengandung",
+    "ev-outbound-links",
+    "Need Review",
+  ),
+  edge(
+    "edge-redirect-domain",
+    "node-redirect",
+    "node-domain-root",
+    "keluar dari",
+    "ev-outbound-links",
+    "Need Review",
+  ),
+  edge(
+    "edge-payment-screenshot",
+    "node-payment",
+    "node-screenshot-payment",
+    "terlihat pada",
+    "ev-payment-image",
+    "Need Review",
+  ),
+  edge(
+    "edge-mirror-screenshot",
+    "node-mirror-a",
+    "node-public-handle",
+    "memuat handle",
+    "ev-mirror-page",
+    "Verified",
+  ),
+];
+
+export const initialAuditEvents: AuditEvent[] = [
+  audit("audit-seed", "09:10", "Seed divalidasi", "URL publik tidak memerlukan login."),
+  audit(
+    "audit-crawl",
+    "09:12",
+    "Bukti dikumpulkan",
+    "Metadata, HTML, tautan, dan screenshot tersimpan.",
+  ),
+  audit(
+    "audit-ocr",
+    "09:15",
+    "OCR selesai",
+    "Tiga bukti visual menghasilkan entitas dengan confidence tinggi.",
+  ),
+  audit(
+    "audit-score",
+    "09:22",
+    "Skor risiko dihitung",
+    "Initial heuristic menghasilkan skor 92/100.",
+  ),
+  audit(
+    "audit-review",
+    "09:38",
+    "Menunggu human review",
+    "Beberapa bukti pembayaran dan mirror perlu validasi investigator.",
+  ),
 ];
 
 export const publicReportStats: PublicReportSummary[] = [
-  { label: "Domain terverifikasi", value: "12" },
-  { label: "Laporan publik diterima", value: "28" },
-  { label: "Kategori risiko umum", value: "Promosi" },
+  { label: "Domain terverifikasi", value: "18" },
+  { label: "Laporan publik diterima", value: "42" },
+  { label: "Bukti visual diproses", value: "31" },
+  { label: "Kategori umum", value: "Promosi" },
 ];
 
-export const linkCheckResult: LinkCheckResult = {
-  domain: "example.com",
+export const initialLinkCheckResult: LinkCheckResult = {
+  input: "example.com",
   level: "Indikasi Sedang",
+  score: 56,
   description:
-    "Ditemukan pola kata kunci dan tautan publik yang memerlukan verifikasi lebih lanjut.",
+    "Ditemukan pola kata kunci umum. Hasil publik bersifat indikatif dan bukan hasil investigasi penuh.",
+  signals: ["kata kunci promosi", "domain belum diverifikasi investigator"],
 };
 
-export const reportDocumentData: ReportDocumentData = {
-  title: "Laporan Investigasi HAWKEYE",
-  generatedAt: "20 Mei 2025, 15:00 WIB",
-  executiveSummary:
-    "Laporan sintetis ini merangkum bukti publik, entitas terdeteksi, sinyal risiko, dan catatan human review untuk kebutuhan demonstrasi.",
-  evidence: evidenceItems,
-  riskSignals,
-  auditTrail: [
-    "Seed divalidasi sebagai sumber publik.",
-    "Metadata, screenshot, dan tautan publik dikumpulkan.",
-    "OCR dan ekstraksi entitas menghasilkan 5 entitas.",
-    "Investigator menandai kasus sebagai Need Review.",
-  ],
-  summary: reviewSummary,
-};
+function entity(
+  id: string,
+  type: EntityType,
+  value: string,
+  confidence: number,
+  status: VerificationStatus,
+  evidenceIds: string[],
+): DetectedEntity {
+  return {
+    id,
+    caseId: "case-slot-gacor88",
+    type,
+    value,
+    confidence,
+    status,
+    evidenceIds,
+    riskSignalIds: [],
+    note: "Confidence dipengaruhi kualitas OCR, kecocokan pola, bukti berulang, dan status review.",
+  };
+}
+
+function graphNode(
+  id: string,
+  type: GraphNodeType,
+  label: string,
+  subtitle: string,
+  riskLevel: RiskLevel,
+  status: VerificationStatus,
+  score: number,
+  x: number,
+  y: number,
+  entityId?: string,
+): GraphNode {
+  return {
+    id,
+    caseId: "case-slot-gacor88",
+    entityId,
+    type,
+    label,
+    subtitle,
+    riskLevel,
+    status,
+    score,
+    position: { x, y },
+  };
+}
+
+function edge(
+  id: string,
+  source: string,
+  target: string,
+  relation: string,
+  evidenceId: string,
+  status: VerificationStatus,
+): GraphEdge {
+  return { id, caseId: "case-slot-gacor88", source, target, relation, evidenceId, status };
+}
+
+function audit(id: string, at: string, action: string, detail: string): AuditEvent {
+  return {
+    id,
+    caseId: "case-slot-gacor88",
+    at: `30 Mei 2026, ${at} WIB`,
+    actor: "Andi Pratama",
+    action,
+    detail,
+  };
+}
