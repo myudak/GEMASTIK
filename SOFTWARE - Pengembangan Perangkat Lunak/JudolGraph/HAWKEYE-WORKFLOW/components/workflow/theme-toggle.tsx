@@ -1,32 +1,18 @@
 "use client";
 
 import { Moon, Sun } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { setThemeMode, useThemeMode } from "@/components/workflow/theme-mode";
 import { cn } from "@/lib/utils";
 
-type Theme = "dark" | "light";
-
-const STORAGE_KEY = "hawkeye-workflow-theme";
-
 export function ThemeToggle({ compact = false }: { compact?: boolean }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem(STORAGE_KEY);
-    const nextTheme = storedTheme === "light" ? "light" : "dark";
-
-    setTheme(nextTheme);
-    document.documentElement.classList.toggle("dark", nextTheme === "dark");
-  }, []);
+  const theme = useThemeMode();
 
   function toggleTheme() {
     const nextTheme = theme === "dark" ? "light" : "dark";
 
-    setTheme(nextTheme);
-    window.localStorage.setItem(STORAGE_KEY, nextTheme);
-    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+    setThemeMode(nextTheme);
   }
 
   const darkMode = theme === "dark";

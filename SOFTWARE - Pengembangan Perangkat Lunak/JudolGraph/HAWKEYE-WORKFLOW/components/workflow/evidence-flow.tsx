@@ -21,8 +21,8 @@ import {
   type NodeProps,
   getBezierPath,
 } from "@xyflow/react";
-import { useEffect, useState } from "react";
 
+import { useThemeMode } from "@/components/workflow/theme-mode";
 import { cn } from "@/lib/utils";
 
 type EvidenceNodeData = {
@@ -140,22 +140,7 @@ const edgeTypes = {
 };
 
 export function EvidenceFlow() {
-  const [colorMode, setColorMode] = useState<FlowColorMode>("dark");
-
-  useEffect(() => {
-    const syncColorMode = () => {
-      setColorMode(document.documentElement.classList.contains("dark") ? "dark" : "light");
-    };
-    const observer = new MutationObserver(syncColorMode);
-
-    syncColorMode();
-    observer.observe(document.documentElement, {
-      attributeFilter: ["class"],
-      attributes: true,
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const colorMode: FlowColorMode = useThemeMode();
 
   return (
     <div className="h-[420px] overflow-hidden rounded-lg">

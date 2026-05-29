@@ -230,13 +230,14 @@ export function PublicPortalPage() {
           <SectionCard title="Formulir Pelaporan">
             <div className="space-y-5">
               <Field label="URL atau Domain" placeholder="https://example.com" />
-              <label className="block">
+              <label className="block" htmlFor="public-report-note">
                 <span className="mb-3 block text-base font-medium text-foreground">
                   Keterangan singkat
                 </span>
                 <Textarea
                   className="min-h-28 bg-background/35"
-                  placeholder="Tuliskan alasan pelaporan secara ringkas..."
+                  id="public-report-note"
+                  placeholder="Tuliskan alasan pelaporan secara ringkas…"
                 />
               </label>
               <Button className="h-12 w-full" type="button">
@@ -315,7 +316,7 @@ function PublicShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-dvh bg-background text-foreground">
       <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_18%_8%,color-mix(in_oklch,var(--primary)_18%,transparent),transparent_34%),linear-gradient(135deg,var(--background)_0%,color-mix(in_oklch,var(--card)_82%,black)_100%)]" />
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
+      <header className="mx-auto flex max-w-6xl items-center justify-between p-5">
         <Link className="flex items-center gap-3" href="/public">
           <Image
             alt="HAWKEYE"

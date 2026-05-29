@@ -58,13 +58,15 @@ export function WorkflowPage({ stepId }: WorkflowPageProps) {
           </p>
         </header>
         <StepProgress activeStep={stepId} />
-        <div className="mt-7">{renderStep(stepId)}</div>
+        <div className="mt-7">
+          <StepContent stepId={stepId} />
+        </div>
       </div>
     </AppShell>
   );
 }
 
-function renderStep(stepId: WorkflowStepId) {
+function StepContent({ stepId }: { stepId: WorkflowStepId }) {
   if (stepId === "seed") return <SeedStep />;
   if (stepId === "crawl") return <CrawlStep />;
   if (stepId === "ocr") return <OcrStep />;
@@ -90,11 +92,12 @@ function SeedStep() {
               placeholder="Contoh: https://example.com atau example.com"
             />
             <Field label="Nama Kasus" placeholder="Contoh: Investigasi Situs Example" />
-            <label className="block">
+            <label className="block" htmlFor="case-note">
               <span className="mb-3 block text-lg font-medium text-foreground">Catatan Awal</span>
               <Textarea
-                className="min-h-[124px] resize-none bg-background/35 px-4 py-4 text-lg"
-                placeholder="Tuliskan konteks, tujuan, atau informasi penting terkait kasus ini..."
+                className="min-h-[124px] resize-none bg-background/35 p-4 text-lg"
+                id="case-note"
+                placeholder="Tuliskan konteks, tujuan, atau informasi penting terkait kasus ini…"
               />
             </label>
           </div>

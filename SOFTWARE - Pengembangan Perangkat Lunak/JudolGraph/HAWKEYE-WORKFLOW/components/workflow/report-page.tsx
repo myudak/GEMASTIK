@@ -1,14 +1,12 @@
 "use client";
 
 import { DownloadSimple, FilePdf } from "@phosphor-icons/react";
-import { pdf } from "@react-pdf/renderer";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AppShell } from "@/components/workflow/app-shell";
-import { HawkeyeReportDocument } from "@/components/workflow/report-document";
 import { SectionCard } from "@/components/workflow/section-card";
 import { reportDocumentData } from "@/lib/workflow-data";
 
@@ -27,7 +25,7 @@ export function ReportPage() {
     let objectUrl: string | null = null;
 
     async function generatePreview() {
-      const blob = await pdf(<HawkeyeReportDocument data={reportDocumentData} />).toBlob();
+      const blob = await createReportBlob();
       objectUrl = URL.createObjectURL(blob);
       setPreviewUrl(objectUrl);
     }
@@ -40,7 +38,7 @@ export function ReportPage() {
   }, []);
 
   async function downloadReport() {
-    const blob = await pdf(<HawkeyeReportDocument data={reportDocumentData} />).toBlob();
+    const blob = await createReportBlob();
     const objectUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
 
@@ -114,7 +112,16 @@ function ReportItem({ label }: { label: string }) {
 function PreviewLoading() {
   return (
     <div className="grid min-h-[420px] place-items-center text-muted-foreground">
-      Menyiapkan preview PDF...
+      Menyiapkan preview PDF…
     </div>
   );
+}
+
+async function createReportBlob() {
+  const [{ pdf }, { HawkeyeReportDocument }] = await Promise.all([
+    import("@react-pdf/renderer"),
+    import("@/components/workflow/report-document"),
+  ]);
+
+  return pdf(<HawkeyeReportDocument data={reportDocumentData} />).toBlob();
 }
