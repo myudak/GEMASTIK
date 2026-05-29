@@ -1,5 +1,5 @@
-import { WorkflowPage } from "@/components/workflow/workflow-page";
+import { ReportPage } from "@/components/workflow/report-page";
 
 export default function Page() {
-  return <WorkflowPage stepId="review" />;
+  return <ReportPage />;
 }

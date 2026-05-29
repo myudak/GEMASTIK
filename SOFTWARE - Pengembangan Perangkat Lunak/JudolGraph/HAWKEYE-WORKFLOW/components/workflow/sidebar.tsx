@@ -2,10 +2,13 @@
 
 import {
   Camera,
+  ClipboardText,
   FileText,
   Folder,
   GlobeHemisphereWest,
   Graph,
+  House,
+  IdentificationCard,
   ShieldCheck,
 } from "@phosphor-icons/react";
 import Image from "next/image";
@@ -16,10 +19,13 @@ import { ThemeToggle } from "@/components/workflow/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { href: "/dashboard", label: "Dashboard", icon: House },
   { href: "/cases/new", label: "Kasus", icon: Folder },
   { href: "/crawler", label: "Crawler", icon: GlobeHemisphereWest },
   { href: "/screenshots", label: "Screenshot & OCR", icon: Camera },
   { href: "/evidence-graph", label: "Evidence Graph", icon: Graph },
+  { href: "/entities/slot-gacor88", label: "Entitas", icon: IdentificationCard },
+  { href: "/review", label: "Review", icon: ClipboardText },
   { href: "/reports", label: "Laporan", icon: FileText },
 ];
 

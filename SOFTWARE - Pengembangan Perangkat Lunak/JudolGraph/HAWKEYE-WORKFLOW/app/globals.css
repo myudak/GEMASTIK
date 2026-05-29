@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@xyflow/react/dist/style.css";
+@import "react-pdf/dist/Page/AnnotationLayer.css";
+@import "react-pdf/dist/Page/TextLayer.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -172,4 +174,14 @@ textarea {
 
 .hawkeye-flow .react-flow__node {
   font-family: inherit;
+}
+
+.react-pdf__Page {
+  background: transparent !important;
+}
+
+.react-pdf__Page canvas {
+  border-radius: var(--radius);
+  max-width: 100%;
+  height: auto !important;
 }

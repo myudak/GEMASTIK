@@ -42,6 +42,53 @@ export type ReviewSummary = {
   note: string;
 };
 
+export type InvestigationCase = {
+  id: string;
+  name: string;
+  seed: string;
+  status: "Investigasi" | "Perlu Review" | "Terverifikasi";
+  risk: "Tinggi" | "Sedang";
+  evidenceCount: number;
+  entityCount: number;
+  updatedAt: string;
+};
+
+export type EntityDetail = {
+  id: string;
+  type: string;
+  value: string;
+  confidence: number;
+  status: "Need Review" | "Verified" | "Rejected";
+  riskSignals: string[];
+  relatedEvidence: string[];
+};
+
+export type ReviewAction = {
+  label: "Verified" | "Need Review" | "Rejected";
+  description: string;
+};
+
+export type PublicReportSummary = {
+  label: string;
+  value: string;
+};
+
+export type LinkCheckResult = {
+  domain: string;
+  level: "Indikasi Rendah" | "Indikasi Sedang" | "Indikasi Tinggi";
+  description: string;
+};
+
+export type ReportDocumentData = {
+  title: string;
+  generatedAt: string;
+  executiveSummary: string;
+  evidence: EvidenceItem[];
+  riskSignals: RiskSignal[];
+  auditTrail: string[];
+  summary: ReviewSummary;
+};
+
 export const workflowSteps: WorkflowStep[] = [
   {
     id: "seed",
@@ -80,9 +127,9 @@ export const workflowSteps: WorkflowStep[] = [
     id: "review",
     number: 5,
     label: "Review & Laporan",
-    title: "Review & Laporan",
-    subtitle: "Investigator meninjau hasil akhir sebelum menyiapkan laporan.",
-    href: "/reports",
+    title: "Human Review",
+    subtitle: "Investigator meninjau status akhir sebelum laporan dibuat.",
+    href: "/review",
   },
 ];
 
@@ -158,4 +205,95 @@ export const reviewSummary: ReviewSummary = {
   entityCount: 5,
   riskScore: 92,
   note: "Indikasi kuat aktivitas promosi sintetis dan pola pengalihan trafik.",
+};
+
+export const investigationCases: InvestigationCase[] = [
+  {
+    id: "case-slot-gacor88",
+    name: "Investigasi Situs Example",
+    seed: "https://example.com",
+    status: "Perlu Review",
+    risk: "Tinggi",
+    evidenceCount: 3,
+    entityCount: 5,
+    updatedAt: "20 Mei 2025, 14:35 WIB",
+  },
+  {
+    id: "case-bonus-aman",
+    name: "Laporan Domain Promo",
+    seed: "promo-example.test",
+    status: "Investigasi",
+    risk: "Sedang",
+    evidenceCount: 2,
+    entityCount: 4,
+    updatedAt: "20 Mei 2025, 13:10 WIB",
+  },
+  {
+    id: "case-publik-01",
+    name: "Laporan Publik Terkurasi",
+    seed: "https://lapor.example.net",
+    status: "Terverifikasi",
+    risk: "Sedang",
+    evidenceCount: 4,
+    entityCount: 6,
+    updatedAt: "19 Mei 2025, 17:42 WIB",
+  },
+];
+
+export const entityDetail: EntityDetail = {
+  id: "slot-gacor88",
+  type: "Domain",
+  value: "slot-gacor88.xyz",
+  confidence: 94,
+  status: "Need Review",
+  riskSignals: riskSignals.map((signal) => signal.label),
+  relatedEvidence: [
+    "Metadata halaman publik",
+    "Screenshot promosi sintetis",
+    "Tautan keluar dan referral",
+  ],
+};
+
+export const reviewActions: ReviewAction[] = [
+  {
+    label: "Verified",
+    description: "Bukti cukup dan dapat masuk paket laporan.",
+  },
+  {
+    label: "Need Review",
+    description: "Perlu pemeriksaan investigator sebelum diputuskan.",
+  },
+  {
+    label: "Rejected",
+    description: "Tidak cukup bukti atau tidak sesuai ruang lingkup.",
+  },
+];
+
+export const publicReportStats: PublicReportSummary[] = [
+  { label: "Domain terverifikasi", value: "12" },
+  { label: "Laporan publik diterima", value: "28" },
+  { label: "Kategori risiko umum", value: "Promosi" },
+];
+
+export const linkCheckResult: LinkCheckResult = {
+  domain: "example.com",
+  level: "Indikasi Sedang",
+  description:
+    "Ditemukan pola kata kunci dan tautan publik yang memerlukan verifikasi lebih lanjut.",
+};
+
+export const reportDocumentData: ReportDocumentData = {
+  title: "Laporan Investigasi HAWKEYE",
+  generatedAt: "20 Mei 2025, 15:00 WIB",
+  executiveSummary:
+    "Laporan sintetis ini merangkum bukti publik, entitas terdeteksi, sinyal risiko, dan catatan human review untuk kebutuhan demonstrasi.",
+  evidence: evidenceItems,
+  riskSignals,
+  auditTrail: [
+    "Seed divalidasi sebagai sumber publik.",
+    "Metadata, screenshot, dan tautan publik dikumpulkan.",
+    "OCR dan ekstraksi entitas menghasilkan 5 entitas.",
+    "Investigator menandai kasus sebagai Need Review.",
+  ],
+  summary: reviewSummary,
 };

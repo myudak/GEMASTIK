@@ -245,7 +245,7 @@ function GraphStep() {
           </div>
         </SectionCard>
       </div>
-      <StepActions back="/screenshots" next="/reports" nextLabel="Lanjut ke Review" />
+      <StepActions back="/screenshots" next="/review" nextLabel="Lanjut ke Review" />
     </>
   );
 }
