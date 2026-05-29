@@ -15,6 +15,7 @@ import {
   WarningCircle,
   XCircle,
 } from "@phosphor-icons/react";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -370,37 +371,21 @@ function Checklist({ items }: { items: string[] }) {
 
 function PromoEvidence() {
   return (
-    <div className="overflow-hidden rounded-lg border border-border bg-background/35">
-      <div className="flex h-10 items-center justify-between border-b border-border px-4">
-        <strong className="text-2xl text-foreground">
-          TG<span className="text-primary">88</span>
-        </strong>
-        <div className="hidden gap-6 text-xs font-bold text-muted-foreground sm:flex">
-          <span>BERANDA</span>
-          <span>PROMO</span>
-          <span>PERMAINAN</span>
-          <span>BANTUAN</span>
-        </div>
+    <figure className="overflow-hidden rounded-lg border border-border bg-background/35">
+      <div className="relative aspect-[16/9] w-full">
+        <Image
+          alt="Bukti visual sintetis berupa screenshot halaman promosi yang diproses OCR."
+          className="object-cover"
+          fill
+          priority
+          sizes="(min-width: 1024px) 640px, 100vw"
+          src="/evidence/ocr-promo-evidence.png"
+        />
       </div>
-      <div className="grid min-h-[248px] gap-5 p-9 sm:grid-cols-[1.2fr_0.8fr]">
-        <div>
-          <p className="font-bold text-primary">PROMO SPESIAL</p>
-          <p className="mt-3 text-3xl font-black text-foreground">
-            BONUS DEPOSIT <span className="text-primary">100%</span>
-          </p>
-          <p className="mt-2 text-xl font-bold text-foreground">RTP TINGGI - MENANG LEBIH SERING</p>
-          <Badge className="mt-6 rounded-lg px-5 py-3 text-lg font-black" variant="default">
-            HUBUNGI: PROMO-TG88
-          </Badge>
-          <p className="mt-6 text-lg font-semibold text-foreground">PEMBAYARAN VIA DANA</p>
-        </div>
-        <div className="grid place-items-center">
-          <div className="grid size-[152px] place-items-center rounded-lg border border-primary/40 bg-primary/10 text-center text-3xl font-black text-primary shadow-[0_0_42px_color-mix(in_oklch,var(--primary)_28%,transparent)]">
-            BONUS
-          </div>
-        </div>
-      </div>
-    </div>
+      <figcaption className="border-t border-border px-4 py-3 text-sm text-muted-foreground">
+        Bukti sintetis untuk demo OCR. Teks pada gambar digunakan sebagai sumber ekstraksi entitas.
+      </figcaption>
+    </figure>
   );
 }
 
