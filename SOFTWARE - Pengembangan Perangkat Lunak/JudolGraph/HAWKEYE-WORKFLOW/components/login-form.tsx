@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Fingerprint, GithubLogo, ShieldCheck } from "@phosphor-icons/react";
+import { ArrowRight, Fingerprint, ShieldCheck } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
@@ -30,18 +30,16 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"form">)
           <div className="mx-auto flex size-12 items-center justify-center rounded-xl border border-primary/25 bg-primary/10 text-primary md:mx-0">
             <ShieldCheck aria-hidden size={27} weight="duotone" />
           </div>
-          <h1 className="mt-3 text-3xl font-black tracking-tight">Masuk Investigator</h1>
-          <p className="text-balance text-sm leading-relaxed text-muted-foreground">
-            Gunakan akun terverifikasi untuk membuka dashboard, evidence graph, human review, dan
-            laporan PDF HAWKEYE.
+          <h1 className="mt-3 text-3xl font-black tracking-tight">Investigator Login</h1>
+          <p className="text-sm text-muted-foreground">
+            Sistem Otentikasi Internal HAWKEYE
           </p>
         </div>
         <Field>
-          <FieldLabel htmlFor="email">Email investigator</FieldLabel>
+          <FieldLabel htmlFor="email">Email</FieldLabel>
           <Input
             autoComplete="email"
             className="h-11 bg-background/45"
-            defaultValue="andi.pratama@hawkeye.demo"
             id="email"
             placeholder="investigator@instansi.go.id"
             required
@@ -53,49 +51,34 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"form">)
             <FieldLabel htmlFor="password">Password</FieldLabel>
             <a
               className="ml-auto text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-              href="#akses-demo"
+              href="#"
             >
-              Akses demo
+              Lupa password?
             </a>
           </div>
           <Input
             autoComplete="current-password"
             className="h-11 bg-background/45"
-            defaultValue="hawkeye-demo"
+            defaultValue="hawkeye-secure"
             id="password"
             required
             type="password"
           />
         </Field>
-        <Field>
-          <div className="rounded-lg border border-border bg-background/45 p-4">
-            <div className="flex items-start gap-3">
-              <Fingerprint aria-hidden className="mt-0.5 text-primary" size={24} weight="duotone" />
-              <div>
-                <p className="font-semibold text-foreground">
-                  Role aktif: Investigator Terverifikasi
-                </p>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  Login ini bersifat mock untuk demo GEMASTIK. Tidak ada kredensial yang dikirim ke
-                  backend.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Field>
-        <Field>
+        
+        <Field className="mt-2">
           <Button className="h-12 text-base font-semibold" type="submit">
-            Masuk ke Dashboard
+            Secure Login
             <ArrowRight aria-hidden size={20} />
           </Button>
         </Field>
-        <FieldSeparator>Mode demo</FieldSeparator>
+        <FieldSeparator>Atau</FieldSeparator>
         <Field>
           <Button className="h-11" type="button" variant="outline">
-            <GithubLogo aria-hidden size={20} />
-            Simulasi SSO Instansi
+            <Fingerprint aria-hidden size={20} />
+            SSO Instansi
           </Button>
-          <FieldDescription className="text-center">
+          <FieldDescription className="text-center mt-4">
             Akses publik tersedia di{" "}
             <a className="font-medium text-foreground underline underline-offset-4" href="/public">
               Portal Publik HAWKEYE

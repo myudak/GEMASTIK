@@ -16,10 +16,10 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/workflow/theme-toggle";
 
 const featureSteps = [
-  { icon: LinkIcon, label: "Seed URL/domain", detail: "Validasi sumber publik" },
-  { icon: Camera, label: "OCR & entitas", detail: "Bukti visual sintetis" },
-  { icon: Graph, label: "Evidence graph", detail: "Relasi antarbukti" },
-  { icon: FilePdf, label: "PDF laporan", detail: "Hanya bukti verified" },
+  { icon: LinkIcon, label: "Seed Validation" },
+  { icon: Camera, label: "OCR Extraction" },
+  { icon: Graph, label: "Evidence Graph" },
+  { icon: FilePdf, label: "Verified Reports" },
 ];
 
 export function LoginPage() {
@@ -59,8 +59,8 @@ export function LoginPage() {
             <LoginForm />
           </div>
         </div>
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          Demo menampilkan data sintetis untuk kebutuhan presentasi dan dokumentasi proposal.
+        <p className="text-xs font-medium tracking-wide text-muted-foreground/60 uppercase">
+          Restricted Access &bull; HAWKEYE Systems
         </p>
       </div>
       <div className="relative hidden border-l border-border bg-muted lg:block">
@@ -84,61 +84,58 @@ export function LoginPage() {
           </div>
           <section className="max-w-3xl">
             <Badge className="mb-5 rounded-full px-4 py-2" variant="outline">
-              Prototipe Investigator
+              Portal Investigator
             </Badge>
-            <h2 className="text-5xl font-black tracking-tight">
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tight leading-[1.1]">
               Satu ruang kerja untuk bukti, graph, review, dan laporan.
             </h2>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              HAWKEYE membantu investigator memahami alur dari seed publik sampai laporan PDF tanpa
-              menampilkan kompleksitas sistem backend pada demo.
-            </p>
           </section>
           <div className="grid gap-4 xl:grid-cols-[1fr_0.82fr]">
-            <div className="rounded-2xl border border-border bg-card/78 p-5 shadow-2xl backdrop-blur">
+            <div className="rounded-2xl border border-border bg-card/78 p-6 shadow-2xl backdrop-blur">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-sm text-muted-foreground">Kasus demo aktif</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Kasus Aktif</p>
                   <h3 className="mt-1 text-2xl font-black">Operasi Slot Gacor88</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">slot-gacor88.xyz</p>
+                  <p className="text-sm font-medium text-muted-foreground/80">slot-gacor88.xyz</p>
                 </div>
-                <Badge variant="destructive">92/100</Badge>
+                <Badge className="font-bold shadow-sm" variant="destructive">92/100</Badge>
               </div>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {featureSteps.map((item) => (
                   <div
-                    className="rounded-xl border border-border bg-background/45 p-4"
+                    className="flex items-center gap-3 rounded-xl border border-border bg-background/45 p-3 transition-colors hover:bg-background/60"
                     key={item.label}
                   >
-                    <item.icon aria-hidden className="text-primary" size={25} weight="duotone" />
-                    <p className="mt-3 font-semibold">{item.label}</p>
-                    <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <item.icon aria-hidden className="text-primary" size={20} weight="duotone" />
+                    </div>
+                    <p className="font-semibold text-sm">{item.label}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl border border-border bg-card/78 p-5 shadow-2xl backdrop-blur">
-              <div className="flex items-center gap-3">
-                <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <ShieldCheck aria-hidden size={25} weight="duotone" />
+            <div className="rounded-2xl border border-border bg-card/78 p-6 shadow-2xl backdrop-blur">
+              <div className="flex items-center gap-4">
+                <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <ShieldCheck aria-hidden size={28} weight="duotone" />
                 </div>
                 <div>
-                  <p className="font-bold">Human review gate</p>
-                  <p className="text-sm text-muted-foreground">4 item perlu validasi</p>
+                  <p className="font-bold text-lg leading-none">Review Gate</p>
+                  <p className="mt-1 text-sm font-medium text-muted-foreground">4 item pending</p>
                 </div>
               </div>
-              <div className="mt-5 space-y-3 text-sm">
+              <div className="mt-6 space-y-2">
                 {[
-                  "Bukti OCR verified",
-                  "Node graph need review",
-                  "Entitas pembayaran need review",
+                  "OCR Verification",
+                  "Graph Review",
+                  "Entity Validation",
                 ].map((item) => (
                   <div
-                    className="flex items-center justify-between rounded-lg border border-border bg-background/45 px-3 py-2"
+                    className="flex items-center justify-between rounded-lg border border-border bg-background/45 px-4 py-2.5 transition-colors hover:bg-background/60"
                     key={item}
                   >
-                    <span>{item}</span>
-                    <MagnifyingGlass aria-hidden className="text-muted-foreground" size={17} />
+                    <span className="text-sm font-medium">{item}</span>
+                    <MagnifyingGlass aria-hidden className="text-muted-foreground" size={16} weight="bold" />
                   </div>
                 ))}
               </div>
