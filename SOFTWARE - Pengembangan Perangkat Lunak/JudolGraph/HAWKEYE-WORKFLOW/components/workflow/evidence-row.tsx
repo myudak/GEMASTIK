@@ -4,7 +4,8 @@ import { Camera, Code, FileText, Link as LinkIcon, Wallet } from "@phosphor-icon
 
 import { Separator } from "@/components/ui/separator";
 import { StatusBadge } from "@/components/workflow/evidence-status-badge";
-import type { EvidenceItem, EvidenceKind } from "@/lib/workflow-data";
+import { ReviewControls } from "@/components/workflow/review-controls";
+import type { EvidenceItem, EvidenceKind, ReviewDecision } from "@/lib/workflow-data";
 
 const evidenceIcons: Record<EvidenceKind, typeof FileText> = {
   html: Code,
@@ -17,10 +18,12 @@ const evidenceIcons: Record<EvidenceKind, typeof FileText> = {
 
 export function EvidenceRow({
   item,
+  onReview,
   onSelect,
   selected = false,
 }: {
   item: EvidenceItem;
+  onReview?: (decision: ReviewDecision) => void;
   onSelect?: () => void;
   selected?: boolean;
 }) {
@@ -29,12 +32,8 @@ export function EvidenceRow({
   return (
     <>
       <Separator />
-      <button
-        className="grid w-full gap-5 py-5 text-left transition hover:bg-muted/20 lg:grid-cols-[250px_130px_120px_1fr]"
-        onClick={onSelect}
-        type="button"
-      >
-        <div className="flex items-center gap-4 px-1">
+      <div className="grid w-full gap-5 py-5 transition hover:bg-muted/20 lg:grid-cols-[250px_130px_120px_1fr_220px]">
+        <button className="flex items-center gap-4 px-1 text-left" onClick={onSelect} type="button">
           <span
             className={
               selected
@@ -48,7 +47,7 @@ export function EvidenceRow({
             <span className="block font-semibold text-foreground">{item.title}</span>
             <span className="mt-1 block text-xs text-muted-foreground">{item.source}</span>
           </span>
-        </div>
+        </button>
         <StatusBadge status={item.status} />
         <div className="text-sm text-muted-foreground">
           <span className="block">{item.progress}%</span>
@@ -65,7 +64,8 @@ export function EvidenceRow({
             </span>
           </div>
         </div>
-      </button>
+        {onReview ? <ReviewControls current={item.status} onDecision={onReview} /> : null}
+      </div>
     </>
   );
 }

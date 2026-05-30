@@ -6,7 +6,6 @@ import {
   ClipboardText,
   FilePdf,
   Fingerprint,
-  Graph,
   Link as LinkIcon,
   MagnifyingGlass,
   ShieldCheck,
@@ -23,11 +22,20 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/workflow/app-shell";
+import { CaseContextBanner } from "@/components/workflow/case-context";
 import { EntityRow } from "@/components/workflow/entity-row";
 import { StatusBadge } from "@/components/workflow/evidence-status-badge";
+import { ReviewControls } from "@/components/workflow/review-controls";
 import { SectionCard } from "@/components/workflow/section-card";
 import { ThemeToggle } from "@/components/workflow/theme-toggle";
-import { getCaseEntities, getCaseEvidence, getSelectedCase, useDemoStore } from "@/lib/demo-store";
+import {
+  getCaseEntities,
+  getCaseEvidence,
+  getCaseReviewSummary,
+  getCaseRoute,
+  getSelectedCase,
+  useDemoStore,
+} from "@/lib/demo-store";
 import { publicReportStats, type DemoCase } from "@/lib/workflow-data";
 
 export function LoginPage() {
@@ -105,7 +113,7 @@ export function DashboardPage() {
           </div>
         </SectionCard>
         <div className="space-y-6">
-          <SectionCard title="Prioritas Dipilih">
+          <SectionCard title="Kasus Dipilih">
             <div className="space-y-4">
               <ScoreCard item={selectedCase} />
               <InfoRow
@@ -117,32 +125,15 @@ export function DashboardPage() {
                 label={`${selectedEntities.length} entitas terdeteksi`}
               />
               <Button asChild className="h-12 w-full">
-                <Link href="/cases/new">
-                  Buat Kasus Baru
+                <Link href={getCaseRoute(selectedCase.id)}>
+                  Detail Kasus
                   <ArrowRight aria-hidden size={19} />
                 </Link>
               </Button>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Button asChild className="h-12" variant="secondary">
-                  <Link href="/evidence-graph">
-                    <Graph aria-hidden size={19} />
-                    Buka Graph
-                  </Link>
-                </Button>
-                <Button asChild className="h-12" variant="secondary">
-                  <Link href="/screenshots">Bukti OCR</Link>
-                </Button>
-                <Button asChild className="h-12" variant="secondary">
-                  <Link href="/entities/slot-gacor88">Detail Entitas</Link>
-                </Button>
-                <Button asChild className="h-12" variant="secondary">
-                  <Link href="/review">Review Case</Link>
-                </Button>
-              </div>
-              <Button asChild className="h-12 w-full" variant="outline">
-                <Link href="/reports">
-                  <FilePdf aria-hidden size={19} />
-                  Preview Laporan Case
+              <Button asChild className="h-12 w-full" variant="secondary">
+                <Link href="/cases/new">
+                  Buat Kasus Baru
+                  <ArrowRight aria-hidden size={19} />
                 </Link>
               </Button>
             </div>
@@ -196,7 +187,11 @@ export function EntityDetailPage() {
           <SectionCard title="Entitas Terkait">
             <div className="space-y-3">
               {entities.slice(0, 8).map((item) => (
-                <EntityRow entity={item} key={item.id} />
+                <EntityRow
+                  entity={item}
+                  key={item.id}
+                  onReview={(decision) => store.actions.setEntityReview(item.id, decision)}
+                />
               ))}
             </div>
           </SectionCard>
@@ -213,7 +208,18 @@ export function EntityDetailPage() {
                       {item.hash.slice(0, 18)}...
                     </span>
                   </span>
-                  <StatusBadge status={item.status} />
+                  <div className="flex flex-wrap items-center gap-2">
+                    <StatusBadge status={item.status} />
+                    <Button
+                      className="h-8"
+                      onClick={() => store.actions.setEvidenceReview(item.id, "Verified")}
+                      size="sm"
+                      type="button"
+                      variant="outline"
+                    >
+                      Verify
+                    </Button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -242,6 +248,10 @@ export function EntityDetailPage() {
 export function HumanReviewPage() {
   const store = useDemoStore();
   const selectedCase = getSelectedCase(store);
+  const reviewSummary = getCaseReviewSummary(store);
+  const evidence = getCaseEvidence(store);
+  const entities = getCaseEntities(store);
+  const graphNodes = store.graphNodes.filter((item) => item.caseId === selectedCase.id);
 
   return (
     <AppShell>
@@ -250,22 +260,60 @@ export function HumanReviewPage() {
         eyebrow="Panel Human Review"
         title="Review Investigator"
       />
+      <div className="mt-7">
+        <CaseContextBanner selectedCase={selectedCase} store={store} />
+      </div>
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_420px]">
-        <SectionCard title="Ringkasan Review">
-          <div className="grid gap-4">
-            <InfoRow icon={<LinkIcon size={24} />} label={selectedCase.seed} />
-            <InfoRow icon={<ClipboardText size={24} />} label={selectedCase.summary} />
-            <InfoRow
-              icon={<ShieldCheck size={24} />}
-              label={`Skor risiko ${selectedCase.riskScore}/100`}
-            />
-            <InfoRow
-              icon={<Fingerprint size={24} />}
-              label={`Status saat ini: ${selectedCase.reviewDecision}`}
-            />
-          </div>
-        </SectionCard>
+        <div className="space-y-6">
+          <SectionCard title="Ringkasan Review">
+            <div className="grid gap-4">
+              <InfoRow icon={<LinkIcon size={24} />} label={selectedCase.seed} />
+              <InfoRow icon={<ClipboardText size={24} />} label={selectedCase.summary} />
+              <InfoRow
+                icon={<ShieldCheck size={24} />}
+                label={`Skor risiko ${selectedCase.riskScore}/100`}
+              />
+              <InfoRow
+                icon={<Fingerprint size={24} />}
+                label={`Status saat ini: ${selectedCase.reviewDecision}`}
+              />
+            </div>
+          </SectionCard>
+          <SectionCard title="Review Artefak">
+            <div className="space-y-3">
+              {evidence.slice(0, 3).map((item) => (
+                <ReviewArtifact
+                  key={item.id}
+                  label={item.title}
+                  onDecision={(decision) => store.actions.setEvidenceReview(item.id, decision)}
+                  status={item.status}
+                />
+              ))}
+              {entities.slice(0, 2).map((item) => (
+                <ReviewArtifact
+                  key={item.id}
+                  label={item.value}
+                  onDecision={(decision) => store.actions.setEntityReview(item.id, decision)}
+                  status={item.status}
+                />
+              ))}
+              {graphNodes.slice(0, 2).map((item) => (
+                <ReviewArtifact
+                  key={item.id}
+                  label={item.label}
+                  onDecision={(decision) => store.actions.setGraphNodeReview(item.id, decision)}
+                  status={item.status}
+                />
+              ))}
+            </div>
+          </SectionCard>
+        </div>
         <SectionCard title="Keputusan">
+          <div className="mb-5 grid grid-cols-3 gap-3">
+            <ReviewMetric label="Verified" value={reviewSummary.verified} />
+            <ReviewMetric label="Review" value={reviewSummary.unresolvedTotal} />
+            <ReviewMetric label="Rejected" value={reviewSummary.rejected} />
+          </div>
           <div className="space-y-4">
             {(["Verified", "Need Review", "Rejected"] as const).map((decision) => (
               <button
@@ -592,6 +640,35 @@ function ReviewIcon({ label }: { label: string }) {
   if (label === "Rejected") return <XCircle className="text-destructive" size={30} />;
 
   return <WarningCircle className="text-primary" size={30} />;
+}
+
+function ReviewArtifact({
+  label,
+  onDecision,
+  status,
+}: {
+  label: string;
+  onDecision: Parameters<typeof ReviewControls>[0]["onDecision"];
+  status: Parameters<typeof ReviewControls>[0]["current"];
+}) {
+  return (
+    <div className="grid gap-3 rounded-lg border border-border bg-background/35 p-4">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <span className="font-medium text-foreground">{label}</span>
+        <StatusBadge status={status} />
+      </div>
+      <ReviewControls current={status} onDecision={onDecision} />
+    </div>
+  );
+}
+
+function ReviewMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-lg border border-border bg-background/35 p-3">
+      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="mt-1 text-2xl font-black text-foreground">{value}</p>
+    </div>
+  );
 }
 
 function Field({

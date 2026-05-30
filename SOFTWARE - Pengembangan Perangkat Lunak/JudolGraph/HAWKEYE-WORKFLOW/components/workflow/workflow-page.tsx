@@ -19,7 +19,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useReducer, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useReducer, useState, type FormEvent, type ReactNode } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,17 +28,25 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/workflow/app-shell";
+import {
+  CaseContextBanner,
+  PipelineProgress,
+  pipelineStages,
+} from "@/components/workflow/case-context";
 import { EntityRow } from "@/components/workflow/entity-row";
 import { EvidenceFlow } from "@/components/workflow/evidence-flow";
 import { EvidenceAction } from "@/components/workflow/evidence-action";
 import { EvidenceRow } from "@/components/workflow/evidence-row";
 import { StatusBadge } from "@/components/workflow/evidence-status-badge";
 import { PrimaryButton } from "@/components/workflow/primary-button";
+import { ReviewControls } from "@/components/workflow/review-controls";
 import { SectionCard } from "@/components/workflow/section-card";
 import { CompletedProcessPanel, CrawlSummaryPanel } from "@/components/workflow/summary-panel";
 import {
   getCaseEntities,
   getCaseEvidence,
+  getCaseReviewSummary,
+  getCaseRoute,
   getSelectedCase,
   getSelectedEvidence,
   getSelectedGraphNode,
@@ -78,6 +86,9 @@ const graphStatusFilters: Array<"all" | VerificationStatus> = [
 
 export function WorkflowPage({ stepId }: WorkflowPageProps) {
   const step = workflowSteps.find((item) => item.id === stepId) ?? workflowSteps[0];
+  const store = useDemoStore();
+  const selectedCase = getSelectedCase(store);
+  const showCaseContext = stepId !== "seed";
 
   return (
     <AppShell>
@@ -89,6 +100,11 @@ export function WorkflowPage({ stepId }: WorkflowPageProps) {
           </p>
         </header>
         <StepProgressShell activeStep={stepId} />
+        {showCaseContext ? (
+          <div className="mt-7">
+            <CaseContextBanner selectedCase={selectedCase} store={store} />
+          </div>
+        ) : null}
         <div className="mt-7">
           <StepContent stepId={stepId} />
         </div>
@@ -170,13 +186,70 @@ function SeedStep() {
     },
   );
   const [message, setMessage] = useState<string | null>(null);
+  const [creatingCaseId, setCreatingCaseId] = useState<string | null>(null);
+  const [localProgress, setLocalProgress] = useState(0);
+
+  useEffect(() => {
+    if (!creatingCaseId) return;
+
+    let progress = 8;
+    setLocalProgress(progress);
+    actions.advanceCasePipeline(creatingCaseId, progress);
+    const timer = window.setInterval(() => {
+      progress = Math.min(100, progress + 15);
+      setLocalProgress(progress);
+      actions.advanceCasePipeline(creatingCaseId, progress);
+
+      if (progress >= 100) {
+        window.clearInterval(timer);
+        window.setTimeout(() => push(getCaseRoute(creatingCaseId)), 350);
+      }
+    }, 360);
+
+    return () => window.clearInterval(timer);
+  }, [actions, creatingCaseId, push]);
 
   function submitCase(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const result = actions.createCase(formState);
 
     setMessage(result.message);
-    if (result.ok) push("/crawler");
+    if (result.ok && result.caseId) setCreatingCaseId(result.caseId);
+  }
+
+  if (creatingCaseId) {
+    const activeStage =
+      pipelineStages[Math.min(pipelineStages.length - 1, Math.floor(localProgress / 18))];
+
+    return (
+      <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
+        <SectionCard title="Menyiapkan Detail Kasus">
+          <div className="space-y-6">
+            <div>
+              <p className="text-sm uppercase text-muted-foreground">Case baru</p>
+              <h2 className="mt-2 text-3xl font-black text-foreground">{formState.caseName}</h2>
+              <p className="mt-2 text-muted-foreground">{formState.seed}</p>
+            </div>
+            <PipelineProgress progress={localProgress} />
+            <p className="rounded-lg border border-border bg-background/35 p-4 text-muted-foreground">
+              Sedang menjalankan tahap demo:{" "}
+              <span className="font-semibold text-foreground">{activeStage}</span>. Setelah simulasi
+              selesai, halaman akan membuka Detail Kasus.
+            </p>
+          </div>
+        </SectionCard>
+        <SectionCard title="Simulasi Pipeline">
+          <Checklist
+            items={[
+              "Validasi seed publik",
+              "Buat ruang investigasi",
+              "Siapkan antrean bukti",
+              "Hubungkan ke workspace case",
+            ]}
+          />
+        </SectionCard>
+      </div>
+    );
   }
 
   return (
@@ -277,16 +350,18 @@ function CrawlStep() {
             <StatusBadge status={selectedCase.reviewDecision} />
           </div>
           <Separator />
-          <div className="hidden py-4 text-muted-foreground lg:grid lg:grid-cols-[250px_130px_120px_1fr]">
+          <div className="hidden py-4 text-muted-foreground lg:grid lg:grid-cols-[250px_130px_120px_1fr_220px]">
             <span>Jenis Bukti</span>
             <span>Status</span>
             <span>Progress</span>
             <span>Deskripsi</span>
+            <span>Human Review</span>
           </div>
           {evidence.map((item) => (
             <EvidenceRow
               item={item}
               key={item.id}
+              onReview={(decision) => store.actions.setEvidenceReview(item.id, decision)}
               onSelect={() => store.actions.selectEvidence(item.id)}
               selected={item.id === selectedEvidence.id}
             />
@@ -306,18 +381,33 @@ function CrawlStep() {
                   ["Sumber", selectedEvidence.source],
                 ]}
               />
+              <div>
+                <p className="mb-3 text-sm font-medium text-muted-foreground">Review bukti ini</p>
+                <ReviewControls
+                  current={selectedEvidence.status}
+                  onDecision={(decision) =>
+                    store.actions.setEvidenceReview(selectedEvidence.id, decision)
+                  }
+                  size="default"
+                />
+              </div>
             </div>
           </SectionCard>
           <CompletedProcessPanel />
         </div>
       </div>
-      <StepActions back="/cases/new" next="/screenshots" nextLabel="Lanjut ke OCR" />
+      <StepActions
+        back={getCaseRoute(selectedCase.id)}
+        next="/screenshots"
+        nextLabel="Lanjut ke OCR"
+      />
     </>
   );
 }
 
 function OcrStep() {
   const store = useDemoStore();
+  const selectedCase = getSelectedCase(store);
   const evidence = getCaseEvidence(store);
   const ocrEvidence = evidence.filter(isOcrEvidence);
   const selectedEvidence = getSelectedEvidence(store);
@@ -340,21 +430,31 @@ function OcrStep() {
         <SectionCard title="Bukti Visual (Screenshot)">
           <div className="mb-4 grid gap-3 md:grid-cols-3">
             {ocrEvidence.map((item) => (
-              <button
+              <div
                 className={
                   item.id === selectedOcr?.id
-                    ? "rounded-lg border border-primary bg-primary/12 p-3 text-left"
-                    : "rounded-lg border border-border bg-background/35 p-3 text-left transition hover:border-primary"
+                    ? "rounded-lg border border-primary bg-primary/12 p-3"
+                    : "rounded-lg border border-border bg-background/35 p-3 transition hover:border-primary"
                 }
                 key={item.id}
-                onClick={() => store.actions.selectEvidence(item.id)}
-                type="button"
               >
-                <span className="block text-sm font-bold text-foreground">{item.title}</span>
-                <span className="mt-1 block text-xs text-muted-foreground">
-                  {item.confidence}% · {item.status}
-                </span>
-              </button>
+                <button
+                  className="w-full text-left"
+                  onClick={() => store.actions.selectEvidence(item.id)}
+                  type="button"
+                >
+                  <span className="block text-sm font-bold text-foreground">{item.title}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">
+                    {item.confidence}% · {item.status}
+                  </span>
+                </button>
+                <div className="mt-3">
+                  <ReviewControls
+                    current={item.status}
+                    onDecision={(decision) => store.actions.setEvidenceReview(item.id, decision)}
+                  />
+                </div>
+              </div>
             ))}
           </div>
           {selectedOcr ? <OcrEvidencePreview item={selectedOcr} /> : null}
@@ -374,7 +474,11 @@ function OcrStep() {
           <SectionCard title="Entitas dari Bukti Dipilih">
             <div className="space-y-3">
               {relatedEntities.map((entity) => (
-                <EntityRow entity={entity} key={entity.id} />
+                <EntityRow
+                  entity={entity}
+                  key={entity.id}
+                  onReview={(decision) => store.actions.setEntityReview(entity.id, decision)}
+                />
               ))}
             </div>
           </SectionCard>
@@ -389,7 +493,11 @@ function OcrStep() {
           </SectionCard>
         </div>
       </div>
-      <StepActions back="/crawler" next="/evidence-graph" nextLabel="Lanjut ke Graph" />
+      <StepActions
+        back={getCaseRoute(selectedCase.id)}
+        next="/evidence-graph"
+        nextLabel="Lanjut ke Graph"
+      />
     </>
   );
 }
@@ -482,6 +590,16 @@ function GraphStep() {
               ]}
             />
             <div className="border-t border-border pt-5">
+              <h3 className="mb-4 text-lg font-bold text-foreground">Human Review Node</h3>
+              <ReviewControls
+                current={selectedNode.status}
+                onDecision={(decision) =>
+                  store.actions.setGraphNodeReview(selectedNode.id, decision)
+                }
+                size="default"
+              />
+            </div>
+            <div className="border-t border-border pt-5">
               <h3 className="mb-4 text-lg font-bold text-foreground">Sinyal Risiko</h3>
               <div className="space-y-3">
                 {store.riskSignals.map((signal) => (
@@ -503,7 +621,11 @@ function GraphStep() {
           </div>
         </SectionCard>
       </div>
-      <StepActions back="/screenshots" next="/review" nextLabel="Lanjut ke Review" />
+      <StepActions
+        back={getCaseRoute(selectedCase.id)}
+        next="/review"
+        nextLabel="Lanjut ke Review"
+      />
     </>
   );
 }
@@ -513,8 +635,9 @@ function ReviewStep() {
   const selectedCase = getSelectedCase(store);
   const evidence = getCaseEvidence(store);
   const entities = getCaseEntities(store);
+  const graphNodes = store.graphNodes.filter((item) => item.caseId === selectedCase.id);
+  const reviewSummary = getCaseReviewSummary(store);
   const verifiedEvidence = evidence.filter((item) => item.status === "Verified");
-  const pendingEvidence = evidence.filter((item) => item.status === "Need Review");
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_500px]">
@@ -553,15 +676,49 @@ function ReviewStep() {
             value={selectedCase.summary}
           />
         </SectionCard>
-        <SectionCard title="Bukti Terverifikasi">
+        <SectionCard title="Review Bukti">
           <div className="space-y-3">
-            {verifiedEvidence.map((item) => (
+            {evidence.map((item) => (
               <div
-                className="flex items-center justify-between gap-4 rounded-lg border border-border bg-background/35 p-4"
+                className="grid gap-3 rounded-lg border border-border bg-background/35 p-4 lg:grid-cols-[1fr_auto]"
                 key={item.id}
               >
-                <span className="text-foreground">{item.title}</span>
-                <StatusBadge status={item.status} />
+                <div>
+                  <span className="block font-medium text-foreground">{item.title}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">{item.source}</span>
+                </div>
+                <ReviewControls
+                  current={item.status}
+                  onDecision={(decision) => store.actions.setEvidenceReview(item.id, decision)}
+                />
+              </div>
+            ))}
+          </div>
+        </SectionCard>
+        <SectionCard title="Review Entitas & Node">
+          <div className="space-y-3">
+            {entities.slice(0, 4).map((item) => (
+              <EntityRow
+                entity={item}
+                key={item.id}
+                onReview={(decision) => store.actions.setEntityReview(item.id, decision)}
+              />
+            ))}
+            {graphNodes.slice(0, 4).map((node) => (
+              <div
+                className="grid gap-3 rounded-lg border border-border bg-background/35 p-4 lg:grid-cols-[1fr_auto]"
+                key={node.id}
+              >
+                <div>
+                  <span className="block font-medium text-foreground">{node.label}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">
+                    Node {node.type} · skor {node.score}
+                  </span>
+                </div>
+                <ReviewControls
+                  current={node.status}
+                  onDecision={(decision) => store.actions.setGraphNodeReview(node.id, decision)}
+                />
               </div>
             ))}
           </div>
@@ -569,6 +726,11 @@ function ReviewStep() {
       </div>
       <div className="space-y-5">
         <SectionCard title="Aksi Review">
+          <div className="mb-5 grid gap-3 sm:grid-cols-3">
+            <MiniReviewMetric label="Verified" value={reviewSummary.verified} />
+            <MiniReviewMetric label="Perlu review" value={reviewSummary.unresolvedTotal} />
+            <MiniReviewMetric label="Rejected" value={reviewSummary.rejected} />
+          </div>
           <div className="space-y-4">
             <ReviewAction
               active={selectedCase.reviewDecision === "Verified"}
@@ -590,8 +752,8 @@ function ReviewStep() {
             />
           </div>
           <p className="mt-4 rounded-lg border border-border bg-background/35 p-3 text-sm text-muted-foreground">
-            {pendingEvidence.length > 0
-              ? `${pendingEvidence.length} bukti masih Need Review. Laporan final hanya memuat bukti Verified.`
+            {reviewSummary.unresolvedTotal > 0
+              ? `${reviewSummary.unresolvedTotal} item masih Need Review. Laporan final hanya memuat artefak Verified.`
               : "Semua bukti prioritas sudah melalui human review."}
           </p>
         </SectionCard>
@@ -746,6 +908,15 @@ function ReviewAction({
       {icon}
       {label}
     </Button>
+  );
+}
+
+function MiniReviewMetric({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-lg border border-border bg-background/35 p-3">
+      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="mt-1 text-2xl font-black text-foreground">{value}</p>
+    </div>
   );
 }
 

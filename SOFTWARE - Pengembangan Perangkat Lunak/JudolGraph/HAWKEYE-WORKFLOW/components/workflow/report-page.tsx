@@ -7,8 +7,9 @@ import { useEffect, useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AppShell } from "@/components/workflow/app-shell";
+import { CaseContextBanner } from "@/components/workflow/case-context";
 import { SectionCard } from "@/components/workflow/section-card";
-import { createReportData, useDemoStore } from "@/lib/demo-store";
+import { createReportData, getSelectedCase, useDemoStore } from "@/lib/demo-store";
 import type { ReportDocumentData } from "@/lib/workflow-data";
 
 const PdfPreview = dynamic(
@@ -21,6 +22,7 @@ const PdfPreview = dynamic(
 
 export function ReportPage() {
   const store = useDemoStore();
+  const selectedCase = getSelectedCase(store);
   const reportData = useMemo(() => createReportData(store), [store]);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -76,6 +78,9 @@ export function ReportPage() {
             Export PDF
           </Button>
         </header>
+        <div className="mt-7">
+          <CaseContextBanner selectedCase={selectedCase} store={store} />
+        </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_380px]">
           <SectionCard title="Pratinjau PDF">

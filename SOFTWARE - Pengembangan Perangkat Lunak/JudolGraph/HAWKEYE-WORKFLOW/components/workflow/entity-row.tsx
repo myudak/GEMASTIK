@@ -13,7 +13,8 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { StatusBadge } from "@/components/workflow/evidence-status-badge";
-import type { DetectedEntity, EntityType } from "@/lib/workflow-data";
+import { ReviewControls } from "@/components/workflow/review-controls";
+import type { DetectedEntity, EntityType, ReviewDecision } from "@/lib/workflow-data";
 
 const entityIcons: Record<EntityType, typeof GlobeHemisphereWest> = {
   Alias: UserCircle,
@@ -27,11 +28,17 @@ const entityIcons: Record<EntityType, typeof GlobeHemisphereWest> = {
   Screenshot: Camera,
 };
 
-export function EntityRow({ entity }: { entity: DetectedEntity }) {
+export function EntityRow({
+  entity,
+  onReview,
+}: {
+  entity: DetectedEntity;
+  onReview?: (decision: ReviewDecision) => void;
+}) {
   const Icon = entityIcons[entity.type];
 
   return (
-    <div className="grid min-h-14 gap-3 rounded-lg border border-border bg-background/25 p-4 sm:grid-cols-[210px_1fr_auto] sm:items-center">
+    <div className="grid min-h-14 gap-3 rounded-lg border border-border bg-background/25 p-4 xl:grid-cols-[210px_1fr_auto_auto] xl:items-center">
       <div className="flex items-center gap-3">
         <Icon aria-hidden className="text-primary" size={28} />
         <span className="text-base text-foreground">{entity.type}</span>
@@ -48,6 +55,7 @@ export function EntityRow({ entity }: { entity: DetectedEntity }) {
         </Badge>
         <StatusBadge status={entity.status} />
       </div>
+      {onReview ? <ReviewControls current={entity.status} onDecision={onReview} /> : null}
     </div>
   );
 }
