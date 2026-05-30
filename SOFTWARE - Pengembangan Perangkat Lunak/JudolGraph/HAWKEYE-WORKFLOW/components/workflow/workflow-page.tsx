@@ -435,12 +435,24 @@ function GraphStep() {
                 </FilterButton>
               ))}
             </div>
-            <EvidenceFlow
-              edges={edges}
-              nodes={nodes}
-              onSelectNode={store.actions.selectGraphNode}
-              selectedNodeId={selectedNode.id}
-            />
+            {nodes.length > 0 ? (
+              <EvidenceFlow
+                edges={edges}
+                nodes={nodes}
+                onSelectNode={store.actions.selectGraphNode}
+                selectedNodeId={selectedNode.id}
+              />
+            ) : (
+              <div className="grid h-[520px] place-items-center rounded-lg border border-dashed border-border bg-background/35 p-8 text-center">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">Belum ada node graph</h3>
+                  <p className="mt-2 max-w-md text-muted-foreground">
+                    Case ini belum punya relasi yang cocok dengan filter saat ini. Ubah filter atau
+                    pilih case demo lain dari dashboard.
+                  </p>
+                </div>
+              </div>
+            )}
           </SectionCard>
           <div className="mt-5 rounded-lg border border-primary/28 bg-primary/10 px-7 py-5 text-lg text-foreground">
             <Info aria-hidden className="mr-4 inline text-primary" size={28} />

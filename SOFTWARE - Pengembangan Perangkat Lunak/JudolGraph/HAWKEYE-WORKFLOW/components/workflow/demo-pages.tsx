@@ -6,6 +6,7 @@ import {
   ClipboardText,
   FilePdf,
   Fingerprint,
+  Graph,
   Link as LinkIcon,
   MagnifyingGlass,
   ShieldCheck,
@@ -121,8 +122,28 @@ export function DashboardPage() {
                   <ArrowRight aria-hidden size={19} />
                 </Link>
               </Button>
-              <Button asChild className="h-12 w-full" variant="secondary">
-                <Link href="/entities/slot-gacor88">Lihat Detail Entitas</Link>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <Button asChild className="h-12" variant="secondary">
+                  <Link href="/evidence-graph">
+                    <Graph aria-hidden size={19} />
+                    Buka Graph
+                  </Link>
+                </Button>
+                <Button asChild className="h-12" variant="secondary">
+                  <Link href="/screenshots">Bukti OCR</Link>
+                </Button>
+                <Button asChild className="h-12" variant="secondary">
+                  <Link href="/entities/slot-gacor88">Detail Entitas</Link>
+                </Button>
+                <Button asChild className="h-12" variant="secondary">
+                  <Link href="/review">Review Case</Link>
+                </Button>
+              </div>
+              <Button asChild className="h-12 w-full" variant="outline">
+                <Link href="/reports">
+                  <FilePdf aria-hidden size={19} />
+                  Preview Laporan Case
+                </Link>
               </Button>
             </div>
           </SectionCard>

@@ -102,12 +102,15 @@ function reducer(current: DemoState, action: DemoAction): DemoState {
   if (action.type === "selectCase") {
     const selectedCase = current.cases.find((item) => item.id === action.caseId);
     const firstEvidenceId = selectedCase?.evidenceIds[0] ?? current.selectedEvidenceId;
+    const firstGraphNodeId =
+      current.graphNodes.find((item) => item.caseId === action.caseId)?.id ??
+      current.selectedGraphNodeId;
 
     return {
       ...current,
       selectedCaseId: action.caseId,
       selectedEvidenceId: firstEvidenceId,
-      selectedGraphNodeId: "node-domain-root",
+      selectedGraphNodeId: firstGraphNodeId,
     };
   }
 
@@ -345,8 +348,14 @@ export function getSelectedEvidence(state: DemoState) {
 }
 
 export function getSelectedGraphNode(state: DemoState) {
+  const selectedCase = getSelectedCase(state);
+
   return (
-    state.graphNodes.find((item) => item.id === state.selectedGraphNodeId) ?? state.graphNodes[0]
+    state.graphNodes.find(
+      (item) => item.id === state.selectedGraphNodeId && item.caseId === selectedCase.id,
+    ) ??
+    state.graphNodes.find((item) => item.caseId === selectedCase.id) ??
+    state.graphNodes[0]
   );
 }
 
@@ -354,6 +363,8 @@ export function createReportData(state: DemoState): ReportDocumentData {
   const selectedCase = getSelectedCase(state);
   const evidence = getCaseEvidence(state).filter((item) => item.status === "Verified");
   const entities = getCaseEntities(state).filter((item) => item.status === "Verified");
+  const graphNodeCount = state.graphNodes.filter((item) => item.caseId === selectedCase.id).length;
+  const graphEdgeCount = state.graphEdges.filter((item) => item.caseId === selectedCase.id).length;
   const riskSignals = state.riskSignals.filter((item) => item.status === "Verified");
   const pendingReviewCount = getCaseEvidence(state).filter(
     (item) => item.status === "Need Review",
@@ -367,7 +378,7 @@ export function createReportData(state: DemoState): ReportDocumentData {
     executiveSummary:
       "Laporan demo ini memuat bukti dan entitas yang sudah diverifikasi manusia. Bukti berstatus Need Review atau Rejected tidak dimasukkan ke lampiran final.",
     generatedAt: "30 Mei 2026, 10:15 WIB",
-    graphSummary: `${state.graphNodes.length} node dan ${state.graphEdges.length} relasi tersedia pada evidence graph demo.`,
+    graphSummary: `${graphNodeCount} node dan ${graphEdgeCount} relasi tersedia pada evidence graph case terpilih.`,
     pendingReviewCount,
     riskSignals,
     title: "Laporan Investigasi HAWKEYE",
