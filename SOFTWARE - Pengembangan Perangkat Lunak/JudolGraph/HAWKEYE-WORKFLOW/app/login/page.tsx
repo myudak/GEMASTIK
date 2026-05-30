@@ -1,4 +1,4 @@
-import { LoginPage } from "@/components/workflow/demo-pages";
+import { LoginPage } from "@/components/workflow/login-page";
 
 export const metadata = {
   title: "Login Investigator | HAWKEYE",
