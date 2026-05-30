@@ -304,8 +304,8 @@ export function EvidenceGraphPage() {
               onNodeClick={(_, node) => setSelectedId(node.id)}
             >
               <Background color="#dbeafe" gap={28} />
-              <MiniMap pannable zoomable />
-              <Controls />
+              {/* <MiniMap pannable zoomable />
+              <Controls /> */}
             </ReactFlow>
             <div className="pointer-events-none absolute bottom-4 left-4 flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-500 shadow-sm">
               <Maximize2 className="h-4 w-4" />
